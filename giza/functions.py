@@ -31,6 +31,13 @@ def digest(
         return False
     logger.info(f"digesting {len(usage)} line(s)")
 
+    usage = [
+        line.replace("\x1b[1;96m", "").replace("\x1b[0m", "")
+        for line in usage
+        if not line.startswith("\x1b[0;36m .")
+    ]
+    logger.info(f"digesting {len(usage)} line(s) of usage.")
+
     # TODO: filter for wanted applications.
 
     # TODO: remove descriptions.
