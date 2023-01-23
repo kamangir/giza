@@ -55,8 +55,6 @@ def digest(
     ]
     logger.info(f"digesting {len(usage)} line(s) of usage.")
 
-    print(usage)
-
     usage = [
         line
         for line in usage
@@ -70,7 +68,7 @@ def digest(
 
     # until advanced analysis is added.
     usage = [
-        reduce(lambda x, y: x.replace(y, ""), '<>.[]"', line).replace("-", "_")
+        reduce(lambda x, y: x.replace(y, ""), '<>.[]"/*=,!', line).replace("-", "_")
         for line in usage
     ]
 
