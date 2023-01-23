@@ -29,13 +29,22 @@ def digest(
     success, usage = file.load_text(input_filename)
     if not success:
         return False
-    logger.info(f"digesting {len(usage)} line(s)")
+    logger.info(f"digesting {len(usage)} line(s) of usage description.")
 
     usage = [
         line.replace("\x1b[1;96m", "").replace("\x1b[0m", "")
         for line in usage
         if not line.startswith("\x1b[0;36m .")
     ]
+    logger.info(f"digesting {len(usage)} line(s) of usage help.")
+
+    usage_ = []
+    for line in usage:
+        if line.startswith("\t"):
+            usage_ = usage_[:-1] + [usage_[-1] + line]
+        else:
+            usage_ += [line]
+    usage = [line.replace("\\\t", "") for line in usage_]
     logger.info(f"digesting {len(usage)} line(s) of usage.")
 
     # TODO: filter for wanted applications.
