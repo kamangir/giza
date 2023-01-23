@@ -26,7 +26,7 @@ function giza() {
     fi
 
     if [ "$task" == "version" ] ; then
-        python3 -m openai_cli version
+        python3 -m giza version
         return
     fi
 
