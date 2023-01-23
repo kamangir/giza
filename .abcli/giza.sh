@@ -5,7 +5,7 @@ function giza() {
 
     if [ $task == "help" ] ; then
         abcli_show_usage "giza digest [<application-1+application-2>|all]" \
-            "digest plugins."
+            "digest applications."
 
         if [ "$(abcli_keyword_is $2 verbose)" == true ] ; then
             python3 -m giza --help
@@ -21,14 +21,23 @@ function giza() {
     fi
 
     if [ "$task" == "digest" ] ; then
-        abcli_help > $abcli_object_path/usage.sh
+        abcli_help > $abcli_object_path/giza.txt
 
         python3 -m giza \
             digest \
             --list_of_applications $(abcli_clarify_input $2 all) \
-            --input_filename $abcli_object_path/usage.sh \
-            --output_filename $abcli_object_path/abstraction.dot \
+            --input_filename $abcli_object_path/giza.txt \
+            --output_filename $abcli_object_path/giza.dot \
             ${@:3}
+
+        dot -Tpng \
+            -o $abcli_object_path/giza.png \
+            $abcli_object_path/giza.dot
+
+        dot -Tsvg \
+            -o $abcli_object_path/giza.svg \
+            $abcli_object_path/giza.dot
+
         return
     fi
 

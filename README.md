@@ -7,7 +7,8 @@ To start type in,
 ```bash
 abcli select
 giza digest all
+cp -v giza.* $abcli_path_git/giza/
 ```
 
-![image](graph.png)
-Also in [svg](graph.svg).
+![image](giza.png)
+Also in [svg](giza.svg).
