@@ -4,7 +4,7 @@ function giza() {
     local task=$(abcli_unpack_keyword $1 help)
 
     if [ $task == "help" ] ; then
-        abcli_show_usage "giza digest [<plugin_1+plugin_2>|all]" \
+        abcli_show_usage "giza digest [<application-1+application-2>|all]" \
             "digest plugins."
 
         if [ "$(abcli_keyword_is $2 verbose)" == true ] ; then
@@ -21,19 +21,13 @@ function giza() {
     fi
 
     if [ "$task" == "digest" ] ; then
-        local what=$(abcli_clarify_input $2 all)
-        if [ "$what" == all ] ; then
-            local what="awesome-bash-cli,$(abcli plugins \
-                list_of_external \
-                --delim , \
-                --log 0)"
-        fi
-        abcli_log_list "$what" , "plugin(s)" "digesting "
+        abcli_help > $abcli_object_path/usage.sh
 
-
-        echo python3 -m giza \
+        python3 -m giza \
             digest \
-            --what  \
+            --list_of_applications $(abcli_clarify_input $2 all) \
+            --input_filename $abcli_object_path/usage.sh \
+            --output_filename $abcli_object_path/abstraction.dot \
             ${@:3}
         return
     fi

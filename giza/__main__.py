@@ -12,16 +12,27 @@ parser.add_argument(
     help="digest|version",
 )
 parser.add_argument(
-    "--what",
-    default="all",
-    help="<plugin_1+plugin_2>|all",
+    "--input_filename",
+    type=str,
+)
+parser.add_argument(
+    "--output_filename",
+    type=str,
+)
+parser.add_argument(
+    "--list_of_applications",
+    help="<application-1+application-2>|all",
     type=str,
 )
 args = parser.parse_args()
 
 success = False
 if args.task == "digest":
-    success = digest(args.what)
+    success = digest(
+        args.input_filename,
+        args.output_filename,
+        args.list_of_applications,
+    )
 elif args.task == "version":
     print(f"{NAME}-{VERSION}")
     success = True

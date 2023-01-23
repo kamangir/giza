@@ -9,31 +9,36 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def digest(list_of_repos):
-    if list_of_repos == "all":
-        list_of_repos = ["awesome-bash-cli"] + list_of_external(True)
-    else:
-        list_of_repos = list_of_repos.split("+")
+def digest(
+    input_filename,
+    output_filename,
+    list_of_applications,
+):
+    if list_of_applications == "all":
+        list_of_applications = ["abcli"] + list_of_external()
 
     logger.info(
-        "{}.digest({} repo(s)): {}".format(
-            NAME,
-            len(list_of_repos),
-            ", ".join(list_of_repos),
+        "digesting {} application(s): {} -> {}: {}".format(
+            len(list_of_applications),
+            input_filename,
+            output_filename,
+            ", ".join(list_of_applications),
         )
     )
 
-    abcli_path_git = os.getenv("abcli_path_git", "")
+    success, usage = file.load_text(input_filename)
+    if not success:
+        return False
+    logger.info(f"digesting {len(usage)} line(s)")
 
-    file_count = 0
-    for repo_name in tqdm(list_of_repos):
-        list_of_files = file.list_of(
-            os.path.join(abcli_path_git, repo_name, "*.sh"),
-            recursive=True,
-        )
+    # TODO: filter for wanted applications.
 
-        file_count += len(list_of_files)
+    # TODO: remove descriptions.
 
-    logger.info(f"processed {file_count} file(s)")
+    # TODO: generate a graph.
 
-    return True
+    print(usage)
+
+    graph = []
+
+    return file.save_text(output_filename, graph)
