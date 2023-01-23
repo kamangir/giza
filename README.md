@@ -11,6 +11,7 @@ abcli select
 giza digest all
 ```
 
-[![0000000008](https://user-images.githubusercontent.com/1007567/210292738-d01be166-c2d4-4a80-b734-63eaee9b3062.png)](./pages/why.md)
+![image](graph.png)
+Also in [svg](graph.svg).
 
-by [Stable Diffusion](https://github.com/kamangir/blue-stability)
+[![0000000008](https://user-images.githubusercontent.com/1007567/210292738-d01be166-c2d4-4a80-b734-63eaee9b3062.png)](./pages/why.md) by [Stable Diffusion](https://github.com/kamangir/blue-stability)
