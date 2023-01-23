@@ -16,6 +16,7 @@ def digest(
 ):
     if list_of_applications == "all":
         list_of_applications = ["abcli"] + list_of_external()
+    list_of_applications = [application.lower() for application in list_of_applications]
 
     logger.info(
         "digesting {} application(s): {} -> {}: {}".format(
