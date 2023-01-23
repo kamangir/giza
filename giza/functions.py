@@ -1,5 +1,5 @@
-import os
-from tqdm import tqdm
+from functools import reduce
+import re
 from . import NAME
 from abcli.plugins import list_of_external
 from abcli import file
@@ -44,8 +44,26 @@ def digest(
             usage_ = usage_[:-1] + [usage_[-1] + line]
         else:
             usage_ += [line]
-    usage = [line.replace("\\\t", "") for line in usage_]
+    usage = [
+        re.sub(
+            r"--\w+\s\w+",
+            "",
+            line.replace("\\\t", ""),
+        )
+        for line in usage_
+    ]
     logger.info(f"digesting {len(usage)} line(s) of usage.")
+
+    nodes = sorted(
+        [
+            node
+            for node in set(
+                reduce(lambda x, y: x + y, [line.split(" ") for line in usage], [])
+            )
+            if node
+        ]
+    )
+    logger.info(f"{len(nodes)} nodes: {', '.join(nodes)}.")
 
     # TODO: filter for wanted applications.
 
