@@ -55,6 +55,17 @@ def digest(
     ]
     logger.info(f"digesting {len(usage)} line(s) of usage.")
 
+    usage = [
+        line
+        for line in usage
+        if reduce(
+            lambda x, y: x or y,
+            [line.startswith(application) for application in list_of_applications],
+            False,
+        )
+    ]
+    logger.info(f"digesting {len(usage)} line(s) of usage of the listed applications.")
+
     nodes = sorted(
         [
             node
