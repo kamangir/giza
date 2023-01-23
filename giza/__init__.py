@@ -1,5 +1,5 @@
 NAME = "giza"
 
-VERSION = "2.40.1"
+VERSION = "2.41.1"
 
 from .functions import *

@@ -30,11 +30,11 @@ function giza() {
             --output_filename $abcli_object_path/giza.dot \
             ${@:3}
 
-        dot -Tpng \
+        fdp -Tpng \
             -o $abcli_object_path/giza.png \
             $abcli_object_path/giza.dot
 
-        dot -Tsvg \
+        fdp -Tsvg \
             -o $abcli_object_path/giza.svg \
             $abcli_object_path/giza.dot
 
