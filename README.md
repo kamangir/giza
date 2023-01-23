@@ -6,6 +6,7 @@ To start type in,
 
 ```bash
 abcli select
+open .
 giza digest all
 cp -v giza.png giza.svg $abcli_path_git/giza/
 ```
