@@ -4,8 +4,8 @@ function giza() {
     local task=$(abcli_unpack_keyword $1 help)
 
     if [ $task == "help" ] ; then
-        abcli_show_usage "giza digest <path_1,path_2>" \
-            "digest <path_1,path_2>."
+        abcli_show_usage "giza digest [<plugin_1+plugin_2>|all]" \
+            "digest plugins."
 
         if [ "$(abcli_keyword_is $2 verbose)" == true ] ; then
             python3 -m giza --help
@@ -21,14 +21,14 @@ function giza() {
     fi
 
     if [ "$task" == "digest" ] ; then
-        echo "wip"
+        python3 -m giza \
+            digest \
+            --what $(abcli_clarify_input $2 all) \
+            ${@:3}
         return
     fi
 
-    if [ "$task" == "version" ] ; then
-        python3 -m giza version
-        return
-    fi
-
-    abcli_log_error "-giza: $task: command not found."
+    python3 -m giza \
+        $task \
+        ${@:2}
 }
