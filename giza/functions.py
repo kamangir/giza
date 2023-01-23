@@ -66,9 +66,20 @@ def digest(
     ]
     logger.info(f"digesting {len(usage)} line(s) of usage of the listed applications.")
 
-    # until advanced analysis is added.
+    # remove options and args
     usage = [
-        reduce(lambda x, y: x.replace(y, ""), '<>.[]"/*=,!|+~_-', line)
+        " ".join(
+            [
+                keyword
+                for keyword in line.split(" ")
+                if keyword
+                and not reduce(
+                    lambda x, y: x or y,
+                    [char in keyword for char in '<>.[]"/*=,!|+~_-'],
+                    False,
+                )
+            ]
+        )
         for line in usage
     ]
 
