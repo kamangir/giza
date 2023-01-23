@@ -20,10 +20,13 @@ function giza() {
         return
     fi
 
-    if [ "$task" == "task_1" ] ; then
-        python3 -m giza \
-            task_1 \
-            ${@:2}
+    if [ "$task" == "digest" ] ; then
+        echo "wip"
+        return
+    fi
+
+    if [ "$task" == "version" ] ; then
+        python3 -m openai_cli version
         return
     fi
 
