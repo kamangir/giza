@@ -47,13 +47,15 @@ def digest(
             usage_ += [line]
     usage = [
         re.sub(
-            r"--\w+\s\w+",
+            r"--\w+\s(\w+|<(\w|,)+>)",
             "",
             line.replace("\\\t", ""),
         )
         for line in usage_
     ]
     logger.info(f"digesting {len(usage)} line(s) of usage.")
+
+    print(usage)
 
     usage = [
         line
@@ -65,6 +67,9 @@ def digest(
         )
     ]
     logger.info(f"digesting {len(usage)} line(s) of usage of the listed applications.")
+
+    # until advanced analysis is added.
+    # usage = [reduce(lambda x, y: x.replace(y, ""), "<>.", line) for line in usage]
 
     nodes = sorted(
         [
