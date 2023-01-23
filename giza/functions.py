@@ -75,7 +75,7 @@ def digest(
                 if keyword
                 and not reduce(
                     lambda x, y: x or y,
-                    [char in keyword for char in '<>.[]"/*=,!|+~_-'],
+                    [char in keyword for char in '<>.[]"/*=,!|+~-'],
                     False,
                 )
             ]
