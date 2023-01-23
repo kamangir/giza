@@ -68,7 +68,7 @@ def digest(
 
     # until advanced analysis is added.
     usage = [
-        reduce(lambda x, y: x.replace(y, ""), '<>.[]"/*=,!', line).replace("-", "_")
+        reduce(lambda x, y: x.replace(y, "_"), '<>.[]"/*=,!|', line).replace("-", "_")
         for line in usage
     ]
 
