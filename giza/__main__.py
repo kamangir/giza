@@ -9,12 +9,20 @@ parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
 parser.add_argument(
     "task",
     type=str,
-    help="version",
+    help="digest|version",
+)
+parser.add_argument(
+    "--what",
+    default="all",
+    help="<plugin_1+plugin_2>|all",
+    type=str,
 )
 args = parser.parse_args()
 
 success = False
-if args.task == "version":
+if args.task == "digest":
+    success = digest(args.what)
+elif args.task == "version":
     print(f"{NAME}-{VERSION}")
     success = True
 else:
