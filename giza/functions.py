@@ -77,14 +77,16 @@ def digest(
     )
     logger.info(f"{len(nodes)} node(s).")
 
+    usage = [[node for node in line.split(" ") if node] for line in usage]
+
     edges = reduce(
         lambda x, y: x + y,
         [
             [
                 (node_1, node_2)
                 for node_1, node_2 in zip(
-                    line.split(" ")[:-1],
-                    line.split(" ")[1:],
+                    line[:-1],
+                    line[1:],
                 )
             ]
             for line in usage
