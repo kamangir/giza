@@ -21,9 +21,19 @@ function giza() {
     fi
 
     if [ "$task" == "digest" ] ; then
-        python3 -m giza \
+        local what=$(abcli_clarify_input $2 all)
+        if [ "$what" == all ] ; then
+            local what="awesome-bash-cli,$(abcli plugins \
+                list_of_external \
+                --delim , \
+                --log 0)"
+        fi
+        abcli_log_list "$what" , "plugin(s)" "digesting "
+
+
+        echo python3 -m giza \
             digest \
-            --what $(abcli_clarify_input $2 all) \
+            --what  \
             ${@:3}
         return
     fi
