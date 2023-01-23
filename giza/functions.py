@@ -75,16 +75,34 @@ def digest(
             if node
         ]
     )
-    logger.info(f"{len(nodes)} nodes: {', '.join(nodes)}.")
+    logger.info(f"{len(nodes)} node(s).")
 
-    # TODO: filter for wanted applications.
+    edges = reduce(
+        lambda x, y: x + y,
+        [
+            [
+                (node_1, node_2)
+                for node_1, node_2 in zip(
+                    line.split(" ")[:-1],
+                    line.split(" ")[1:],
+                )
+            ]
+            for line in usage
+        ],
+        [],
+    )
+    logger.info(f"{len(edges)} edge(s).")
 
-    # TODO: remove descriptions.
-
-    # TODO: generate a graph.
-
-    print(usage)
-
-    graph = []
+    graph = (
+        [
+            "digraph Tree {",
+            "    node [shape=circle];",
+        ]
+        + [f"    {node};" for node in nodes]
+        + [f"    {node_1} -> {node_2};" for node_1, node_2 in edges]
+        + [
+            "}",
+        ]
+    )
 
     return file.save_text(output_filename, graph)
