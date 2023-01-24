@@ -4,7 +4,7 @@ function giza() {
     local task=$(abcli_unpack_keyword $1 help)
 
     if [ $task == "help" ] ; then
-        abcli_show_usage "giza digest$ABCUL[<application-1+application-2>|all]$ABCUL[~publish]" \
+        abcli_show_usage "giza digest$ABCUL[<application-1+application-2>|all]$ABCUL[publish]" \
             "digest applications."
 
         if [ "$(abcli_keyword_is $2 verbose)" == true ] ; then
@@ -22,7 +22,7 @@ function giza() {
 
     if [ "$task" == "digest" ] ; then
         local options=$3
-        local do_publish=$(abcli_option_int "$options" publish 1)
+        local do_publish=$(abcli_option_int "$options" publish 0)
 
         abcli_help > $abcli_object_path/giza.txt
 
