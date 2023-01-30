@@ -16,7 +16,7 @@ function giza() {
 
     local function_name=giza_$task
     if [[ $(type -t $function_name) == "function" ]] ; then
-        $function_name ${@:2}
+        $function_name "${@:2}"
         return
     fi
 
