@@ -29,7 +29,7 @@ These commands generally perform AI and related operations on multiple physical 
 
 1. Understand [the concepts](./chapters/concepts.md).
 1. Build [the core](./chapters/core.md).
-1. Develop [the first application](./chapters/applications.md).
+1. Deploy [the first plugin](./chapters/plugins.md).
 
 :fire:
 
