@@ -1,8 +1,8 @@
-# giza
+# giza 🔻
 
 TL;DR: [Understand 1️⃣ -> Build 2️⃣ -> Deploy 3️⃣](#steps)
 
-`giza` 🔻 is a set of instructions to build a Linux AI that is,
+`giza` is a set of instructions to build a Linux AI that is,
 
 - quick at scale for multi-person collaboration: enables groups of humans to be exponentially more efficient collectively.
 - cloud-native: compute, storage, metadata, signaling, API.
