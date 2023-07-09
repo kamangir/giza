@@ -25,7 +25,7 @@ These commands generally perform AI and related operations on multiple physical 
 
 1. To reduce the cognitive burden of the user and increase their efficiency.
 1. To reduce the risk of user-induced errors.
-1. To establish a document-as-you-go framework on [the procedure](#scripts) and the [results](#objects).
+1. To establish a document-as-you-go framework on [the procedure](./chapters/script.md) and the [results](./chapters/objects.md).
 
 ## Steps
 
