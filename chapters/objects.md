@@ -1,6 +1,10 @@
 # Objects
 
-[Commands](commands.md) consume and generate objects. Objects are accessible on every machine by their `name` or a reference to them, after they are [selected](commands/select.md). Objects may be [downloaded](#download) and [uploaded](#upload) or [streamed](#list), at the same time.
+[Commands](commands.md) consume and generate objects.
+
+Objects are accessible on every machine by their `name` or a reference to them after they are [selected](commands/select.md).
+
+Objects may be [downloaded](#download) and [uploaded](#upload), fully or partially, or [streamed](#list).
 
 Objects have [metadata](metadata.md).
 
