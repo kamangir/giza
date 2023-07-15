@@ -1,6 +1,6 @@
 # giza 🔻
 
-TL;DR: [Understand 1️⃣ -> Build 2️⃣ -> Deploy 3️⃣](#steps)
+TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.md) 2️⃣ -> [Deploy](./chapters/plugins.md)  3️⃣
 
 `giza` is a set of instructions to build a Linux AI that is,
 
