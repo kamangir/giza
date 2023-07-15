@@ -2,7 +2,7 @@
 
 TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.md) 2️⃣ -> [Deploy](./chapters/plugins.md)  3️⃣
 
-## What
+## What if giza?
 
 `giza` is a set of instructions to build a Linux AI that is,
 
@@ -14,7 +14,7 @@ TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.m
 - based on bash and python, extensible to other languages.  
 - organic emergence: no assumption about the tools, minimalist, and orthogonal.
 
-## What
+## What does giza do?
 
 `giza` builds a language to formalize a series of sequences of interrelated calls, such as below, that are relevant to an AI use-case.
 
@@ -23,13 +23,13 @@ TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.m
 
 These commands generally perform AI and related operations on multiple physical and virtual Linux machines, including docker containers.
 
-## How
+## What does giza achieve?
 
-1. To reduce the cognitive burden of the user and increase their efficiency.
-1. To reduce the risk of user-induced errors.
-1. To establish a document-as-you-go framework on [the procedure](./chapters/script.md) and the [results](./chapters/objects.md).
+1. reduction of the cognitive burden of the user and increase of their efficiency.
+1. reduction in the risk of user-induced errors.
+1. establishment of a document-as-you-go framework on [the procedure](./chapters/script.md) and the [results](./chapters/objects.md).
 
-## Steps
+## How do I use giza?
 
 1. Understand [the concepts](./chapters/concepts.md).
 1. Build [the core](./chapters/core.md).
