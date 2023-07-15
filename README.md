@@ -11,8 +11,10 @@ TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.m
 - simultaneously multi-machine: user interface through the terminal, VSCode, and Jupyter Notebook + task deployment on cloud compute + [single board computers](https://github.com/kamangir/blue-bracket) + auto-[terraform](chapters/terraform.md). 
 - a dev and production env: AI algo ideation, poc, productization, support, feature-add, within a modern production ci-cd environment such as github or gitlabs.
 - secure.
-- based on bash and python, extensible to other languages.  
+- based on bash and python, likely extensible to other languages.  
 - organic emergence: no assumption about the tools, minimalist, and orthogonal.
+- mathematics in action.
+- brown.
 
 ## What does giza do?
 
