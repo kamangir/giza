@@ -2,7 +2,7 @@
 
 TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.md) 2️⃣ -> [Deploy](./chapters/plugins.md)  3️⃣
 
-## What if giza?
+## What is giza?
 
 `giza` is a set of instructions to build a Linux AI that is,
 
