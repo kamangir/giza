@@ -20,8 +20,22 @@ TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.m
 
 `giza` builds a language to formalize a series of sequences of interrelated calls, such as below, that are relevant to an AI use-case.
 
-- `$tool_name $task [--keyword value] [--keyword value] [--keyword value] ...`
-- `python3 $tool_name $task $arg $arg [--keyword value] [--keyword value] [--keyword value] ...`
+```
+$tool_name $task \
+  --keyword value \
+  --keyword value \
+  --keyword value \
+  ...
+```
+
+```bash
+python3 $tool_name \
+  $task $arg $arg \
+  --keyword value \
+  --keyword value \
+   --keyword value \
+   ...
+```
 
 These commands generally perform AI and related operations on multiple physical and virtual Linux machines, including docker containers.
 
