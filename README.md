@@ -2,6 +2,8 @@
 
 TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.md) 2️⃣ -> [Deploy](./chapters/plugins.md)  3️⃣
 
+## What
+
 `giza` is a set of instructions to build a Linux AI that is,
 
 - quick at scale for multi-person collaboration: enables groups of humans to be exponentially more efficient collectively.
@@ -12,7 +14,7 @@ TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.m
 - based on bash and python, extensible to other languages.  
 - organic emergence: no assumption about the tools, minimalist, and orthogonal.
 
-## Objective
+## Why
 
 `giza` builds a language to formalize series of sequences of inter-related calls such as below that are relevant to an AI use-case.
 
