@@ -6,15 +6,15 @@ TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.m
 
 `giza` is a set of instructions to build a Linux AI that is,
 
-- quick at scale for multi-person collaboration: enables groups of humans to be exponentially more efficient collectively.
-- cloud-native: compute, storage, metadata, signaling, API.
-- simultaneously multi-machine: user interface through the terminal, VSCode, and Jupyter Notebook + task deployment on cloud compute + [single board computers](https://github.com/kamangir/blue-bracket) + auto-[terraform](chapters/terraform.md). 
-- a dev and production env: AI algo ideation, poc, productization, support, feature-add, within a modern production ci-cd environment such as github or gitlabs.
-- secure.
-- based on bash and python, likely extensible to other languages.  
-- organic emergence: no assumption about the tools, minimalist, and orthogonal.
-- mathematics in action.
-- brown.
+- Quick at scale for multi-person collaboration: enables groups of humans to be exponentially more efficient collectively.
+- Cloud-native: compute, storage, metadata, signaling, API.
+- Simultaneously multi-machine: user interface through the terminal, VSCode, and Jupyter Notebook + task deployment on cloud compute + [single board computers](https://github.com/kamangir/blue-bracket) + auto-[terraform](chapters/terraform.md). 
+- A dev and production env: AI algo ideation, poc, productization, support, feature-add, within a modern production ci-cd environment such as github or gitlabs.
+- Secure.
+- Based on bash and python, likely extensible to other languages.  
+- Organic emergence: no assumption about the tools, minimalist, and orthogonal.
+- Mathematics in action.
+- Brown.
 
 ## What does giza do?
 
@@ -41,9 +41,10 @@ These commands generally perform AI and related operations on multiple physical 
 
 ## What does giza achieve?
 
-1. reduction of the cognitive burden of the user and increase of their efficiency.
-1. reduction in the risk of user-induced errors.
-1. establishment of a document-as-you-go framework on [the procedure](./chapters/script.md) and the [results](./chapters/objects.md).
+1. Reduction of the cognitive burden of the user and increase of their efficiency.
+1. Reduction in the risk of user-induced errors.
+1. Establishment of a document-as-you-go framework on [the procedure](./chapters/script.md) and the [results](./chapters/objects.md).
+2. Magic. 🪄
 
 ## How do I use giza?
 
