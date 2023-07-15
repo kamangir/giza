@@ -14,16 +14,16 @@ TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.m
 - based on bash and python, extensible to other languages.  
 - organic emergence: no assumption about the tools, minimalist, and orthogonal.
 
-## Why
+## What
 
-`giza` builds a language to formalize series of sequences of inter-related calls such as below that are relevant to an AI use-case.
+`giza` builds a language to formalize a series of sequences of interrelated calls, such as below, that are relevant to an AI use-case.
 
-- `$tool_name $task [--keyword value]`
-- `python3 $tool_name $task [--keyword value]`
+- `$tool_name $task [--keyword value] [--keyword value] [--keyword value] ...`
+- `python3 $tool_name $task $arg $arg [--keyword value] [--keyword value] [--keyword value] ...`
 
 These commands generally perform AI and related operations on multiple physical and virtual Linux machines, including docker containers.
 
-## Goals
+## How
 
 1. To reduce the cognitive burden of the user and increase their efficiency.
 1. To reduce the risk of user-induced errors.
