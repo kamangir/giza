@@ -16,7 +16,7 @@ TL;DR: [Understand](./chapters/concepts.md) 1️⃣ -> [Build](./chapters/core.m
 - Mathematics in action.
 - Brown.
 
-## What does giza do?
+## What does `giza` do?
 
 `giza` builds a language to formalize a series of sequences of interrelated calls, such as below, that are relevant to an AI use-case.
 
@@ -39,17 +39,21 @@ python3 $tool_name \
 
 These commands generally perform AI and related operations on multiple physical and virtual Linux machines, including docker containers.
 
-## What does giza achieve?
+## What does `giza` achieve?
 
 1. Reduction of the cognitive burden of the user and increase of their efficiency.
 1. Reduction in the risk of user-induced errors.
 1. Establishment of a document-as-you-go framework on [the procedure](./chapters/script.md) and the [results](./chapters/objects.md).
 2. Magic. 🪄
 
-## How do I use giza?
+## How do I use `giza`?
 
 1. Understand [the concepts](./chapters/concepts.md).
 1. Build [the core](./chapters/core.md).
 1. Deploy [the first plugin](./chapters/plugins.md).
+
+## Is there an example?
+
+[awesome bash cli](https://github.com/kamangir/awesome-bash-cli) (`abcli`) is an example implementation of `giza`. Here is what is in `abcli`.
 
 ![image](giza.png)
