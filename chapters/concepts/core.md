@@ -1,5 +1,7 @@
 # The Core
 
+This description uses the specifics of a [Python + Bash implementation](https://github.com/kamangir/awesome-bash-cli).
+
 The core loads every other [plugin](plugins.md) and [terraforms the machine](terraform.md). The core also provides the basic [commands](../commands.md) to work with [objects](objects.md). To see the list of functionality supported by the `core`, type in,
 
 Type in ,
