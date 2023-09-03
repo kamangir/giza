@@ -1,6 +1,6 @@
 # giza 🔻
 
-TL;DR: [Understand](./chapters/abstract/README.md) 1️⃣ -> [Build](./chapters/core.md) 2️⃣ -> [Deploy](./chapters/plugins.md)  3️⃣
+TL;DR: [Understand](./chapters/abstraction/README.md) 1️⃣ -> [Build](./chapters/concepts/core.md) 2️⃣ -> [Deploy](./chapters/concepts/plugins.md)  3️⃣
 
 ## What is giza?
 
