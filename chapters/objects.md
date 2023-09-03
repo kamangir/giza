@@ -1,6 +1,6 @@
 # Objects
 
-[Commands](commands.md) consume and generate objects.
+[Commands](commands.md) consume and modify objects.
 
 Objects are accessible on every machine by their `name` or a reference to them after they are [selected](commands/select.md).
 
