@@ -48,9 +48,9 @@ These commands generally perform AI and related operations on multiple physical 
 
 ## How do I use `giza`?
 
-1. Understand [the concepts](./chapters/concepts.md).
-1. Build [the core](./chapters/core.md).
-1. Deploy [the first plugin](./chapters/plugins.md).
+1. Understand [the abstraction](./chapters/abstraction/README.md).
+1. Build [the core](./chapters/concepts/core.md).
+1. Deploy [the first plugin](./chapters/concepts/plugins.md).
 
 ## Is there an example?
 
