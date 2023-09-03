@@ -1,3 +1,3 @@
 :fire
 
-[./concepts.md]
+[concepts](./concepts.md)
