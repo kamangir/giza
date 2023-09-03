@@ -1,8 +1,10 @@
 # Commands
 
-A [giza](../README.md) command start with [`<core>`](core.md) or the name of a [plugin](plugins.md). 
+A command start with [`<core>`](core.md) or the name of a [plugin](./plugins.md), `<plugin-name>`.
 
-`<plugin-name> help` prints help instructions for `<plugin-name>`. Many commands start with a `<task-name>`. `<plugin-name> <task-name> help` prints the list of [arguments](#arguments) for `<tool-name> <task-name>`.
+`<plugin-name> help` prints help instructions for `<plugin-name>`. 
+
+Many commands start with a `<task-name>`. `<plugin-name> <task-name> help` prints the list of [arguments](#arguments) for `<tool-name> <task-name>`.
 
 ## Arguments
 
