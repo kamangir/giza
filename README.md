@@ -4,7 +4,7 @@ TL;DR: [Understand](./chapters/abstract.md) 1️⃣ -> [Build](./chapters/core.m
 
 ## What is giza?
 
-`giza` is a set of instructions to build a Linux AI that is,
+`giza` is a set of instructions to build an AI language that is,
 
 - Quick at scale for multi-person collaboration: enables groups of humans to be exponentially more efficient collectively.
 - Cloud-native: compute, storage, metadata, signaling, API.
