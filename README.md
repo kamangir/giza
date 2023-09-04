@@ -1,6 +1,6 @@
 # giza 🔻
 
-TL;DR: [Understand](./chapters/abstraction/README.md) 1️⃣ -> [Build](./chapters/concepts/core.md) 2️⃣ -> [Deploy](./chapters/concepts/plugins.md)  3️⃣
+TL;DR: [Understand](https://github.com/kamangir/giza/wiki/abstraction) 1️⃣ -> [Build](https://github.com/kamangir/giza/wiki/core) 2️⃣ -> [Deploy](https://github.com/kamangir/giza/wiki/plugins)  3️⃣
 
 ## What is giza?
 
@@ -48,9 +48,9 @@ These commands generally perform AI and related operations on multiple physical 
 
 ## How do I use `giza`?
 
-1. Understand [the abstraction](./chapters/abstraction/README.md).
-1. Build [the core](./chapters/concepts/core.md).
-1. Deploy [the first plugin](./chapters/concepts/plugins.md).
+1. Understand [the abstraction](https://github.com/kamangir/giza/wiki/abstraction).
+1. Build [the core](https://github.com/kamangir/giza/wiki/core).
+1. Deploy [the first plugin](https://github.com/kamangir/giza/wiki/plugins).
 
 ## Is there an example?
 
