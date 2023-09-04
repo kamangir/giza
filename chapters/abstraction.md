@@ -1,3 +1,0 @@
-:fire
-
-[concepts](./concepts.md)
