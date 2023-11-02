@@ -1,5 +1,5 @@
 NAME = "giza"
 
-VERSION = "3.7.1"
+VERSION = "3.8.1"
 
-from .functions import *
+DESCRIPTION = "🔻 A recipe for AI languages."

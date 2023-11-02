@@ -3,11 +3,13 @@
 function giza() {
     local task=$(abcli_unpack_keyword $1 help)
 
-    if [ $task == "help" ] ; then
+    if [ $task == "help" ]; then
+        giza version \\n
+
         abcli_show_usage "giza digest$ABCUL[<application-1+application-2>|all]$ABCUL[publish]" \
             "digest applications."
 
-        if [ "$(abcli_keyword_is $2 verbose)" == true ] ; then
+        if [ "$(abcli_keyword_is $2 verbose)" == true ]; then
             python3 -m giza --help
         fi
 
@@ -15,16 +17,16 @@ function giza() {
     fi
 
     local function_name=giza_$task
-    if [[ $(type -t $function_name) == "function" ]] ; then
+    if [[ $(type -t $function_name) == "function" ]]; then
         $function_name "${@:2}"
         return
     fi
 
-    if [ "$task" == "digest" ] ; then
+    if [ "$task" == "digest" ]; then
         local options=$3
         local do_publish=$(abcli_option_int "$options" publish 0)
 
-        abcli_help > $abcli_object_path/giza.txt
+        abcli_help >$abcli_object_path/giza.txt
 
         python3 -m giza \
             digest \
@@ -41,13 +43,23 @@ function giza() {
             -o $abcli_object_path/giza.svg \
             $abcli_object_path/giza.dot
 
-        if [ "$do_publish" == 1 ] ; then
+        if [ "$do_publish" == 1 ]; then
             cp -v \
                 $abcli_object_path/giza.png \
                 $abcli_object_path/giza.svg \
                 $abcli_path_git/giza/
         fi
 
+        return
+    fi
+
+    if [ "$task" == "init" ]; then
+        abcli_init giza "${@:2}"
+        return
+    fi
+
+    if [ "$task" == "version" ]; then
+        abcli_log "🔻 $(python3 -m giza version --show_description 1)${@:2}"
         return
     fi
 

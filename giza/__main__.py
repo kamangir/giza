@@ -1,5 +1,6 @@
 import argparse
-from . import *
+from giza import NAME, VERSION, DESCRIPTION
+from giza.functions import digest
 from abcli import logging
 import logging
 
@@ -24,6 +25,12 @@ parser.add_argument(
     help="<application-1+application-2>|all",
     type=str,
 )
+parser.add_argument(
+    "--show_description",
+    type=bool,
+    default=0,
+    help="0|1",
+)
 args = parser.parse_args()
 
 success = False
@@ -34,7 +41,13 @@ if args.task == "digest":
         args.list_of_applications,
     )
 elif args.task == "version":
-    print(f"{NAME}-{VERSION}")
+    print(
+        "{}-{}{}".format(
+            NAME,
+            VERSION,
+            "\\n{}".format(DESCRIPTION) if args.show_description else "",
+        )
+    )
     success = True
 else:
     logger.error(f"-{NAME}: {args.task}: command not found.")
