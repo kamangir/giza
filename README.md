@@ -1,58 +1,7 @@
 # giza 🔻
 
-TL;DR: [Understand](https://github.com/kamangir/giza/wiki/abstraction) 1️⃣ -> [Build](https://github.com/kamangir/giza/wiki/core) 2️⃣ -> [Deploy](https://github.com/kamangir/giza/wiki/plugins)  3️⃣
+read the paper: [pdf](./tex/giza.pdf)
 
-## What is giza?
+![image](assets/giza.png)
 
-`giza` is a set of instructions to build an AI language that is,
-
-- Quick at scale for multi-person collaboration: enables groups of humans to be exponentially more efficient collectively.
-- Cloud-native: compute, storage, metadata, signalling, API.
-- Simultaneously multi-machine: user interface through the terminal, VSCode, and Jupyter Notebook + task deployment on cloud compute + [single board computers](https://github.com/kamangir/blue-bracket) + auto-[terraform](https://github.com/kamangir/giza/wiki/terraform). 
-- A dev and production env: AI algo ideation, POC, productization, support, feature-add, within a modern production ci-cd environment such as github or GitLabs.
-- Secure.
-- Based on bash and python, likely extensible to other languages.  
-- Organic emergence: no assumption about the tools, minimalist, and orthogonal.
-- 🌈
-
-## What does `giza` do?
-
-`giza` builds a language to formalize a series of sequences of interrelated calls, such as below, relevant to an AI use case.
-
-```
-$tool_name $task \
-  --keyword value \
-  --keyword value \
-  --keyword value \
-  ...
-```
-
-```bash
-python3 $tool_name \
-  $task $arg $arg \
-  --keyword value \
-  --keyword value \
-   --keyword value \
-   ...
-```
-
-These commands generally perform AI and related operations on multiple physical and virtual Linux machines, including docker containers.
-
-## What does `giza` achieve?
-
-1. Reduction of the user's cognitive burden and increase their efficiency.
-1. Reduction in the risk of user-induced errors.
-1. Establishment of a document-as-you-go framework on [the procedure](https://github.com/kamangir/giza/wiki/scripts) and the [results](https://github.com/kamangir/giza/wiki/objects).
-2. Magic. 🪄
-
-## How do I use `giza`?
-
-1. Understand [the abstraction](https://github.com/kamangir/giza/wiki/abstraction).
-1. Build [the core](https://github.com/kamangir/giza/wiki/core).
-1. Deploy [the first plugin](https://github.com/kamangir/giza/wiki/plugins).
-
-## Is there an example?
-
-[awesome bash cli](https://github.com/kamangir/awesome-bash-cli) (`abcli`) is an example implementation of `giza`. Here is what is in `abcli`.
-
-![image](giza.png)
+[awesome bash cli](https://github.com/kamangir/awesome-bash-cli) 🚀 (`abcli`) is an example implementation of `giza`. 
