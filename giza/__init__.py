@@ -1,5 +1,5 @@
 NAME = "giza"
 
-VERSION = "3.9.1"
+VERSION = "3.10.1"
 
 DESCRIPTION = "🔻 A recipe for AI languages."
