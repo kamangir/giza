@@ -1,6 +1,6 @@
 # giza 🔻
 
-read the paper: [pdf](./tex/giza.pdf)
+read the working paper: [pdf](./tex/giza.pdf)
 
 ![image](./assets/giza.png)
 
