@@ -1,6 +1,6 @@
 # giza 🔻
 
-read the working paper: [pdf](./tex/giza.pdf)
+read the working paper: https://www.overleaf.com/read/hhytkyyxzfck#6b2796
 
 ![image](./assets/giza.png)
 
