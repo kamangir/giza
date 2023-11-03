@@ -8,21 +8,28 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
-\title{$\nabla$ giza: A recipe for AI languages}
+\include{tex/consts}
+
+\title{$\nabla$ giza: A Recipe for AI Languages}
 \author{Arash Abadpour - arash@abadpour.com}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-In this paper, we discuss the Mathematics of building AI systems in Linux, more specifically, for Machine Vision. We describe the general challenge of converting the description of an AI operation into a human-readable machine script. The main contribution of this paper is a mathematical framework for building an AI language to develop the script. We use Vancouver Watching~\cite{vanwatch} as an example AI problem and discuss integrating it with AWS SageMaker~\cite{aws_sage_maker} for training and development and AWS Batch~\cite{aws_batch} for inference. We discuss API access to run YOLO~\cite{} object detection models on the stream images captured by traffic cameras in Downtown Vancouver. 
+In this paper, we discuss the Mathematics of building Machine Vision AI systems in Linux. We review the general challenge of translating the description of an AI operation in human language into a human-readable, machine-executable script. We select multiple Machine Vision AI challenges that we first describe in human language. Then, in each case, we build the language to convert the description in human language into one or more scripts we execute on machines. We use AWS SageMaker~\cite{aws_sage_maker} for development and training and AWS Batch~\cite{aws_batch} for inference and discuss API calls. The main contribution of this paper is a mathematical framework for building an AI language for a practical use-case in Machine Vision. We hope that researchers in others fields of AI use and extend this framework in their disciplines. We present a reference implementation of this framework as \emph{abcli}~\cite{abcli} - \emph{revision-\revision}
 \end{abstract}
+
+\tableofcontents
 
 \section{Problem Definition}
 
 wip
 
-\bibliographystyle{alpha}
-\bibliography{sample}
+\section{Examples}
+\include{tex/vancouver_watching}
+
+\bibliographystyle{acm}
+\bibliography{giza}
 
 \end{document}
