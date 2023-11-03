@@ -2,6 +2,8 @@
 
 read the working paper: https://www.overleaf.com/read/hhytkyyxzfck#6b2796 ([pdf](./assets/giza.pdf))
 
+---
+
 ```bash
  > giza help
 🔻 giza-3.19.1
@@ -14,6 +16,8 @@ giza digest \
 giza update_pdf [push,~rm]
  . update assets/giza.pdf in https://github.com/kamangir/giza/.
  ```
+
+ ---
 
 ![image](./assets/giza.png)
 
