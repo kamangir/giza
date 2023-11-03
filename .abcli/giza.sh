@@ -27,6 +27,11 @@ function giza() {
         return
     fi
 
+    if [ "$task" == "update" ]; then
+        giza_update_pdf "${@:2}"
+        return
+    fi
+
     if [ "$task" == "version" ]; then
         abcli_log "🔻 $(python3 -m giza version --show_description 1)${@:2}"
         return
