@@ -1,7 +1,7 @@
 \subsection{Commands}
 \label{commands}
 
-A \emph{command} is a string of characters as defined in Python~\cite{python_string}. Here is an example command~\cite{vanwatch},
+A \emph{command} is a Bash shell command~\footnote{\url{https://www.gnu.org/software/bash/manual/bash.html\#Shell-Syntax}} that can be carried in a Python string of characters~\footnote{\url{https://docs.python.org/3/library/string.html}}. Here is an example command~\cite{vanwatch},
 
 \begin{verbatim}
 vancouver_watching discover \
@@ -10,14 +10,16 @@ vancouver_watching discover \
     --validate 1
 \end{verbatim}
 
-The above command and the one below are \emph{identical}. Two commands are identical if running them on two machines in identical states yields the same states. In practice, the state of any machine depends on the state of any other machine, and it is almost impossible to run two commands in identical states, including the time of execution. Therefore, when we refer to two identical commands, we either use a derivation-based proof of identity or consider a validation in a limited ``relevant'' state.
-
+The above command and the one below are \emph{identical}.
+%
 \begin{verbatim}
 vancouver_watching discover vancouver ~upload --validate 1
 \end{verbatim}
-
+%
+Two commands are identical if running them on two machines in identical states yields the same states. In practice, the state of any machine depends on the state of any other machine, and it is almost impossible to run two commands in identical states, including the time of execution. Therefore, when we refer to two identical commands, we either use a derivation-based proof of identity or consider a validation in a limited ``relevant'' state.
+ 
 Commands can be similar when considered as a string of characters. Here is a command that is similar to the above,
-
+%
 \begin{verbatim}
 vancouver_watching discover toronto upload --validate 0
 \end{verbatim}
