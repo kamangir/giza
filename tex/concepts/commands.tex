@@ -1,7 +1,7 @@
 \subsection{Commands}
 \label{commands}
 
-A \emph{command} is any Bash command~\footnote{\url{https://www.gnu.org/software/bash/manual/bash.html\#Shell-Syntax}} and can be represented in a Python string of characters~\footnote{\url{https://docs.python.org/3/library/string.html}}. Here is an example command,
+A \emph{command} is any Bash command~\footurl{https://www.gnu.org/software/bash/manual/bash.html\#Shell-Syntax} and can be represented in a Python string of characters~\footurl{https://docs.python.org/3/library/string.html}. Here is an example command,
 %
 \begin{verbatim}
 vancouver_watching ingest \
@@ -19,19 +19,22 @@ vancouver_watching discover vancouver ~upload --validate 1
 %
 Two commands are identical if running them on two machines in identical states yields the same states. In theory, the state of any machine depends on the state of any other machine, and it is almost impossible to run two commands in identical states, including the time of execution. Therefore, when we refer to two identical commands, we either use a derivation-based proof of identity or consider a validation in a limited ``relevant'' subset of the state representation.
 
-For any shell on any machine there is a mapping between the set of all commands and $\{True,False\}$ that we address as ``whether the command is found''. In Bash, for example, the following message is printed when a command is not found.
+For any shell on any machine, at known states, there is a mapping between the set of all commands and $\{True,False\}$ that we address as ``whether the command is found''. In Bash, for example, the following message is printed when a command is not found.
 %
 \begin{verbatim}
 -bash: void: command not found
 \end{verbatim}
 %
-Note that writing to the standard streams \emph{stdin} and \emph{stdout} are examples of state changes in the shell and the machine. \emph{Terraforming} is the process of running commands that modify the state of the shell and the machine in ways that make additional commands found. Terraforming is also intended to modify the state change caused by a set of commands favourable to the interest of an operator.
+Note that writing to the standard streams \emph{stdin} and \emph{stdout} are examples of state changes in the shell and the machine. \emph{Terraforming} is the process of running commands that modify the state of the shell and the machine in ways that make additional commands found. Terraforming is also intended to modify the state change caused by a set of commands favourable to the interest of an operator. For convenience, we address a command that is found as a \emph{valid} command and \emph{invalid} otherwise.
 
 Commands can be similar when considered as strings of characters. Here is a command that is similar to the above,
 %
 \begin{verbatim}
 vancouver_watching ingest toronto upload . --count 3
 \end{verbatim}
+
+\subsection{Command Templates}
+\label{command-template}
 
 A \emph{command template} is a representation that yields similar commands, given the following three rules. First, \placeholder{description} can be replaced with any string of characters that can be described as ``description''. See \emph{options}~\ref{options}, \emph{arguments}~\ref{arguments}, \emph{objects}~\ref{objects} for the next rules. Here is a command template for the two above,
 %
@@ -42,3 +45,16 @@ vancouver_watching ingest \
     [<object-name>] \
     [--count <-1>]
 \end{verbatim}
+
+\subsection{Callables}
+\label{callables}
+
+A \emph{callable} is a valid command with no space and control operators~\footurl{https://www.gnu.org/software/bash/manual/bash.html\#index-control-operator}. The list of callables depends on the machine's state and is generally extended through terraforming. Some of the well-known callables are \emph{git}~\footurl{https://git-scm.com/docs/git}, \emph{docker}~\footurl{https://docs.docker.com/engine/reference/commandline/cli/}, \emph{pushd}~\footurl{https://www.gnu.org/software/bash/manual/bash.html\#Directory-Stack-Builtins}, \emph{nano}~\footurl{https://www.nano-editor.org/}. 
+
+\begin{theorem}
+For any callable \placeholder{callable}, and any string \placeholder{suffix}, ``\placeholder{callable} \placeholder{suffix}'' is a valid command.
+\end{theorem}
+
+\begin{theorem}
+For any valid command \placeholder{command}, and any string \placeholder{suffix}, ``\placeholder{command} \placeholder{suffix}'' is a valid command.
+\end{theorem}
