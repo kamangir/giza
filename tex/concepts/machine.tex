@@ -1,6 +1,6 @@
-\subsection{machine}
+\subsection{Machines and Shells}
 \label{machine}
 
-A \emph{machine} is a state machine that can run many \emph{shells}~\ref{shell}. The machine is connected to a network of other machines and shares its state with them. Terraforming~\ref{terraform} is the process of running commands that modify the machine's state in ways that alter the validity and outcome of commands~\ref{commands}.
+A \emph{machine} is a state machine that is connected to many other machines and shares its state with them. A \emph{shells} is a stateful access mechanism to a machine to run \emph{commands}~\ref{commands}. Running a command in a shell can modify the state of the shell, the machine on which the shell is running, and potentially the states of all other machines. Terraforming~\ref{terraform} is the process of running commands that modify the state of the shell and the machine to alter the validity and outcome of future commands.
 
-A Raspberry Pi~\cite{RaspberryPi} that is running Linux and is connected to AWS~\cite{AWS} is a machine. A docker container that is running in AWS Batch~\cite{AWSBatch} is also a machine.
+Two examples of machines are a Raspberry Pi~\cite{RaspberryPi} that runs Linux and is connected to AWS~\cite{AWS} and a docker container that is running in AWS Batch~\cite{AWSBatch}. GNU Bash~\cite{bash} is an example of a shell.
