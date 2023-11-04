@@ -1,14 +1,4 @@
-\subsection{Machines, Shells, and Terraforming}
+\subsection{Machines and Shells}
 \label{machine}
 
-A \emph{machine} is a state machine that is connected to many other machines and shares its state with them. A \emph{shells} is a stateful access mechanism to a machine to run \emph{commands}~\ref{commands}. Running a command in a shell can modify the state of the shell, the machine on which the shell is running, and potentially the states of all other machines. \emph{Terraforming} is the process of running commands that modify the state of the shell and the machine. 
-
-A command may be \emph{invalid}, in which case running it results in a special state change. In bash, for example, the following message is printed,
-
-\begin{verbatim}
--bash: void: command not found
-\end{verbatim}
-
-Note that writing to the standard streams \emph{stdin} and \emph{stdout} are examples of state changes in the shell and the machines. 
-
-Two examples of machines are a Raspberry Pi that runs Linux and is connected to AWS~\footnote{\url{https://aws.amazon.com/}} and a docker container running in AWS Batch. GNU Bash~\footnote{\url{https://www.gnu.org/software/bash/}} is an example of a shell.
+A \emph{machine} is a state machine that is connected to many other machines and shares some of its state with them for read and write. A \emph{shell} is a stateful access mechanism to a machine that an \emph{operator}~\ref{operator} uses to run \emph{commands}~\ref{commands}. Running a command in a shell can modify the state of the shell, the machine on which the shell is running, and potentially the states of all other machines. Two examples of machines are a Raspberry Pi that runs Linux and is connected to AWS~\footnote{\url{https://aws.amazon.com/}} and a docker container running in AWS Batch. GNU Bash~\footnote{\url{https://www.gnu.org/software/bash/}, \emph{Bash}, \emph{bash}.} is an example of a shell.

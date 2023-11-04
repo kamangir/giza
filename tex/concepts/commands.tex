@@ -1,55 +1,44 @@
 \subsection{Commands}
 \label{commands}
 
-A \emph{command} is a Bash shell command~\footnote{\url{https://www.gnu.org/software/bash/manual/bash.html\#Shell-Syntax}} that can be carried in a Python string of characters~\footnote{\url{https://docs.python.org/3/library/string.html}}. Here is an example command,
-
+A \emph{command} is any Bash command~\footnote{\url{https://www.gnu.org/software/bash/manual/bash.html\#Shell-Syntax}} and can be represented in a Python string of characters~\footnote{\url{https://docs.python.org/3/library/string.html}}. Here is an example command,
+%
 \begin{verbatim}
-vancouver_watching discover \
+vancouver_watching ingest \
     vancouver \
-    ~upload \
-    --validate 1
+    dryrun \
+    . \
+    --count 12
 \end{verbatim}
-
+%
 The above command and the one below are \emph{identical}.
 %
 \begin{verbatim}
 vancouver_watching discover vancouver ~upload --validate 1
 \end{verbatim}
 %
-Two commands are identical if running them on two machines in identical states yields the same states. In practice, the state of any machine depends on the state of any other machine, and it is almost impossible to run two commands in identical states, including the time of execution. Therefore, when we refer to two identical commands, we either use a derivation-based proof of identity or consider a validation in a limited ``relevant'' state.
- 
-Commands can be similar when considered as a string of characters. Here is a command that is similar to the above,
+Two commands are identical if running them on two machines in identical states yields the same states. In theory, the state of any machine depends on the state of any other machine, and it is almost impossible to run two commands in identical states, including the time of execution. Therefore, when we refer to two identical commands, we either use a derivation-based proof of identity or consider a validation in a limited ``relevant'' subset of the state representation.
+
+For any shell on any machine there is a mapping between the set of all commands and $\{True,False\}$ that we address as ``whether the command is found''. In Bash, for example, the following message is printed when a command is not found.
 %
 \begin{verbatim}
-vancouver_watching discover toronto upload --validate 0
+-bash: void: command not found
 \end{verbatim}
+%
+Note that writing to the standard streams \emph{stdin} and \emph{stdout} are examples of state changes in the shell and the machine. \emph{Terraforming} is the process of running commands that modify the state of the shell and the machine in ways that make additional commands found. Terraforming is also intended to modify the state change caused by a set of commands favourable to the interest of an operator.
 
-A \emph{command template} is a representation that yields similar commands. Here is a command template for the above,
-
+Commands can be similar when considered as strings of characters. Here is a command that is similar to the above,
+%
 \begin{verbatim}
-vancouver_watching discover \
-    <area> \
-    [~upload] \
-    [--validate 1]
+vancouver_watching ingest toronto upload . --count 3
 \end{verbatim}
 
-wip
-
-In a \emph{command}~\ref{commands}, the notation \placeholder{descriptive-name} represents a \emph{placeholder} for a string of characters that is described as \emph{descriptive-name}. See~\ref{commands} for examples.
-
-
-
-
-We can discuss the \emph{validity} of a command in the context of a \emph{terraform}~\ref{terraform}. wip
-
-wip
-
- to alter the validity and outcome of future commands.
-
-Commands generally starts with a \emph{callable}~\ref{concepts_callables} and is followed by a hierarchical sequence 
-
-pieces of this command wip
-
-command may be valid or invalid in the context of a terraform wip
-
-\input{tex/concepts/callables}
+A \emph{command template} is a representation that yields similar commands, given the following three rules. First, \placeholder{description} can be replaced with any string of characters that can be described as ``description''. See \emph{options}~\ref{options}, \emph{arguments}~\ref{arguments}, \emph{objects}~\ref{objects} for the next rules. Here is a command template for the two above,
+%
+\begin{verbatim}
+vancouver_watching ingest \
+    <area> \
+    [dryrun,~upload] \
+    [<object-name>] \
+    [--count <-1>]
+\end{verbatim}
