@@ -1,7 +1,28 @@
 \subsection{Commands}
 \label{commands}
 
-A \emph{command} is a string of characters~\ref{math_strings}. Here is an example command~\cite{vanwatch},
+A \emph{command} is a string of characters as defined in Python~\cite{python_string}. Here is an example command~\cite{vanwatch},
+
+\begin{verbatim}
+vancouver_watching discover \
+    vancouver \
+    ~upload \
+    --validate 1
+\end{verbatim}
+
+The above command and the one below are \emph{identical}. Two commands are identical if running them on two machines in identical states yields the same states. In practice, the state of any machine depends on the state of any other machine, and it is almost impossible to run two commands in identical states, including the time of execution. Therefore, when we refer to two identical commands, we either use a derivation-based proof of identity or consider a validation in a limited ``relevant'' state.
+
+\begin{verbatim}
+vancouver_watching discover vancouver ~upload --validate 1
+\end{verbatim}
+
+Commands can be similar when considered as a string of characters. Here is a command that is similar to the above,
+
+\begin{verbatim}
+vancouver_watching discover toronto upload --validate 0
+\end{verbatim}
+
+A \emph{command template} is a representation that yields similar commands. Here is a command template for the above,
 
 \begin{verbatim}
 vancouver_watching discover \
@@ -10,9 +31,18 @@ vancouver_watching discover \
     [--validate 1]
 \end{verbatim}
 
+wip
+
+In a \emph{command}~\ref{commands}, the notation \placeholder{descriptive-name} represents a \emph{placeholder} for a string of characters that is described as \emph{descriptive-name}. See~\ref{commands} for examples.
+
+
+
+
 We can discuss the \emph{validity} of a command in the context of a \emph{terraform}~\ref{terraform}. wip
 
 wip
+
+ to alter the validity and outcome of future commands.
 
 Commands generally starts with a \emph{callable}~\ref{concepts_callables} and is followed by a hierarchical sequence 
 
