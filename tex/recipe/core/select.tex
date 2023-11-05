@@ -1,2 +1,20 @@
 \subsubsection{@select}
 \label{select}
+
+\begin{verbatim}
+@select object <object-name>
+@select <type> <type-name>
+\end{verbatim}
+
+When an object is selected, `.' represents \placeholder{<object-name>}. Similarly, `..', `...', and so on, as deep as needed, refer to the previously selected object and the one before that.
+
+Commands default the objects they consume and modify to `.`, `..`, and so on. Because the commands in a script use the same objects, selecting the objects enables their names to be omitted in a script.
+
+An object may have a `type', for example, `model' or `dataset'. Commands that consume objects specify a `type' for the argument. This enables the user to simultaneously select different types of objects and run commands on them. Here is an example from \emph{hubble}~\footurl{https://github.com/kamangir/hubble}, wherein the user selects an object and then a hubble dataset and an object in that dataset to download in the object.
+
+\begin{verbatim}
+abcli select; open .
+hubble select dataset hst
+hubble select object public/u4ge/u4ge0106r
+hubble download ~dryrun
+\end{verbatim}

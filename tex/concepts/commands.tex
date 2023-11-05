@@ -25,7 +25,7 @@ For any shell on any machine, at known states, there is a mapping between the se
 -bash: void: command not found
 \end{verbatim}
 %
-Note that writing to the standard streams \emph{stdin} and \emph{stdout} are examples of state changes in the shell and the machine. \emph{Terraforming} is the process of running commands that modify the state of the shell and the machine in ways that make additional commands found. Terraforming is also intended to modify the state change caused by a set of commands favourable to the interest of an operator. For convenience, we address a command that is found as a \emph{valid} command and \emph{invalid} otherwise.
+Note that writing to the standard streams \emph{stdin} and \emph{stdout} are examples of state changes in the shell and the machine. \emph{Terraforming} is the process of running commands that modify the state of the shell and the machine in ways that make additional commands found. Terraforming is also intended to modify the state change caused by a set of commands favourable to the interest of an operator. For convenience, we address a command that is found as a \emph{valid} command and \emph{invalid} otherwise. Terraforming may also ensure the machine's state after a reboot or when a shell starts. Terraforming generally includes a modification of \emph{bashrc}, \emph{bash\_profile}, \emph{screenrc}, and \emph{desktop} files.
 
 Commands can be similar when considered as strings of characters. Here is a command that is similar to the above,
 %
