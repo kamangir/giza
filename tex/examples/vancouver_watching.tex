@@ -1,5 +1,47 @@
-\subsection{Vancouver-Watching}
+\subsection{Vancouver-Watching (vanwatch)}
+\label{vanwatch}
 
-wip
+\emph{vanwatch} is a callable that performs the following actions,
+%
+\begin{enumerate}
+    \item{terraforms the machine~\ref{conda}.}
+    \item{discovers the cameras in an area~\ref{vanwatch_discover}.}
+    \item{ingests images from the cameras in an area and detects the objects in them~\ref{vanwatch_ingest}.}
+    \item{analyzes the objects detected in an area~\ref{vanwatch_analyze}.}
+\end{enumerate}
 
-In one case, we use Vancouver Watching as an example AI problem and discuss integrating it with  We discuss API access to run YOLO~\cite{YOLO} object detection models on the stream of images captured by traffic cameras in Downtown Vancouver.
+\subsubsection{vanwatch discover}
+\label{vanwatch_discover}
+
+\begin{verbatim}
+vancouver_watching discover \
+    [area=vancouver|iran,~upload] \
+    [-|<object-name>] \
+    [<args>]
+\end{verbatim}
+%
+Creates a list of the cameras available in \emph{area} in \placeholder{object-name}~\ref{objects} and tags~\ref{tag} this object for use by ingest~\ref{vanwatch_ingest}.
+
+\subsubsection{vanwatch ingest}
+\label{vanwatch_ingest}
+
+\begin{verbatim}
+vancouver_watching ingest \
+    [area=vancouver|iran,count=<-1>,detect,dryrun,model=<model-id>,~upload] \
+    [-|<object-name>] \
+    <args>
+\end{verbatim}
+%
+Finds the latest object discovered~\ref{vanwatch_discover} from \emph{area} and ingests \emph{count} images into \placeholder{object-name} and detects the objects in them.
+
+\subsubsection{vanwatch analyze}
+\label{vanwatch_analyze}
+
+\begin{verbatim}
+vancouver_watching analyze \
+    [~download,~upload] \
+    [.|<object-name>] \
+    [<args>]
+\end{verbatim}
+%
+Additional analysis on \placeholder{object-name}, including generating a heat map of the objects in the area.
