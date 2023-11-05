@@ -16,7 +16,7 @@ function giza_update_pdf() {
     local do_rm=$(abcli_option_int "$options" rm 1)
 
     [[ "$do_pull" == 1 ]] &&
-        abcli_git giza pull
+        abcli_git assets pull
 
     local filename=$HOME/Downloads/giza.pdf
     if [[ ! -f "$filename" ]]; then
@@ -24,15 +24,16 @@ function giza_update_pdf() {
         return 1
     fi
 
-    cp -v $filename $abcli_path_git/giza/assets/giza.pdf
+    mkdir -pv $abcli_path_git/assets/giza
+    cp -v $filename $abcli_path_git/assets/giza/giza.pdf
     [[ "$do_rm" == 1 ]] && rm -fv $filename
 
     if [[ "$do_push" == 1 ]]; then
         abcli_git push \
-            giza \
+            assets \
             accept_no_issue \
-            pdf-update
+            $(python3 -m giza version)
     else
-        abcli_git giza status
+        abcli_git assets status
     fi
 }
