@@ -4,7 +4,7 @@
 A \emph{command} is any Bash command~\footurl{https://www.gnu.org/software/bash/manual/bash.html\#Shell-Syntax} and can be represented in a Python string of characters~\footurl{https://docs.python.org/3/library/string.html}. Here is an example command,
 %
 \begin{verbatim}
-vancouver_watching ingest \
+vanwatch ingest \
     vancouver \
     dryrun \
     . \
@@ -14,7 +14,7 @@ vancouver_watching ingest \
 The above command and the one below are \emph{identical}.
 %
 \begin{verbatim}
-vancouver_watching discover vancouver ~upload --validate 1
+vanwatch discover vancouver ~upload --validate 1
 \end{verbatim}
 %
 Two commands are identical if running them on two machines in identical states yields the same states. In theory, the state of any machine depends on the state of any other machine, and it is almost impossible to run two commands in identical states, including the time of execution. Therefore, when we refer to two identical commands, we either use a derivation-based proof of identity or consider a validation in a limited ``relevant'' subset of the state representation.
@@ -30,7 +30,7 @@ Note that writing to the standard streams \emph{stdin} and \emph{stdout} are exa
 Commands can be similar when considered as strings of characters. Here is a command that is similar to the above,
 %
 \begin{verbatim}
-vancouver_watching ingest toronto upload . --count 3
+vanwatch ingest toronto upload . --count 3
 \end{verbatim}
 
 \subsection{Command Templates}
@@ -39,7 +39,7 @@ vancouver_watching ingest toronto upload . --count 3
 A \emph{command template} is a representation that yields similar commands, given the following three rules. First, \placeholder{description} can be replaced with any string of characters that can be described as ``description''. See \emph{options}~\ref{options}, \emph{arguments}~\ref{arguments}, \emph{objects}~\ref{objects} for the next rules. Here is a command template for the two above,
 %
 \begin{verbatim}
-vancouver_watching ingest \
+vanwatch ingest \
     <area> \
     [dryrun,~upload] \
     [<object-name>] \
