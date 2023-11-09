@@ -3,4 +3,8 @@
 
 Objects are accessible on every machine by their \emph{name}, and an object may be \emph{selected}~\ref{select}. Objects may be uploaded~\ref{upload} and downloaded~\ref{download}, fully or partially, or listed~\ref{list}. Objects have metadata~\ref{object_metadata}.
 
-Commands~\ref{commands} consume and generate objects. If the object name is not provided or is provided as \texttt{-}, then an object with a unique name is created and used. Otherwise, the object is either provided by name, as in \placeholder{object-name}, or by reference, as in one of ``.'', ``..'' or ``...''.
+Commands~\ref{commands} consume and generate objects. If the object name is not provided or is given as ``-'', then an object with a unique name is created and used. Otherwise, the object is either provided by name, as in \placeholder{object-name}, or by reference, as in one of ``.'', ``..'' or ``...''~\ref{select}.
+
+In its most basic form, an object is an S3 bucket~\footurl{https://aws.amazon.com/s3/}.
+
+\input{tex/concepts/object_metadata}
