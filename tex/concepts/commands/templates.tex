@@ -1,0 +1,18 @@
+\subsubsection{Command Templates}
+\label{command-template}
+
+Commands can be similar when considered as strings of characters. Here is a command that is similar to the above,
+%
+\begin{verbatim}
+vanwatch ingest toronto upload . --count 3
+\end{verbatim}
+%
+A \emph{command template} is a representation that yields similar commands, given the following rules. First, \placeholder{description} can be replaced with any string of characters that can be described as ``description''. See \emph{objects}~\ref{objects}, \emph{options}~\ref{options}, and \emph{arguments}~\ref{arguments}, for the next rules. Here is a command template for the two above,
+%
+\begin{verbatim}
+vanwatch ingest \
+    <area> \
+    [dryrun,~upload] \
+    [<object-name>] \
+    [--count <-1>]
+\end{verbatim}

@@ -1,6 +1,8 @@
-\subsection{Computation Model}
+\subsection{Computational Model}
 \label{computation_model}
 
-A group of operators attempt to collectively generate states that they define as favourable using multiple machines. The operators act asynchronously while communicating with each other. Multiple operators may simultaneously use the same machine and the same operator may simultaneously use multiple machines. Only one operator uses a shell at one time.
+A group of operators create and modify a set of scripts~\ref{scripts} maintained in a code repository, such as \emph{git}~\ref{git}. The core~\ref{core} and the plugins~\ref{plugins} are also maintained in one or more repositories. Each operator can access a set of machines and create shells on them. Each operator can also access a set of repositories and clone them on the machines where they create shells and receive updates. The operator can modify any of the repositories that they have access to following a collective peer-reviewed \emph{pull-request}~\footurl{https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests} process.
 
-The primary objective of the operator is to generate the commands that produce objects that meet a set of requirements in the future. This is different from generating such objects as an action that concludes. Nevertheless, to develop and validate the commands that produce the objects of interest, the operators produce such objects.
+The operators act asynchronously while communicating with each other. Multiple operators may simultaneously use the same machine, and the same operator may simultaneously use multiple machines. Only one operator uses a shell at one time. 
+
+Some machines are exogenous to this model, yet the operators can access their states in read or write mode. Cloud storage and compute resources are examples of these machines.

@@ -29,37 +29,9 @@ Note that writing to the standard streams \emph{stdin} and \emph{stdout} are exa
 
 \emph{Terraforming} is the process of running commands that modify the state of the shell and the machine in ways that make additional commands found. Terraforming is also intended to modify the state change caused by a set of commands favourable to the interests of an operator. For convenience, we address a command ``that is found'' as a \emph{valid} command and \emph{invalid} otherwise. Terraforming may also ensure the states of the machine and the shell after a restart. Terraforming generally includes a modification of \emph{bashrc}, \emph{bash\_profile}, \emph{screenrc}, and \emph{desktop} files.
 
-\subsubsection{Command Templates}
-\label{command-template}
+Commands know the machine and the shell they are running in and adjust their operation accordingly. For example, a script that submits jobs when run inside a docker container may download the artifacts generated through previous runs when run on a user-facing machine, such as a Mac Book. 
 
-Commands can be similar when considered as strings of characters. Here is a command that is similar to the above,
-%
-\begin{verbatim}
-vanwatch ingest toronto upload . --count 3
-\end{verbatim}
-%
-A \emph{command template} is a representation that yields similar commands, given the following rules. First, \placeholder{description} can be replaced with any string of characters that can be described as ``description''. See \emph{objects}~\ref{objects}, \emph{options}~\ref{options}, and \emph{arguments}~\ref{arguments}, for the next rules. Here is a command template for the two above,
-%
-\begin{verbatim}
-vanwatch ingest \
-    <area> \
-    [dryrun,~upload] \
-    [<object-name>] \
-    [--count <-1>]
-\end{verbatim}
-
-\subsubsection{Callables}
-\label{callables}
-
-A \emph{callable} is a valid command with no space and control operators~\footurl{https://www.gnu.org/software/bash/manual/bash.html\#index-control-operator}. The list of callables depends on the machine's state and is generally extended through terraforming. Some of the well-known callables are \emph{git}~\footurl{https://git-scm.com/docs/git}, \emph{docker}~\footurl{https://docs.docker.com/engine/reference/commandline/cli/}, \emph{pushd}~\footurl{https://www.gnu.org/software/bash/manual/bash.html\#Directory-Stack-Builtins}, \emph{nano}~\footurl{https://www.nano-editor.org/}. 
-
-\begin{theorem}
-For any callable \placeholder{callable}, and any string \placeholder{suffix}, ``\placeholder{callable} \placeholder{suffix}'' is a valid command.
-\end{theorem}
-
-\begin{theorem}
-For any valid command \placeholder{command}, and any string \placeholder{suffix}, ``\placeholder{command} \placeholder{suffix}'' is a valid command.
-\end{theorem}
-
-\input{tex/concepts/options}
-\input{tex/concepts/arguments}
+\input{tex/concepts/commands/callables}
+\input{tex/concepts/commands/templates}
+\input{tex/concepts/commands/options}
+\input{tex/concepts/commands/arguments}
