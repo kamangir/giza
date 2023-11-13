@@ -13,11 +13,11 @@
 \subsubsection{vanwatch discover}
 \label{vanwatch_discover}
 
-Cameras are represented in different formats in different areas. \texttt{vanwatch discover area=<area>} discovers the cameras in \texttt{<area>} and stores them in \texttt{<area>.geojson} in the object \texttt{<object-name>}~\ref{objects} tagged~\ref{tag} for use for \texttt{ingest}~\ref{vanwatch_ingest}.
+Cameras are represented in different formats in different areas. \texttt{vanwatch discover area=<area>} discovers the cameras in \texttt{<area>} and stores them in \texttt{<area>.geojson} in the object \texttt{<object-name>}~\ref{objects} tagged~\ref{tag} for use by \texttt{ingest}~\ref{vanwatch_ingest}.
 %
 \begin{verbatim}
 vanwatch discover \
-    [area=<area>,~upload] \
+    [area=<area>] \
     [-|<object-name>] \
     [<args>]
 \end{verbatim}
@@ -31,9 +31,9 @@ vanwatch discover \
 %
 \begin{verbatim}
 vanwatch ingest \
-    [area=<area>,count=<-1>,dryrun,model=<model-id>,~process,publish,~upload] \
+    [area=<area>,count=<-1>,model=<model-id>,~process,publish] \
     [-|<object-name>] \
-    <args>
+    [<args>]
 \end{verbatim}
 %
 \texttt{object-name} is tagged for retrieval by \texttt{vanwatch list ingest}. 
@@ -45,9 +45,9 @@ vanwatch ingest \
 %
 \begin{verbatim}
 vanwatch process \
-    [~download,model=<model-id>,publish,~upload] \
+    [model=<model-id>,publish] \
     [.|<object-name>] \
     [<args>]
 \end{verbatim}
 %
-\texttt{vanwatch process publish} tags \texttt{object-name} for retrieval by \texttt{vanwatch update\_QGIS}.
+\texttt{+publish} tags \texttt{object-name} for retrieval by \texttt{vanwatch update\_QGIS}.
