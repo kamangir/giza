@@ -29,7 +29,21 @@ Note that writing to the standard streams \emph{stdin} and \emph{stdout} are exa
 
 \emph{Terraforming} is the process of running commands that modify the state of the shell and the machine in ways that make additional commands found. Terraforming is also intended to modify the state change caused by a set of commands favourable to the interests of an operator. For convenience, we address a command ``that is found'' as a \emph{valid} command and \emph{invalid} otherwise. Terraforming may also ensure the states of the machine and the shell after a restart. Terraforming generally includes a modification of \emph{bashrc}, \emph{bash\_profile}, \emph{screenrc}, and \emph{desktop} files.
 
-Commands know the machine and the shell they are running in and adjust their operation accordingly. For example, a script that submits jobs when run inside a docker container may download the artifacts generated through previous runs when run on a user-facing machine, such as a Mac Book. 
+Commands know the machine and the shell they are running in and adjust their operation accordingly. For example, a script that submits jobs inside a docker container may download the artifacts generated through previous submissions on a user-facing machine, such as a Macbook. 
+
+While self-referential commands may be possible, in practice, commands follow a tree structure, wherein the execution of sub-commands contributes to the composition of the main command. This is because, during the execution of \texttt{<command>}, if \texttt{\$(<sub-command>)} is encountered, then \texttt{<sub-command>} is executed and its outcome is substituted in \texttt{<command>} and the execution continues~\footurl{https://www.gnu.org/software/bash/manual/html\_node/Command-Substitution.html}. Here is an example,
+%
+\begin{verbatim}
+roofAI semseg predict \
+    profile=FULL,upload \
+    $(@ref roofAI_semseg_model_AIRS_full_v2) \
+    $(@ref roofAI_ingest_AIRS_v2) \
+    $(@timestamp)
+\end{verbatim}
+%
+Here, \texttt{@ref <keyword>} reads the value of \texttt{<keyword>} from the \texttt{cache}~\ref{cache} and \texttt{@timestamp} generates a unique timestamp for use as an \texttt{<object-name>}~\footnote{For more examples of shell expansions see~\url{https://www.gnu.org/software/bash/manual/html\_node/Shell-Expansions.html}.}.
+
+The first word~\footurl{https://www.gnu.org/software/bash/manual/html_node/Shell-Syntax.html} in a command is generally the callable~\ref{callables}. The rest of the command is expected to follow the conventions of the callable. In this paper we propose guidelines that we later demonstrate lead to useful expansions~\ref{expansions}.
 
 \input{tex/concepts/commands/callables}
 \input{tex/concepts/commands/templates}
