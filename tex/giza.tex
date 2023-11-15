@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
+\usepackage{csquotes}
+
 % https://www.overleaf.com/learn/latex/Theorems_and_proofs
 \usepackage[english]{babel}
 \newtheorem{theorem}{Theorem}
@@ -25,11 +27,12 @@
 
 \input{tex/frontmatter/background}
 
+\include{tex/intro/_intro}
 \include{tex/expansions/_expansions}
-\include{tex/concepts/_concepts}
 \include{tex/examples/_examples}
-\include{tex/math/_math}
-\include{tex/recipe/_recipe}
+
+\appendix
+\include{tex/concepts/_concepts}
 
 % https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles
 %\bibliographystyle{unsrt}

@@ -13,7 +13,7 @@
 \subsubsection{roofAI dataset}
 \label{roofAI_dataset}
 
-\texttt{roofAI dataset ingest source=AIRS|CamVid <object-name>} ingests a dataset into \texttt{<object-name>} and tags it for future discovery. \texttt{roofAI dataset review - <object-name>} reviews the dataset in \texttt{<object-name>}.
+\texttt{roofAI dataset ingest source=<source> <object-name>} ingests a dataset from \texttt{source} into \texttt{<object-name>} and tags it for future discovery. \texttt{roofAI dataset review - <object-name>} reviews the dataset in \texttt{<object-name>}.
 %
 \begin{verbatim}
 roofAI dataset ingest \
@@ -45,7 +45,7 @@ semseg train \
 \subsubsection{roofAI semseg predict}
 \label{roofAI_semseg_predict}
 
-\texttt{semseg predict - <model-object-name> - <dataset-object-name>} runs a prediction on the dataset \texttt{<dataset-object-name>} using the model \texttt{<model-object-name>}.
+\texttt{semseg predict - <model-object-name> <dataset-object-name>} runs a prediction on the dataset \texttt{<dataset-object-name>} using the model \texttt{<model-object-name>}.
 %
 \begin{verbatim}
 semseg predict \
