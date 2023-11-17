@@ -1,20 +1,44 @@
 \subsection{Command Substitution}
 \label{command_substitution}
 
-In general, the execution of \texttt{<part-1>\$(<sub-command>)<part-2>} waits for the execution of \texttt{<sub-command>}, which we assume yields \texttt{<output>}. Then, the command is updated to \texttt{<part-1><output><part-2>}.
+A symbolic description of command substitution is that if \texttt{<part-1>\$(<sub-command>)<part-2>} is encountered, then \texttt{<sub-command>} is executed and its outcome, \texttt{<outcome}, is used to generate the updated command as \texttt{<part-1><outcome><part-2>}, which is then executed. This process happens numerously and hierarchically~\footurl{https://www.gnu.org/software/bash/manual/html\_node/Command-Substitution.html}.
 
+Here is an example from \texttt{roofAI}~\ref{roofAI},
+%
+\begin{verbatim}
+roofAI semseg predict \
+    profile=FULL,upload \
+    $(@ref roofAI_semseg_model_AIRS_full_v2) \
+    $(@ref roofAI_ingest_AIRS_v2) \
+    $(@timestamp)
+\end{verbatim}
+%
+Here, \texttt{@ref <keyword>} reads the value of \texttt{<keyword>} from the \texttt{cache}~\ref{cache} and \texttt{@timestamp} generates a unique timestamp for use as an \texttt{<object-name>}. Collectively, this command runs the \enquote{Pytorch Segmentation Model}~\footurl{https://github.com/qubvel/segmentation_models.pytorch} that is cached as \texttt{roofAI_semseg_model_AIRS_full_v2} on the dataset that is cached as \texttt{roofAI_ingest_AIRS_v2} and uploads the results in a uniquely named object~\ref{objects}. Tags~\ref{tags} and relations~\ref{relations} are other object metadata~\ref{metadata} that are relevant to this expansion.
 
+Command substitution is useful for generating the components of the command through Python or Bash. For example, in the AWS Open Data Registry~\footurl{https://registry.opendata.aws/} there is the notion of datasets, such as \texttt{hst}~\footurl{https://registry.opendata.aws/hst/} for Hubble Space Telescope and metadata the dataset is maintained in \texttt{yaml} files a git repository~\footurl{https://github.com/awslabs/open-data-registry/blob/main/datasets/hst.yaml}. 
 
-
-
-This expansion is useful for generating a part of the command through Python or Bash. For example, in the AWS Open Data Registry~\footurl{https://registry.opendata.aws/} there is the notion of datasets, such as \texttt{hst}~\footurl{https://registry.opendata.aws/hst/} for Hubble Space Telescope and metadata about each dataset is maintained in a git repository~\footurl{https://github.com/awslabs/open-data-registry/blob/main/datasets/hst.yaml}. \texttt{hubble} is a $\nabla$ giza callable~\ref{callable} to access Hubble Space Telescope imagery and other datasets on AWS Open Data Registry~\footurl{https://github.com/kamangir/hubble}.
-
-
-
-
-wip
-
-, if \texttt{\$(<sub-command>)} is encountered, then \texttt{<sub-command>} is executed and its outcome is substituted in \texttt{<command>} and the execution continues~\footurl{https://www.gnu.org/software/bash/manual/html\_node/Command-Substitution.html}.
+For example, here is the command to access \texttt{ibrma2f2q_drc.jpg} in object \texttt{public/ibrm/ibrma2f2q} in the dataset \texttt{hst},
+%
+\begin{verbatim}
+aws s3 cp $auth $s3_uri$filename $path
+\end{verbatim}
+%
+Here, \texttt{\$auth} and \texttt{\$s3\_uri} are generated as,
+%
+\begin{verbatim}
+local auth=$(abcli_hubble_get auth $dataset_name)
+local s3_uri=$(abcli_hubble_get s3_uri $dataset_name $hubble_object_name)
+\end{verbatim}
+%
+Here, \texttt{abcli_hubble_get} is a Bash wrapper~\footurl{https://github.com/kamangir/hubble/blob/main/.abcli/hubble.sh#L34} around the Python cli \texttt{hubble/hubble/__main__.py}~\footurl{https://github.com/kamangir/hubble/blob/main/hubble/__main__.py} from \texttt{hubble}~\ref{hubble}.
+%
+\begin{verbatim}
+python3 -m hubble get \
+    --what "$1" \
+    --dataset_name "$2" \
+    --object_name "$3" \
+    "${@:4}"
+\end{verbatim}
 
 \input{tex/expansions/command_substitution/cache}
 \input{tex/expansions/command_substitution/tag}
