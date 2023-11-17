@@ -15,8 +15,10 @@ function giza_update_pdf() {
     local do_push=$(abcli_option_int "$options" push 0)
     local do_rm=$(abcli_option_int "$options" rm 1)
 
-    [[ "$do_pull" == 1 ]] &&
+    if [[ "$do_pull" == 1 ]]; then
         abcli_git assets pull
+        abcli_git giza pull
+    fi
 
     local filename=$HOME/Downloads/giza.pdf
     if [[ ! -f "$filename" ]]; then
