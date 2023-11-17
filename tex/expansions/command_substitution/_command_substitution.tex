@@ -1,6 +1,21 @@
 \subsection{Command Substitution}
 \label{command_substitution}
 
+In general, the execution of \texttt{<part-1>\$(<sub-command>)<part-2>} waits for the execution of \texttt{<sub-command>}, which we assume yields \texttt{<output>}. Then, the command is updated to \texttt{<part-1><output><part-2>}.
+
+
+
+
+
+This expansion is useful for generating a part of the command through Python or Bash. For example, in the AWS Open Data Registry~\footurl{https://registry.opendata.aws/} there is the notion of datasets, such as \texttt{hst}~\footurl{https://registry.opendata.aws/hst/} for Hubble Space Telescope and metadata about each dataset is maintained in a git repository~\footurl{https://github.com/awslabs/open-data-registry/blob/main/datasets/hst.yaml}. \texttt{hubble} is a $\nabla$ giza callable~\ref{callable} to access Hubble Space Telescope imagery and other datasets on AWS Open Data Registry~\footurl{https://github.com/kamangir/hubble}.
+
+
+
+
+wip
+
+, if \texttt{\$(<sub-command>)} is encountered, then \texttt{<sub-command>} is executed and its outcome is substituted in \texttt{<command>} and the execution continues~\footurl{https://www.gnu.org/software/bash/manual/html\_node/Command-Substitution.html}.
+
 \input{tex/expansions/command_substitution/cache}
 \input{tex/expansions/command_substitution/tag}
 \input{tex/expansions/command_substitution/relations}
