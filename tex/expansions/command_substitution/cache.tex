@@ -1,25 +1,16 @@
 \subsubsection{@cache}
 \label{cache}
 
-The cache is a dictionary available on every machine~\ref{machine} for read, \texttt{@cache read <keyword>}, write, \texttt{@cache write <keyword> <value>}, and search, \texttt{@cache search <keyword>}. It is of specific interest to cache properties of objects~\ref{objects},
+The cache is a dictionary available on every machine~\ref{machine} for read, \texttt{@cache read <keyword>}, write, \texttt{@cache write <keyword> <value>}, and search, \texttt{@cache search <keyword>} that is enabled either through a SQL database~\footurl{https://github.com/kamangir/awesome-bash-cli/blob/main/abcli/plugins/tags/functions.py} or a tool such as \texttt{mlflow}~\footurl{https://mlflow.org/}.
+
+When used for objects~\ref{objects}, \texttt{@cache} provides a tagging~\ref{tag} mechanism,
 %
 \begin{verbatim}
 @cache read <object-name>.<keyword>
 @cache write <object-name>.<keyword> <value>
 \end{verbatim}
 %
-which are used in conjunction with \texttt{@cache clone <object-1> <object-2>}.
-
-In addition to enabling \texttt{\$(@ref <keyword>)}~\ref{ref}, \texttt{@cache } is usable in for loops,
-%
-\begin{verbatim}
-    local object_name
-    for object_name in $(@cache search published --delim space); do
-        <command> $object_name <args>
-    done
-\end{verbatim}
-%
-This example uses the \texttt{--delim}~\ref{delim} convention.
+given that \texttt{@cache clone <object-1> <object-2>} is supported. 
 
 \subsubsection{@ref}
 \label{ref}
