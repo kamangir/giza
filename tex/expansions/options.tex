@@ -7,7 +7,7 @@ An \texttt{options} is a string representation of a dictionary, such as,
 <keyword-1>=<value-1>,<keyword-2>=<value-2>,...,<keyword-3>,-<keyword-4>},...
 \end{verbatim}
 %
-\texttt{options} is implemented using basic Python~\footurl{https://github.com/kamangir/awesome-bash-cli/tree/main/abcli/options} and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\ref{command_substitution}~\footnote{In practice, a separate \texttt{@option::bool} is defined to cover boolean variables. It may be possible to combine \texttt{@option::bool} into \texttt{@option}, which remains an interest of the author.},
+\texttt{options} is implemented using basic Python~\footnote{\abcli{abcli/options}} and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\ref{command_substitution}~\footnote{In practice, a separate \texttt{@option::bool} is defined to cover boolean variables. It may be possible to combine \texttt{@option::bool} into \texttt{@option}, which remains an interest of the author.},
 %
 \begin{verbatim}
 var=$(@option "$options" <keyword> <default>)
