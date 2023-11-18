@@ -28,7 +28,7 @@ function giza_update_pdf() {
 
     mkdir -pv $abcli_path_git/assets/giza
     cp -v $filename $abcli_path_git/assets/giza/giza.pdf
-    [[ "$do_rm" == 1 ]] && rm -fv $filename
+    [[ "$do_rm" == 1 ]] && rm -v $HOME/Downloads/giza*.pdf
 
     if [[ "$do_push" == 1 ]]; then
         abcli_git push \
