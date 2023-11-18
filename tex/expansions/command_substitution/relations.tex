@@ -1,15 +1,26 @@
 \subsubsection{@relations}
 \label{relations}
 
-Two objects can be related in many ways.
-
+Two objects can be related in a number of ways, each defined as a pair, to enable directional relations~\footurl{https://github.com/kamangir/awesome-bash-cli/blob/main/abcli/plugins/relations/relations.json}. Here is an example,
+%
 \begin{verbatim}
+{
+    "added-to": "contains",
+    "cloned": "cloned-by",
+    ...
+    "trained": "trained-on"
+}
+\end{verbatim}
+%
+\texttt{relations} can be \texttt{set}, \texttt{get}, and \texttt{search}ed, 
+%
+\begin{verbatim}
+@relations set <object-name-1> <object-name-2> <relation>
+
 @relations get <object-name-1> <object-name-2>
 @relations get <object-name-1> <object-name-2> <relation>
 @relations get <object-name-1>
 @relations get <object-name-1> <relation>
 
-@relations search <relation>
-
-@relations set <object-name-1> <object-name-2> <relation>
+@relation search <object-name> [--relation <relation>]
 \end{verbatim}

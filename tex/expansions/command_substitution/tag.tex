@@ -1,13 +1,15 @@
 \subsubsection{@tag}
 \label{tag}
 
-An object can have many tags. A tag is a boolean or valued property of the object.
-
+An object~\ref{objects} can have many tags. A tag is a boolean or valued property of the object and is \texttt{set} and \texttt{get}, and can be \texttt{search}ed,
+%
 \begin{verbatim}
+@tags set <object-name> <options>
+
 @tags get <object-name>
 @tags get <object-name> <keyword>
 
-@tags search <keyword=value,~that,this>
-
-@tags set <object-name> <keyword=value,~that,this>
+@tags search <options>
 \end{verbatim}
+%
+An example for \texttt{options} is \texttt{keyword=value,\~that,this}~\ref{options}.

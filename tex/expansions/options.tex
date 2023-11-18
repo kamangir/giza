@@ -1,4 +1,15 @@
 \subsection{Options}
 \label{options}
 
-An \emph{options} is a string representation of a dictionary, such as \texttt{<keyword>=<value>,<keyword>,-<keyword>}.
+An \texttt{options} is a string representation of a dictionary, such as \texttt{<keyword-1>=<value>,<keyword-2>,-<keyword-3>}. \texttt{options} is implemented using basic Python~\footurl{https://github.com/kamangir/awesome-bash-cli/tree/main/abcli/options} and, therefore, is available to Bash commands through command substitution~\ref{command_substitution}, \texttt{\$(@option "\$options" <keyword> <default>)}. Another useful expansion is
+\texttt{\$(@option::choice "\$options" <command,separated,list> <default>)}. \texttt{\$(@option::subset <options-1> <options-2>)} and \texttt{\$(@option::update <options-1> <options-2>)} are too useful expansions that differ in that \texttt{subset} maintains the keyword set of \texttt{<options-1>}.
+%
+\begin{verbatim}
+ > @option::subset x=1,y=2 x=3,z=4
+x=3,y=2
+\end{verbatim}
+%
+\begin{verbatim}
+ > @option::update x=1,y=2 x=3,z=4
+x=3,y=2,z=4
+\end{verbatim}
