@@ -7,11 +7,11 @@ An \texttt{options} is a string representation of a dictionary, such as,
 <keyword-1>=<value-1>,<keyword-2>=<value-2>,...,<keyword-3>,-<keyword-4>},...
 \end{verbatim}
 %
-\texttt{options} is implemented using basic Python~\footnote{\abcli{abcli/options}} and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\ref{command_substitution}. In practice, a separate \texttt{@option::bool} expansion is defined to cover boolean variables~\footnote{It may be possible to combine \texttt{@option::bool} into \texttt{@option}, which remains an interest of the author.},
+\texttt{options} is implemented using basic Python~\footnote{\abcli{abcli/options}} and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\ref{command_substitution}. In practice, a second \texttt{@option::bool} expansion is defined to cover boolean variables~\footnote{It may be possible to combine \texttt{@option::bool} into \texttt{@option}, which remains an interest of the author.},
 %
 \begin{verbatim}
-var=$(@option "$options" <keyword> <default>)
-var=$(@option::bool "$options" <keyword> 0|1)
+value=$(@option "$options" <keyword> <default>)
+value=$(@option::bool "$options" <keyword> 0|1)
 \end{verbatim}
 %
 Another useful expansion is the \emph{options choice expansion}~\footnote{
@@ -19,7 +19,7 @@ As an example, this expansion allows \texttt{abcli list cloud|local <object-name
 },
 %
 \begin{verbatim}
-var=$(@option::choice "$options" <comma,separated,list> <default>)
+choice=$(@option::choice "$options" <comma,separated,list> <default>)
 \end{verbatim}
 %
 The following three expansions are also useful on \texttt{options}.
@@ -30,10 +30,44 @@ The following three expansions are also useful on \texttt{options}.
 %
 \item[subset]{return the \texttt{<options-1>} \texttt{subset} of \texttt{<options-2>}. The keyword set of the output is the same as the keyword set of \texttt{<options-1>}, wherein the values from \texttt{<options-2>} take priority. For example, the \texttt{x=1,y=2} subset of \texttt{x=3,z=4} yields \texttt{x=3,y=2}. This is the \emph{option subset expansion},
 \begin{verbatim}
-var=$(@option::subset <options-1> <options-2>)
+options=$(@option::subset <options-1> <options-2>)
 \end{verbatim}
 }
 %
 \item[update]{\texttt{update} \texttt{<options-1>} to \texttt{<options-2>}. The keyword set of the output is the concatenation of the keyword sets of the two inputs, wherein the values from \texttt{<options-1>} take priority. For example, updating \texttt{x=1,y=2} to \texttt{x=3,z=4} yields \texttt{x=3,y=2,z=4}. This is the \emph{option update expansion}, which is achieved through \texttt{<options-1>,<options-2>}.}
 %
 \end{description}
+%
+\footnote{An \texttt{options} can be
+%
+\begin{itemize}
+    \item{read from,}
+        \begin{itemize}
+            \item{a single keyword,}
+                \begin{itemize}
+                    \item{that is boolean: \texttt{@option::bool}}
+                    \item{that is not boolean: \texttt{option}.}
+                \end{itemize}
+            \item{a group of keywords: \texttt{option::choice}.}
+        \end{itemize}
+    \item{written to,}
+        \begin{itemize}
+            \item{\texttt{keywords=<options-1>.keywords},}
+                \begin{itemize}
+                    \item{priority: \texttt{<options-1>.values}: \texttt{<option-1>}}
+                    \item{priority: \texttt{<options-2>.values}: \texttt{@option::subset <options-1> <options-2>}}
+                \end{itemize}
+            \item{\texttt{keywords=<options-2>.keywords},}
+                \begin{itemize}
+                    \item{priority: \texttt{<options-1>.values}: \texttt{@option::subset <options-2> <options-1>}}
+                    \item{priority: \texttt{<options-2>.values}: \texttt{<option-2>}}
+                \end{itemize}
+            \item{\texttt{keywords=<options-1>.keywords + <options-2>.keywords},}
+                \begin{itemize}
+                    \item{priority: \texttt{<options-1>.values}: \texttt{<option-2>+<option-1>}}
+                    \item{priority: \texttt{<options-2>.values}: \texttt{<option-1>+<option-2>}}
+            \end{itemize}
+        \end{itemize}
+\end{itemize}
+%
+The list of expansions and the mathematical properties of a dictionary is related. The author wishes to better understand this relationship.}
