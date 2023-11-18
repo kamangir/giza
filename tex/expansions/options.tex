@@ -1,15 +1,38 @@
-\subsection{Options}
+\subsection{\texttt{options}}
 \label{options}
 
-An \texttt{options} is a string representation of a dictionary, such as \texttt{<keyword-1>=<value>,<keyword-2>,-<keyword-3>}. \texttt{options} is implemented using basic Python~\footurl{https://github.com/kamangir/awesome-bash-cli/tree/main/abcli/options} and, therefore, is available to Bash commands through command substitution~\ref{command_substitution}, \texttt{\$(@option "\$options" <keyword> <default>)}. Another useful expansion is
-\texttt{\$(@option::choice "\$options" <command,separated,list> <default>)}. \texttt{\$(@option::subset <options-1> <options-2>)} and \texttt{\$(@option::update <options-1> <options-2>)} are too useful expansions that differ in that \texttt{subset} maintains the keyword set of \texttt{<options-1>}.
+An \texttt{options} is a string representation of a dictionary, such as,
 %
 \begin{verbatim}
- > @option::subset x=1,y=2 x=3,z=4
-x=3,y=2
+<keyword-1>=<value-1>,<keyword-2>=<value-2>,...,<keyword-3>,-<keyword-4>},...
 \end{verbatim}
 %
+\texttt{options} is implemented using basic Python~\footurl{https://github.com/kamangir/awesome-bash-cli/tree/main/abcli/options} and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\ref{command_substitution}~\footnote{In practice, a separate \texttt{@option::bool} is defined to cover boolean variables. It may be possible to combine \texttt{@option::bool} into \texttt{@option}, which remains an interest of the author.},
+%
 \begin{verbatim}
- > @option::update x=1,y=2 x=3,z=4
-x=3,y=2,z=4
+var=$(@option "$options" <keyword> <default>)
 \end{verbatim}
+%
+Another useful expansion is the \emph{options choice expansion}~\footnote{
+As an example, this expansion allows \texttt{abcli list cloud|local <object-name>} using \texttt{where=\$(option::choice "\$options" cloud,local cloud)}.
+},
+%
+\begin{verbatim}
+var=$(@option::choice "$options" <comma,separated,list> <default>)
+\end{verbatim}
+%
+The following three expansions are also useful on \texttt{options}.
+%
+\begin{description}
+%
+\item[default]{\texttt{default} \texttt{<options-1>} to the corresponding values in \texttt{<options-2>}. The keyword set of the output is the concatenation of the keyword sets of the two inputs, wherein the values from \texttt{<options-1>} take priority. For example, defaulting \texttt{x=1,y=2} to \texttt{x=3,z=4} yields \texttt{x=1,y=2,z=4}. This is the \emph{default option expansion}, which is achieved through \texttt{<options-2>,<options-1>}.}
+%
+\item[subset]{return the \texttt{<options-1>} \texttt{subset} of \texttt{<options-2>}. The keyword set of the output is the same as the keyword set of \texttt{<options-1>}, wherein the values from \texttt{<options-2>} take priority. For example, the \texttt{x=1,y=2} subset of \texttt{x=3,z=4} yields \texttt{x=3,y=2}. This is the \emph{option subset expansion},
+\begin{verbatim}
+var=$(@option::subset <options-1> <options-2>)
+\end{verbatim}
+}
+%
+\item[update]{\texttt{update} \texttt{<options-1>} to \texttt{<options-2>}. The keyword set of the output is the concatenation of the keyword sets of the two inputs, wherein the values from \texttt{<options-1>} take priority. For example, updating \texttt{x=1,y=2} to \texttt{x=3,z=4} yields \texttt{x=3,y=2,z=4}. This is the \emph{option update expansion}, which is achieved through \texttt{<options-1>,<options-2>}.}
+%
+\end{description}
