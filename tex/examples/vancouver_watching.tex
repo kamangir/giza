@@ -1,7 +1,7 @@
-\subsection{Vancouver-Watching (vanwatch)}
+\subsection{Vancouver-Watching (\texttt{vanwatch})}
 \label{vanwatch}
 
-\texttt{vanwatch}~\footurl{https://github.com/kamangir/Vancouver-Watching} is a callable that,
+\texttt{vanwatch}~\footurl{https://github.com/kamangir/Vancouver-Watching} is a \keyword{callable} that,
 %
 \begin{enumerate}
     \item{terraforms the machine and the shell.}
@@ -10,7 +10,7 @@
     \item{detects the objects in the images ingested from an area and produces summary statistics~\ref{vanwatch_process}.}
 \end{enumerate}
 
-\subsubsection{vanwatch discover}
+\subsubsection{\texttt{vanwatch discover}}
 \label{vanwatch_discover}
 
 Cameras are represented in different formats in different areas. \texttt{vanwatch discover area=<area>} discovers the cameras in \texttt{<area>} and stores them in \texttt{<area>.geojson} in the object \texttt{<object-name>}~\ref{objects} \keyword{tag}ed for use by \texttt{ingest}~\ref{vanwatch_ingest}.
@@ -24,7 +24,7 @@ vanwatch discover \
 %
 \texttt{object-name} is tagged for retrieval by \texttt{vanwatch list discovery}. 
 
-\subsubsection{vanwatch ingest}
+\subsubsection{\texttt{vanwatch ingest}}
 \label{vanwatch_ingest}
 
 \texttt{vanwatch ingest area=<area>,count=<count> <object-name>} finds the latest set of cameras discovered~\ref{vanwatch_discover} in \texttt{<area>} through \keyword{tag} search and ingests \texttt{count} images into \texttt{<object-name>} and the runs \texttt{vanwatch process}~\ref{vanwatch_process} unless \texttt{-process}.
@@ -38,7 +38,7 @@ vanwatch ingest \
 %
 \texttt{object-name} is tagged for retrieval by \texttt{vanwatch list ingest}. 
 
-\subsubsection{vanwatch process}
+\subsubsection{\texttt{vanwatch process}}
 \label{vanwatch_process}
 
 \texttt{vanwatch process - <object-name>} runs object detection~\footurl{https://hub.ultralytics.com/models/R6nMlK6kQjSsQ76MPqQM?tab=preview} on the images ingested into \texttt{<object-name>} and updates \texttt{<area>.geojson}. \texttt{vanwatch process} reuses the inference in the object and completes the missing pieces.

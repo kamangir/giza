@@ -1,7 +1,7 @@
-\subsection{roofAI}
+\subsection{\texttt{roofAI}}
 \label{roofAI}
 
-\texttt{roofAI}~\footurl{https://github.com/kamangir/roofAI} is a callable that,
+\texttt{roofAI}~\footurl{https://github.com/kamangir/roofAI} is a \keyword{callable} that,
 %
 \begin{enumerate}
     \item{terraforms the machine and the shell.}
@@ -10,7 +10,7 @@
     \item{runs semantic segmentation predictions~\ref{roofAI_semseg_predict}.}
 \end{enumerate}
 
-\subsubsection{roofAI dataset}
+\subsubsection{\texttt{roofAI dataset}}
 \label{roofAI_dataset}
 
 \texttt{roofAI dataset ingest source=<source> <object-name>} ingests a dataset from \texttt{source} into \texttt{<object-name>} and tags it for future discovery. \texttt{roofAI dataset review - <object-name>} reviews the dataset in \texttt{<object-name>}.
@@ -29,7 +29,7 @@ roofAI dataset review \
     [<args>]
 \end{verbatim}
 
-\subsubsection{roofAI semseg train}
+\subsubsection{\texttt{roofAI semseg train}}
 \label{roofAI_semseg_train}
 
 \texttt{semseg train - <dataset-object-name> <model-object-name>} trains a model on \texttt{<dataset-object-name>} that it stores in \texttt{<model-object-name>} and tags for future discovery.
@@ -42,7 +42,7 @@ semseg train \
     [<args>]
 \end{verbatim}
 
-\subsubsection{roofAI semseg predict}
+\subsubsection{\texttt{roofAI semseg predict}}
 \label{roofAI_semseg_predict}
 
 \texttt{semseg predict - <model-object-name> <dataset-object-name>} runs a prediction on the dataset \texttt{<dataset-object-name>} using the model \texttt{<model-object-name>}.
