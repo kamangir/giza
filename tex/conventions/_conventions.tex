@@ -1,11 +1,13 @@
 \section{Conventions}
 \label{conventions}
+\label{core}
+\label{help}
 
 Conventions augment and enable \keyword{expansions} or are found to be helpful.
 %
 \begin{itemize}
-    \item The \emph{core} is a {keyword} that loads the plugins and terraforms the \keyword{machine}.
-    \item When the command ends with \texttt{help}, a help message prints.
+    \item The \texttt{core} loads the \keyword{plugins} and terraforms the \keyword{machine}.
+    \item \texttt{<command> help} shows help about \texttt{command}.
     \item \texttt{@ref} is an alias for \texttt{@cache read} that enables \texttt{\$(@ref <keyword>)} and, thus, object alias~\footnote{Refer to~\url{https://github.com/kamangir/roofAI/blob/main/roofAI/semseg/README.md} for an example.}.
 \end{itemize}  
 
