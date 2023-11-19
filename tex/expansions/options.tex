@@ -11,6 +11,7 @@ An \texttt{options} is a string representation of a dictionary, such as,
 %
 \begin{verbatim}
 value=$(@option "$options" <keyword> <default>)
+
 value=$(@option::bool "$options" <keyword> 0|1)
 \end{verbatim}
 %
@@ -22,7 +23,7 @@ As an example, this expansion allows \texttt{abcli list cloud|local <object-name
 choice=$(@option::choice "$options" <comma,separated,list> <default>)
 \end{verbatim}
 %
-The following three expansions are also useful on \texttt{options}.
+The following three operations are also useful on \texttt{options}.
 %
 \begin{description}
 %
@@ -70,4 +71,4 @@ options=$(@option::subset <options-1> <options-2>)
         \end{itemize}
 \end{itemize}
 %
-The list of expansions and the mathematical properties of a dictionary is related. The author wishes to better understand this relationship.}
+The list of expansions and the mathematical properties of a dictionary are related. The author wishes to understand this relationship better.}

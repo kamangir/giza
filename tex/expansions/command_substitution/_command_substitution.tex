@@ -1,9 +1,7 @@
 \subsection{Command Substitution}
 \label{command_substitution}
 
-A symbolic description of command substitution is that if \texttt{<part-1>\$(<sub-command>)<part-2>} is encountered, then \texttt{<sub-command>} is executed and its outcome, \texttt{<outcome}, is used to generate the updated command as \texttt{<part-1><outcome><part-2>}, which is then executed. This process happens numerously and hierarchically~\footurl{https://www.gnu.org/software/bash/manual/html\_node/Command-Substitution.html}.
-
-Here is an example from \texttt{roofAI}~\ref{roofAI},
+During the execution of the command \texttt{<part-1>\$(<sub-command>)<part-2>}, \texttt{<sub-command>} is executed and its outcome, \texttt{<outcome>}, is used to generate the updated command as \texttt{<part-1><outcome><part-2>}, which is then executed~\footurl{https://www.gnu.org/software/bash/manual/html\_node/Command-Substitution.html}. Here is an example from \texttt{roofAI}~\ref{roofAI},
 %
 \begin{verbatim}
 roofAI semseg predict \
@@ -13,9 +11,9 @@ roofAI semseg predict \
     $(@timestamp)
 \end{verbatim}
 %
-Here, \texttt{@ref <keyword>} reads the value of \texttt{<keyword>} from the \texttt{cache}~\ref{cache} and \texttt{@timestamp} generates a unique timestamp for use as an \texttt{<object-name>}. Collectively, this command runs the \enquote{Pytorch Segmentation Model}~\footurl{https://github.com/qubvel/segmentation_models.pytorch} that is cached as \texttt{roofAI\_semseg\_model\_AIRS\_full\_v2} on the dataset that is cached as \texttt{roofAI\_ingest\_AIRS\_v2} and uploads the results in a uniquely named object~\ref{objects}. Tags~\ref{tag} and relations~\ref{relations} are other object metadata ~\ref{metadata} that are relevant to this expansion.
+Here, \texttt{@ref <keyword>} reads the value of \texttt{<keyword>} from the \texttt{cache}~\ref{cache} and \texttt{@timestamp} generates a unique timestamp for use as an \texttt{<object-name>}. Collectively, this command runs the \enquote{Pytorch Segmentation Model}~\footurl{https://github.com/qubvel/segmentation_models.pytorch} that is cached as \texttt{roofAI\_semseg\_model\_AIRS\_full\_v2} on the dataset that is cached as \texttt{roofAI\_ingest\_AIRS\_v2} and uploads the results in a uniquely named object~\ref{objects}. Tags~\ref{tag} and relations~\ref{relations} are other object metadata relevant to this expansion.
 
-Command substitution is useful for generating the command components through Python or Bash. For example, in the AWS Open Data Registry~\footurl{https://registry.opendata.aws/} there is the notion of datasets, such as \texttt{hst}~\footurl{https://registry.opendata.aws/hst/} for Hubble Space Telescope and metadata the dataset is maintained in \texttt{yaml} files a git repository~\footurl{https://github.com/awslabs/open-data-registry/blob/main/datasets/hst.yaml}. 
+Command substitution is useful for generating the command components through Python or Bash. For example, in the AWS Open Data Registry~\footurl{https://registry.opendata.aws/} there is the notion of datasets, such as \texttt{hst}~\footurl{https://registry.opendata.aws/hst/} for Hubble Space Telescope and the metadata the dataset is maintained in \texttt{yaml} files a git repository~\footurl{https://github.com/awslabs/open-data-registry/blob/main/datasets/hst.yaml}. 
 
 For example, here is the command to access \texttt{ibrma2f2q\_drc.jpg} in object \texttt{public/ibrm/ibrma2f2q} in the dataset \texttt{hst},
 %
@@ -26,8 +24,8 @@ aws s3 cp $auth $s3_uri$filename $path
 Here, \texttt{\$auth} and \texttt{\$s3\_uri} are generated as,
 %
 \begin{verbatim}
-local auth=$(abcli_hubble_get auth $dataset_name)
-local s3_uri=$(abcli_hubble_get s3_uri $dataset_name $hubble_object_name)
+auth=$(abcli_hubble_get auth $dataset_name)
+s3_uri=$(abcli_hubble_get s3_uri $dataset_name $hubble_object_name)
 \end{verbatim}
 %
 Here, \texttt{abcli\_hubble\_get} is a Bash wrapper around a Python call.
@@ -41,8 +39,6 @@ function abcli_hubble_get() {
         "${@:4}"
 }
 \end{verbatim}
-%
-These were examples of command substitution with Bash and Python calls from \texttt{hubble}~\ref{hubble} which sits on the  \texttt{abcli}~\footurl{https://github.com/kamangir/awesome-bash-cli} core~\ref{core}.
 
 \input{tex/expansions/command_substitution/cache}
 \input{tex/expansions/command_substitution/tag}

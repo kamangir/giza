@@ -1,18 +1,22 @@
-\subsubsection{@cache}
+\subsection{\texttt{@cache}}
 \label{cache}
 
-The cache is a dictionary available on every machine~\ref{machine} for read, \texttt{@cache read <keyword>}, write, \texttt{@cache write <keyword> <value>}, and search, \texttt{@cache search <keyword>} that is enabled either through a SQL database~\footabcli{abcli/plugins/tags/functions.py} or a tool such as \texttt{mlflow}~\footurl{https://mlflow.org/}.
+The cache is a keyword-value dictionary available on every machine~\ref{machine} for reading, writing, and searching, that is enabled either through a SQL database~\footabcli{abcli/plugins/tags/functions.py} or a tool such as \texttt{mlflow}~\footurl{https://mlflow.org/}.
+%
+\begin{verbatim}
+value=$($@cache read <keyword>)
 
+@cache write <keyword> <value>
+
+value=@cache search <options>
+\end{verbatim}
+%
 When used for objects~\ref{objects}, \texttt{@cache} provides a tagging~\ref{tag} mechanism,
 %
 \begin{verbatim}
 @cache read <object-name>.<keyword>
+
 @cache write <object-name>.<keyword> <value>
+
+@cache clone <object-1> <object-2>
 \end{verbatim}
-%
-given that \texttt{@cache clone <object-1> <object-2>} is supported. 
-
-\subsubsection{@ref}
-\label{ref}
-
-\texttt{@ref} is an alias for \texttt{@cache read} that enables \texttt{\$(@ref <keyword>)} and, thus, object pointers~\ref{pointers}.

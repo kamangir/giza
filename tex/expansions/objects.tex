@@ -1,0 +1,49 @@
+\subsection{Objects}
+\label{objects}
+
+Commands~\ref{commands} consume and generate objects. Objects are accessible on any machine~\ref{machine} by \texttt{<object-name>}, and an object may be \emph{selected},
+%
+\begin{verbatim}
+@select <object-name>
+
+@select <type> <typed-object-name>
+\end{verbatim}
+%
+When an object is selected, \texttt{.} expands to \texttt{<object-name>}. Similarly, \texttt{..}, \texttt{...}, and so on, as deep as needed, expand to the name of the previously selected object and the one before that. Commands default the objects they consume and modify to \texttt{.}, \texttt{..}, and so on. Because the commands in a script use the same objects, selecting the objects enables their names to be omitted in a script.
+%
+\begin{verbatim}
+@select <object-1>
+@select <object-2>
+@download
+<command-1> # ., .. omitted for convenience
+<command-2>
+<command-3>
+@upload
+\end{verbatim}
+%
+An object may have a \emph{type}, such as model or dataset. Commands that consume objects specify a type for the argument. This enables the user to simultaneously select different types of objects and run commands on them. Here is an example from \emph{hubble}~\footurl{https://github.com/kamangir/hubble}, wherein the user selects an object, then selects a hubble dataset,  then selects an object in that dataset and downloads it.
+%
+\begin{verbatim}
+@select
+hubble select dataset hst
+hubble select object public/u4ge/u4ge0106r
+hubble download -dryrun
+\end{verbatim}
+%
+If \texttt{<object-name>} is not provided or is given as \texttt{-}, then an object with a unique name is created and used. An object points to an S3 bucket~\footurl{https://aws.amazon.com/s3/}~\footnote{Special variables, such as \texttt{\$abcli\_object\_name}, \texttt{\$abcli\_object\_path}, \texttt{\$abcli\_hubble\_dataset\_object\_name}, \texttt{\$abcli\_object\_name\_prev2} carry the name of the selected object, its path, the name of current selected hubble dataset and the second previous selected object, respectively.}. \emph{Metadata} is information about Objects~\ref{objects}, such as their \emph{tags}~\ref{tag} and relations~\ref{relations}, and the information cached~\ref{cache} about them. Objects can be downloaded, uploaded, and listed,
+%
+\begin{verbatim}
+@download [.|<object-name>] [filename=<filename-1>+<filename-2>]
+
+@upload [.|<object-name>] [filename=<filename-1>+<filename-2>]
+
+@list cloud|local <object_name>
+\end{verbatim}
+%
+It is recommended that additional \texttt{list} expansions are defined for typed objects. Here are examples from hubble,
+%
+\begin{verbatim}
+hubble list [dataset] <dataset-name>
+
+hubble list [object] <object-name>
+\end{verbatim}
