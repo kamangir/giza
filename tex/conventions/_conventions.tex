@@ -2,12 +2,27 @@
 \label{conventions}
 
 Conventions augment and enable expansions~\ref{expansions} or are found to be helpful.
+%
+\begin{itemize}
+    \item The \emph{core} is a callable~\ref{callables} that loads the plugins and terraforms the machine~\ref{machine}.
+    \item When the command ends with \texttt{help}, a help message prints.
+    \item \texttt{@ref} is an alias for \texttt{@cache read} that enables \texttt{\$(@ref <keyword>)} and, thus, object alias~\footnote{Refer to~\url{https://github.com/kamangir/roofAI/blob/main/roofAI/semseg/README.md} for an example.}.
+\end{itemize}  
 
-\input{tex/conventions/awareness}
+\subsection{\texttt{\$<core>\_is\_<what>}}
+\label{awareness}
+
+During initialization, a series of variables are set by the \emph{core} and are used to harmonize paths and other machine~\ref{machine}--specific parameters to enable the same Python code to run on different machines simultaneously. An alias of \texttt{env} lists these variables~\footnote{On a MacBook, at the time of writing, \texttt{abcli\_is\_64bit=true}, \texttt{abcli\_is\_amazon\_linux=false}, \texttt{abcli\_is\_docker=false}, \texttt{abcli\_is\_ec2=false}, \texttt{abcli\_is\_headless=false}, \texttt{abcli\_is\_in\_notebook=false}, \texttt{abcli\_is\_jetson=false}, \texttt{abcli\_is\_mac=true}, \texttt{abcli\_is\_rpi=false}, \texttt{abcli\_is\_sagemaker=false}, \texttt{abcli\_is\_sagemaker\_system=false}, \texttt{abcli\_is\_ubuntu=false}, \texttt{abcli\_is\_vnc=false}.},
+%
+\begin{verbatim}
+@env [<keyword>]
+\end{verbatim}
+
+
+\input{tex/conventions/param_injection}
 \input{tex/conventions/delim}
-\input{tex/conventions/help}
+\input{tex/conventions/init}
+\input{tex/conventions/plugins}
+\input{tex/conventions/start}
 
-\subsection{\texttt{@ref}}
-\label{ref}
 
-\texttt{@ref} is an alias for \texttt{@cache read} that enables \texttt{\$(@ref <keyword>)} and, thus, object alias~\footnote{Refer to~\url{https://github.com/kamangir/roofAI/blob/main/roofAI/semseg/README.md} for an example.}.
