@@ -1,4 +1,17 @@
 \subsection{hubble}
 \label{hubble}
 
-\texttt{hubble} is a $\nabla$ giza callable~\ref{callable} to access and process Hubble Space Telescope imagery and other datasets on AWS Open Data Registry~\footurl{https://github.com/kamangir/hubble}. 
+\texttt{hubble}~\footurl{https://github.com/kamangir/hubble} is a callable~\ref{callables} that \texttt{select}s, \texttt{list}s, and \texttt{download}s data from AWS Open Data Registry~\footurl{https://registry.opendata.aws/}. 
+%
+\begin{verbatim}
+hubble select [dataset] <hubble-dataset-name>
+hubble select [object] <hubble-object-name>
+
+hubble list [dataset] [.|<hubble-dataset-name>]
+hubble list [object] [.|<hubble-object-name>]
+
+hubble download \
+    [~dryrun,filename=<filename>|all,~ingest,upload] \
+    [.|<hubble-object-name>] \
+    [.|<object-name>]
+\end{verbatim}
