@@ -18,8 +18,8 @@ During initialization, the \keyword{core} and the \keyword{plugins} set a series
 %
 \begin{itemize}
     \item{\texttt{\$<core>\_git\_<suffix>}: \keywordd{@git}{git}.}
-    \item{\texttt{\$<core>\_<type>\_name[\_prev[n]]}: selected objects.}
-    \item{\texttt{\$<core>\_<type>\_path}: selected object path.}
+    \item{\texttt{\$<core>\_<type>\_name[\_prev[n]]}: \keyword{select}ed objects.}
+    \item{\texttt{\$<core>\_<type>\_path}: \keyword{select}ed object path.}
     \item{\texttt{\$<core>\_is\_<suffix>} describe the \keyword{machine}}
     \item{\texttt{\$<core>\_path\_<suffix>}: paths.}
 \end{itemize}
@@ -37,8 +37,28 @@ In \texttt{dryrun} mode, the low-cost and fast aspects of the command are execut
 
 \input{tex/conventions/param_injection}
 \input{tex/conventions/delim}
-\input{tex/conventions/init}
-\input{tex/conventions/plugins}
-\input{tex/conventions/start}
+
+\subsection{@init}
+\label{init}
+
+The following expansions initialize the \keyword{core}, and therefore all \keywords{plugins}, or \texttt{<plugin-name>}.
+%
+\begin{verbatim}
+@init <options>
+
+<plugin-name> init <options>
+\end{verbatim}
+
+\subsection{Plugins}
+\label{plugins}
+
+A plugin generally defines one or more \keyword{callables}.
+
+\subsection{@start}
+\label{start}
+
+\begin{verbatim}
+@start <options>
+\end{verbatim}
 
 

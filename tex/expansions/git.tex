@@ -1,46 +1,34 @@
 \subsection{@git}
 \label{git}
 
-The \keyword{core} and the \keyword{plugins} are in individual repositories. There are also other repositories of interest. A wip
-
-
+The \keyword{core} and the \keyword{plugins} are maintained in individual repositories. There are also other repositories of interest.
+%
 \begin{verbatim}
-abcli git <repo_name>
- . cd /Users/kamangir/git/<repo_name>.
-abcli git cd \
-	<repo_name>
- . cd /Users/kamangir/git/<repo_name>.
-abcli git clone \
-	<repo_name> \
-	[cd,~from_template,if_cloned,init,install,object,pull,source=<username/repo_name>]
- . clone <repo_name>.
-abcli git create_branch \
-	<repo_name> \
-	<branch-name>
- . create branch <branch-name> in <repo_name>.
-abcli git pull \
-	[~all,init]
- . pull [not all repos] [and init if version change].
-abcli git <repo_name> \
-	<command-args>
- . run 'git <command-args>' in /Users/kamangir/git/<repo_name>.
-abcli git push \
-	<repo_name> \
-	[accept_no_issue,delete,first,object,~status] \
-	[<message>]
- . [first] push to <repo_name>.
-abcli git recreate_ssh
- . recreate github ssh key.
-abcli git select_issue \
-	<kamangir/bolt#abc>
- . select git issue.
-abcli git sync_fork \
-	<repo-name> \
-	<branch-name>
- . sync fork w/ upstream.
-abcli git status
- . git status.
+@git clone <repo-name> [init,install,object,<options>]
 \end{verbatim}
+%
+clones \texttt{<repo-name>} and,
+%
+\begin{verbatim}
+@git <repo-name>
 
+@git cd|pushd <repo-name>
+\end{verbatim}
+%
+change directory to \texttt{<repo-name>}.
+%
+\begin{verbatim}
+@git <repo-name> <command>
+\end{verbatim}
+%
+runs \texttt{<command>} in \texttt{<repo-name>}. The following expansions show the status of a repository, create a branch in it or push and pull from it. In the absence of \texttt{<repo-name>}, \texttt{status} and \texttt{pull} default to all repositories.
+%
+\begin{verbatim}
+@git status [<repo-name>]
 
-git pull
+@git create_branch <branch-name> [.|<repo-name>]
+
+@git pull [<repo-name>]
+
+@git push [first,-status] [<message>] [.|<repo-name>]
+\end{verbatim}
