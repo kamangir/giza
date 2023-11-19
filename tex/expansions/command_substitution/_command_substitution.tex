@@ -11,7 +11,7 @@ roofAI semseg predict \
     $(@timestamp)
 \end{verbatim}
 %
-Here, \texttt{@ref <keyword>} reads the value of \texttt{<keyword>} from the \keyword{cache} and \texttt{@timestamp} generates a unique timestamp for use as an \texttt{<object-name>}. Collectively, this command runs the \enquote{Pytorch Segmentation Model}~\footurl{https://github.com/qubvel/segmentation_models.pytorch} that is cached as \texttt{roofAI\_semseg\_model\_AIRS\_full\_v2} on the dataset that is cached as \texttt{roofAI\_ingest\_AIRS\_v2} and uploads the results in a uniquely named \keyword{objects}. \keyword2{Tags}{tag} and \keyword{relations} are other object metadata relevant to this expansion.
+Here, \texttt{@ref <keyword>} reads the value of \texttt{<keyword>} from the \keyword{cache} and \texttt{@timestamp} generates a unique timestamp for use as an \texttt{<object-name>}. Collectively, this command runs the \enquote{Pytorch Segmentation Model}~\footurl{https://github.com/qubvel/segmentation_models.pytorch} that is cached as \texttt{roofAI\_semseg\_model\_AIRS\_full\_v2} on the dataset that is cached as \texttt{roofAI\_ingest\_AIRS\_v2} and uploads the results in a uniquely named \keyword{objects}. \keyword_{Tags}{tag} and \keyword{relations} are other object metadata relevant to this expansion.
 
 Command substitution is useful for generating the command components through Python or Bash. For example, in the AWS Open Data Registry~\footurl{https://registry.opendata.aws/} there is the notion of datasets, such as \texttt{hst}~\footurl{https://registry.opendata.aws/hst/} for Hubble Space Telescope and the metadata the dataset is maintained in \texttt{yaml} files a git repository~\footurl{https://github.com/awslabs/open-data-registry/blob/main/datasets/hst.yaml}. 
 
