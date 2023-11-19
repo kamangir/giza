@@ -9,15 +9,29 @@ Conventions augment and enable expansions~\ref{expansions} or are found to be he
     \item \texttt{@ref} is an alias for \texttt{@cache read} that enables \texttt{\$(@ref <keyword>)} and, thus, object alias~\footnote{Refer to~\url{https://github.com/kamangir/roofAI/blob/main/roofAI/semseg/README.md} for an example.}.
 \end{itemize}  
 
-\subsection{\texttt{\$<core>\_is\_<what>}}
+\subsection{\texttt{\$<core>\_<suffix>}}
 \label{awareness}
 
-During initialization, a series of variables are set by the \emph{core} and are used to harmonize paths and other machine~\ref{machine}--specific parameters to enable the same Python code to run on different machines simultaneously. An alias of \texttt{env} lists these variables~\footnote{On a MacBook, at the time of writing, \texttt{abcli\_is\_64bit=true}, \texttt{abcli\_is\_amazon\_linux=false}, \texttt{abcli\_is\_docker=false}, \texttt{abcli\_is\_ec2=false}, \texttt{abcli\_is\_headless=false}, \texttt{abcli\_is\_in\_notebook=false}, \texttt{abcli\_is\_jetson=false}, \texttt{abcli\_is\_mac=true}, \texttt{abcli\_is\_rpi=false}, \texttt{abcli\_is\_sagemaker=false}, \texttt{abcli\_is\_sagemaker\_system=false}, \texttt{abcli\_is\_ubuntu=false}, \texttt{abcli\_is\_vnc=false}.},
+During initialization, the \texttt{core}~\ref{core} and the \texttt{plugins}~\ref{plugins} set a series of variables to harmonize paths and other machine~\ref{machine}--specific parameters to enable the same code to run on different machines simultaneously. 
+%
+\begin{itemize}
+    \item{\texttt{\$<core>\_git\_<suffix>}: \texttt{git}~\ref{git}.}
+    \item{\texttt{\$<core>\_<type>\_name[\_prev[n]]}: selected objects.}
+    \item{\texttt{\$<core>\_<type>\_path}: selected object path.}
+    \item{\texttt{\$<core>\_is\_<suffix>} describe the machine~\ref{machine}}
+    \item{\texttt{\$<core>\_path\_<suffix>}: paths.}
+\end{itemize}
+%
+An alias of \texttt{env} lists these variables.
 %
 \begin{verbatim}
 @env [<keyword>]
 \end{verbatim}
 
+\subsection{\texttt{dryrun}}
+\label{dryrun}
+
+In \texttt{dryrun} mode, the low-cost and fast aspects of the command are executed, and the rest of the operation is logged instead. \texttt{@eval} is used for this operation. 
 
 \input{tex/conventions/param_injection}
 \input{tex/conventions/delim}

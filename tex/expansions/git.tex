@@ -1,4 +1,46 @@
 \subsection{@git}
 \label{git}
 
+The \texttt{core}~\ref{core} and the \texttt{plugins}~\ref{plugins} are in individual repositories. There are also other repositories of interest. A wip
+
+
+\begin{verbatim}
+abcli git <repo_name>
+ . cd /Users/kamangir/git/<repo_name>.
+abcli git cd \
+	<repo_name>
+ . cd /Users/kamangir/git/<repo_name>.
+abcli git clone \
+	<repo_name> \
+	[cd,~from_template,if_cloned,init,install,object,pull,source=<username/repo_name>]
+ . clone <repo_name>.
+abcli git create_branch \
+	<repo_name> \
+	<branch-name>
+ . create branch <branch-name> in <repo_name>.
+abcli git pull \
+	[~all,init]
+ . pull [not all repos] [and init if version change].
+abcli git <repo_name> \
+	<command-args>
+ . run 'git <command-args>' in /Users/kamangir/git/<repo_name>.
+abcli git push \
+	<repo_name> \
+	[accept_no_issue,delete,first,object,~status] \
+	[<message>]
+ . [first] push to <repo_name>.
+abcli git recreate_ssh
+ . recreate github ssh key.
+abcli git select_issue \
+	<kamangir/bolt#abc>
+ . select git issue.
+abcli git sync_fork \
+	<repo-name> \
+	<branch-name>
+ . sync fork w/ upstream.
+abcli git status
+ . git status.
+\end{verbatim}
+
+
 git pull

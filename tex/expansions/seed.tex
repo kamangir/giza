@@ -1,2 +1,27 @@
 \subsection{@seed}
 \label{seed}
+
+It is often necessary to continue the operation on another machine~\ref{machine}. Examples include \texttt{ssh}ing to another machine, continuing the work on AWS SageMaker and between different images, running the code in a docker container or submitting it to AWS Batch, or running commands inside the Python Console in QGIS~\footurl{https://docs.qgis.org/2.18/en/docs/user_manual/plugins/python_console.html}. The \texttt{@seed} expansion generates the code for the other machine to terraform and run a command or start accepting commands~\footnote{Does this concept exist in the literature?}.
+%
+\begin{verbatim}
+@seed \
+    [<target>|docker|ec2|jetson|headless_rpi|mac|rpi|sagemaker|sagemaker-system] \
+    [clipboard|filename=<filename>|key|screen,cookie=<cookie-name>,plugin=<plugin-name>,-log]
+\end{verbatim}
+%
+The \texttt{seed} has been transferred through the clipboard, a USB key, and \texttt{scp}. Here is an example,
+%
+\begin{verbatim}
+ > @seed sagemaker screen
+seed: abcli-7.2477.1.2023-06-aws-batch-a -sagemaker-> screen
+run "bash" before pasting the seed.
+#! /bin/bash
+echo "abcli-7.2477.1.2023-06-aws-batch-a seed for sagemaker"
+
+pip install --upgrade pip
+
+cd git/awesome-bash-cli
+pip3 install -e .
+
+source ./bash/abcli.sh
+\end{verbatim}
