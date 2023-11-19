@@ -1,10 +1,10 @@
 \section{Conventions}
 \label{conventions}
 
-Conventions augment and enable expansions~\ref{expansions} or are found to be helpful.
+Conventions augment and enable \keyword{expansions} or are found to be helpful.
 %
 \begin{itemize}
-    \item The \emph{core} is a callable~\ref{callables} that loads the plugins and terraforms the machine~\ref{machine}.
+    \item The \emph{core} is a {keyword} that loads the plugins and terraforms the \keyword{machine}.
     \item When the command ends with \texttt{help}, a help message prints.
     \item \texttt{@ref} is an alias for \texttt{@cache read} that enables \texttt{\$(@ref <keyword>)} and, thus, object alias~\footnote{Refer to~\url{https://github.com/kamangir/roofAI/blob/main/roofAI/semseg/README.md} for an example.}.
 \end{itemize}  
@@ -12,13 +12,13 @@ Conventions augment and enable expansions~\ref{expansions} or are found to be he
 \subsection{\texttt{\$<core>\_<suffix>}}
 \label{awareness}
 
-During initialization, the \texttt{core}~\ref{core} and the \texttt{plugins}~\ref{plugins} set a series of variables to harmonize paths and other machine~\ref{machine}--specific parameters to enable the same code to run on different machines simultaneously. 
+During initialization, the \keyword{core} and the \keyword{plugins} set a series of variables to harmonize paths and other \keyword{machine}--specific parameters to enable the same code to run on different machines simultaneously. 
 %
 \begin{itemize}
-    \item{\texttt{\$<core>\_git\_<suffix>}: \texttt{git}~\ref{git}.}
+    \item{\texttt{\$<core>\_git\_<suffix>}: \keyword2{@git}{git}.}
     \item{\texttt{\$<core>\_<type>\_name[\_prev[n]]}: selected objects.}
     \item{\texttt{\$<core>\_<type>\_path}: selected object path.}
-    \item{\texttt{\$<core>\_is\_<suffix>} describe the machine~\ref{machine}}
+    \item{\texttt{\$<core>\_is\_<suffix>} describe the \keyword{machine}}
     \item{\texttt{\$<core>\_path\_<suffix>}: paths.}
 \end{itemize}
 %

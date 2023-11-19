@@ -1,7 +1,7 @@
 \subsection{Objects}
 \label{objects}
 
-Commands~\ref{commands} consume and generate objects. Objects are accessible on any machine~\ref{machine} by \texttt{<object-name>}, and an object may be \emph{selected},
+Commands~\ref{commands} consume and generate objects. Objects are accessible on any \keyword{machine} by \texttt{<object-name>}, and an object may be \emph{selected},
 %
 \begin{verbatim}
 @select <object-name>
@@ -30,7 +30,7 @@ hubble select object public/u4ge/u4ge0106r
 hubble download -dryrun
 \end{verbatim}
 %
-If \texttt{<object-name>} is not provided or is given as \texttt{-}, then an object with a unique name is created and used. An object points to an S3 bucket~\footurl{https://aws.amazon.com/s3/}~\footnote{Special variables, such as \texttt{\$abcli\_object\_name}, \texttt{\$abcli\_object\_path}, \texttt{\$abcli\_hubble\_dataset\_object\_name}, \texttt{\$abcli\_object\_name\_prev2} carry the name of the selected object, its path, the name of current selected hubble dataset and the second previous selected object, respectively.}. \emph{Metadata} is information about Objects~\ref{objects}, such as their \emph{tags}~\ref{tag} and relations~\ref{relations}, and the information cached~\ref{cache} about them. Objects can be downloaded, uploaded, and listed,
+If \texttt{<object-name>} is not provided or is given as \texttt{-}, then an object with a unique name is created and used. An object points to an S3 bucket~\footurl{https://aws.amazon.com/s3/}~\footnote{Special variables, such as \texttt{\$abcli\_object\_name}, \texttt{\$abcli\_object\_path}, \texttt{\$abcli\_hubble\_dataset\_object\_name}, \texttt{\$abcli\_object\_name\_prev2} carry the name of the selected object, its path, the name of current selected hubble dataset and the second previous selected object, respectively.}. \emph{Metadata} is information about \keyword{objects}, such as their \keyword{tag} and \keyword{relations}, and the information \keyword{cache}d about them. Objects can be downloaded, uploaded, and listed,
 %
 \begin{verbatim}
 @download [.|<object-name>] [filename=<filename-1>+<filename-2>]
@@ -40,4 +40,4 @@ If \texttt{<object-name>} is not provided or is given as \texttt{-}, then an obj
 @list cloud|local <object_name>
 \end{verbatim}
 %
-It is recommended that additional \texttt{download} and \texttt{list} expansions are defined for typed objects. See hubble~\ref{hubble} for examples.
+It is recommended that additional \texttt{download} and \texttt{list} expansions are defined for typed objects. See \keyword{hubble} for examples.

@@ -7,7 +7,7 @@ The \emph{prefixing expansion},
 <callable> <options> <command>
 \end{verbatim}
 %
-enables \texttt{<callable>} to execute \texttt{<command>} with certain \texttt{<options>}. This expansion enables submitting \texttt{<command>} to another machine, be it a docker container~\footurl{https://github.com/kamangir/notebooks-and-scripts/blob/main/.abcli/docker.sh} or AWS Batch. \texttt{@eval}~\footabcli{bash/plugins/eval.sh} uses this expansion to enable running \texttt{<command>} in a \texttt{<path>} with \texttt{dryrun}~\ref{dryrun} and \texttt{log} options.
+enables \texttt{<callable>} to execute \texttt{<command>} with certain \texttt{<options>}. This expansion enables submitting \texttt{<command>} to another machine, be it a docker container~\footurl{https://github.com/kamangir/notebooks-and-scripts/blob/main/.abcli/docker.sh} or AWS Batch. \texttt{@eval}~\footabcli{bash/plugins/eval.sh} uses this expansion to enable running \texttt{<command>} in a \texttt{<path>} with \keyword{dryrun} and \texttt{log} options.
 %
 \begin{verbatim}
 @eval [dryrun,-log,path=<path>] <command>

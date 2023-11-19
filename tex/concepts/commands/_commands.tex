@@ -31,7 +31,7 @@ Note that writing to the standard streams \emph{stdin} and \emph{stdout} are exa
 
 Commands know the machine and the shell they are running in and adjust their operation accordingly. For example, a script that submits jobs inside a docker container may download the artifacts generated through previous submissions on a user-facing machine, such as a Macbook. 
 
-The first word~\footurl{https://www.gnu.org/software/bash/manual/html_node/Shell-Syntax.html} in a command is generally the callable~\ref{callables}. The rest of the command is expected to follow the conventions of the callable. In this paper we propose guidelines that we later demonstrate lead to useful expansions~\ref{expansions}.
+The first word~\footurl{https://www.gnu.org/software/bash/manual/html_node/Shell-Syntax.html} in a command is generally the \keyword{callables}. The rest of the command is expected to follow the conventions of the callable. In this paper we propose guidelines that we later demonstrate lead to useful \keyword{expansions}.
 
 \input{tex/concepts/commands/callables}
 \input{tex/concepts/commands/templates}
