@@ -61,4 +61,22 @@ A plugin generally defines one or more \keyword{callables}.
 @start <options>
 \end{verbatim}
 
+\subsection{\texttt{@conda}}
+\label{conda}
+
+\begin{verbatim}
+@conda create_env [clone=<base>,name=<environment-name>,~recreate]
+
+@conda exists [<environment-name>]
+
+@conda list
+
+@conda remove|rm [<environment-name>]
+\end{verbatim}
+
+\subsection{\texttt{@publish}}
+\label{publish}
+
+\texttt{@publish <object-name> <options>} copies select content from \texttt{<object-name>} into a publicly accessible bucket.
+
 
