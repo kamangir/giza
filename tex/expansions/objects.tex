@@ -41,4 +41,9 @@ If \texttt{<object-name>} is not provided or is given as \texttt{-}, then an obj
 @list cloud|local <object_name>
 \end{verbatim}
 %
-It is recommended that additional \texttt{download} and \texttt{list} expansions are defined for typed objects. See \keyword{hubble} for examples.
+It is recommended that additional \texttt{download} and \texttt{list} expansions are defined for typed objects. See \keyword{hubble} for examples. Objects can be cloned,
+%
+\begin{verbatim}
+@clone [..|<object-1>] [.|<object-2>] \
+    [~cache,~download,~meta,~relations,~tags,upload]
+\end{verbatim}
