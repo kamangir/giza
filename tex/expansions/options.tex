@@ -7,12 +7,12 @@ An \texttt{options} is a string representation of a dictionary, such as,
 <keyword-1>=<value-1>,<keyword-2>=<value-2>,...,<keyword-3>,-<keyword-4>},...
 \end{verbatim}
 %
-\texttt{options} is implemented using basic Python~\footnote{\abcli{abcli/options}} and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\ref{command_substitution}. In practice, a second \texttt{@option::bool} expansion is defined to cover boolean variables~\footnote{It may be possible to combine \texttt{@option::bool} into \texttt{@option}, which remains an interest of the author.},
+\texttt{options} is implemented using basic Python~\footnote{\abcli{abcli/options}} and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\ref{command_substitution}. In practice, a second \texttt{@option::int} expansion is defined to cover integers and booleans,
 %
 \begin{verbatim}
 value=$(@option "$options" <keyword> <default>)
 
-value=$(@option::bool "$options" <keyword> 0|1)
+value=$(@option::int "$options" <keyword> 0|1|<int>)
 \end{verbatim}
 %
 Another useful expansion is the \emph{options choice expansion}~\footnote{
@@ -46,8 +46,8 @@ options=$(@option::subset <options-1> <options-2>)
         \begin{itemize}
             \item{a single keyword,}
                 \begin{itemize}
-                    \item{that is boolean: \texttt{@option::bool}}
-                    \item{that is not boolean: \texttt{option}.}
+                    \item{that is an integer: \texttt{@option::int}}
+                    \item{that is not an integer: \texttt{option}.}
                 \end{itemize}
             \item{a group of keywords: \texttt{option::choice}.}
         \end{itemize}
