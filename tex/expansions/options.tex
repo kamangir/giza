@@ -29,9 +29,9 @@ The following three operations are also useful on \texttt{options}.
 %
 \item[default]{\texttt{default} \texttt{<options-1>} to the corresponding values in \texttt{<options-2>}. The keyword set of the output is the concatenation of the keyword sets of the two inputs, wherein the values from \texttt{<options-1>} take priority. For example, defaulting \texttt{x=1,y=2} to \texttt{x=3,z=4} yields \texttt{x=1,y=2,z=4}. This is the \emph{default option expansion}, which is achieved through \texttt{<options-2>,<options-1>}.}
 %
-\item[subset]{return the \texttt{<options-1>} \texttt{subset} of \texttt{<options-2>}. The keyword set of the output is the same as the keyword set of \texttt{<options-1>}, wherein the values from \texttt{<options-2>} take priority. For example, the \texttt{x=1,y=2} subset of \texttt{x=3,z=4} yields \texttt{x=3,y=2}. This is the \emph{option subset expansion},
+\item[subset]{return the \texttt{<options-subset>} \texttt{subset} of \texttt{<options>}. The keyword set of the output is the same as the keyword set of \texttt{<options-subset>}, wherein the values from \texttt{<options>} take priority. For example, the \texttt{x=1,y=2} subset of \texttt{x=3,z=4} yields \texttt{x=3,y=2}. This is the \emph{option subset expansion},
 \begin{verbatim}
-options=$(@option::subset <options-1> <options-2>)
+options=$(@option::subset <options> <options-subset>)
 \end{verbatim}
 }
 %
