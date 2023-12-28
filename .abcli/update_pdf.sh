@@ -6,7 +6,7 @@ function giza_update_pdf() {
     local options=$1
 
     if [ $(abcli_option_int "$options" help 0) == 1 ]; then
-        abcli_show_usage "giza update_pdf [~pull,push,~rm]" \
+        abcli_show_usage "giza update|update_pdf [~pull,push,~rm]" \
             "update assets/giza.pdf in https://github.com/kamangir/giza/."
         return
     fi
