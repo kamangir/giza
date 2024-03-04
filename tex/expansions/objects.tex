@@ -31,7 +31,38 @@ hubble select object public/u4ge/u4ge0106r
 hubble download -dryrun
 \end{verbatim}
 %
-If \texttt{<object-name>} is not provided or is given as \texttt{-}, then an object with a unique name is created and used. An object points to an S3 bucket~\footurl{https://aws.amazon.com/s3/}~\footnote{Special variables, such as \texttt{\$abcli\_object\_name}, \texttt{\$abcli\_object\_path}, \texttt{\$abcli\_hubble\_dataset\_object\_name}, \texttt{\$abcli\_object\_name\_prev2} carry the name of the selected object, its path, the name of current selected hubble dataset and the second previous selected object, respectively.}. \emph{Metadata} is information about \keyword{objects}, such as their \keyword{tag} and \keyword{relations}, and the information \keyword{cache}d about them. Objects can be downloaded, uploaded, and listed,
+If \texttt{<object-name>} is not provided or is given as \texttt{-}, then an object with a unique name is created and used. An object points to an S3 bucket~\footurl{https://aws.amazon.com/s3/}~\footnote{Special variables, such as \texttt{\$abcli\_object\_name}, \texttt{\$abcli\_object\_path}, \texttt{\$abcli\_hubble\_dataset\_object\_name}, \texttt{\$abcli\_object\_name\_prev2} carry the name of the selected object, its path, the name of current selected hubble dataset and the second previous selected object, respectively.}. \emph{Metadata} is information about \keyword{objects}, such as their \keyword{tag} and \keyword{relations}, and the information \keyword{cache}d about them. Objects also carry metadata as a dictionary. More generally, any path, including within the code~\footnote{for example, \url{https://github.com/kamangir/notebooks-and-scripts/blob/main/scripts/meta.yaml}.}, may carry metadata. One can \texttt{get} and \texttt{post} metadata related to a filename, an object, or a path,
+%
+\begin{verbatim}
+@metadata get \
+    delim=+,dict.keys,dict.values,key=<key>,filename \
+    <filename.yaml>
+    
+@metadata get \
+    delim=+,dict.keys,dict.values,key=<key>,filename=<metadata.yaml>,object \
+    .|<object-name>
+    
+@metadata get \
+    delim=+,dict.keys,dict.values,key=<key>,filename=<metadata.yaml>,path \
+    <path>
+    
+@metadata post \
+    <key> <value> \
+    filename \
+    <filename.yaml>
+    
+@metadata post \
+    <key> <value> \
+    object,filename=<metadata.yaml> \
+    .|<object-name>
+    
+@metadata post \
+    <key> <value> \
+    path,filename=<metadata.yaml> \
+    <path>
+\end{verbatim}
+%
+Objects can be downloaded, uploaded, and listed,
 %
 \begin{verbatim}
 @download \
