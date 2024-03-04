@@ -50,6 +50,12 @@ function giza() {
         return
     fi
 
+    if [[ "|pylint|pytest|test|" == *"|$task|"* ]]; then
+        abcli_${task} plugin=giza,$2 \
+            "${@:3}"
+        return
+    fi
+
     if [ "$task" == "version" ]; then
         python3 -m giza version "${@:2}"
         return
@@ -59,3 +65,6 @@ function giza() {
         "$task" \
         "${@:2}"
 }
+
+abcli_source_path \
+    $abcli_path_git/giza/.abcli/tests
