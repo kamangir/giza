@@ -1,12 +1,8 @@
 from functools import reduce
 import re
-from . import NAME
 from abcli.plugins import list_of_external
 from abcli import file
-from abcli import logging
-import logging
-
-logger = logging.getLogger(__name__)
+from giza.logger import logger
 
 
 def digest(

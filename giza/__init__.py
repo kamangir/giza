@@ -1,5 +1,7 @@
 NAME = "giza"
 
-VERSION = "3.34.1"
+ICON = "🔻"
 
-DESCRIPTION = "🔻 A recipe for AI languages."
+DESCRIPTION = f"{ICON} A recipe for AI languages."
+
+VERSION = "3.35.1"

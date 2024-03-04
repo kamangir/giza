@@ -1,10 +1,8 @@
 import argparse
 from giza import NAME, VERSION, DESCRIPTION
 from giza.functions import digest
-from abcli import logging
-import logging
+from giza.logger import logger
 
-logger = logging.getLogger(__name__)
 
 parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
 parser.add_argument(
