@@ -5,6 +5,12 @@ function giza() {
 
     if [ "$task" == "help" ]; then
         giza_digest "$@"
+
+        local task
+        for task in pylint pytest test; do
+            giza $task "$@"
+        done
+
         giza open_pdf "$@"
         giza_update_pdf "$@"
 
