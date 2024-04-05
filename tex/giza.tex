@@ -14,7 +14,7 @@
 \usepackage[english]{babel}
 \newtheorem{theorem}{Theorem}
 
-\input{tex/consts}
+\input{consts}
 
 \title{$\nabla$ giza: A Related Set of Bash Expansions of Relevance to AI}
 \author{Arash Abadpour - arash@abadpour.com}
@@ -22,21 +22,21 @@
 \begin{document}
 \maketitle
 
-\input{tex/meta/abstract}
+\input{meta/abstract}
 \tableofcontents
 
-\include{tex/_intro/_intro}
-\include{tex/expansions/_expansions}
-\include{tex/conventions/_conventions}
-\include{tex/examples/_examples}
+\input{_intro/_intro}
+\input{expansions/_expansions}
+\input{conventions/_conventions}
+\input{examples/_examples}
 
 \appendix
-\include{tex/concepts/_concepts}
+\input{concepts/_concepts}
 
 % https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles
 %\bibliographystyle{unsrt}
 %\bibliography{giza}
 
-\input{tex/meta/background}
+\input{meta/background}
 
 \end{document}
