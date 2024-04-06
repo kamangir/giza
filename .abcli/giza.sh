@@ -4,6 +4,7 @@ function giza() {
     local task=$1
 
     if [ "$task" == "help" ]; then
+        giza_build "$@"
         giza_digest "$@"
 
         local task
@@ -12,7 +13,6 @@ function giza() {
         done
 
         giza open_pdf "$@"
-        giza_update_pdf "$@"
 
         if [ "$(abcli_keyword_is $2 verbose)" == true ]; then
             python3 -m giza --help
@@ -35,18 +35,21 @@ function giza() {
     if [[ ",open,open_pdf," == *",$task,"* ]]; then
         local options=$2
         if [ $(abcli_option_int "$options" help 0) == 1 ]; then
-            abcli_show_usage "giza open|open_pdf" \
-                "open giza.pdf."
+            options="~download,dryrun,pdf=<giza>"
+            abcli_show_usage "giza open|open_pdf$ABCUL[$options]" \
+                "open <pdf>.pdf."
             return
         fi
+        local do_download=$(abcli_option_int "$options" download 1)
+        local pdf=$(abcli_option "$options" pdf giza)
 
-        abcli_eval - \
-            open $abcli_path_git/assets/giza/giza.pdf
-        return
-    fi
+        local object_name=$GIZA_PUBLISHED_OBJECT
 
-    if [ "$task" == "update" ]; then
-        giza_update_pdf "${@:2}"
+        [[ "$do_download" == 1 ]] &&
+            abcli_download - $object_name
+
+        abcli_eval ,$options \
+            open $abcli_object_root/$object_name/$pdf.pdf
         return
     fi
 

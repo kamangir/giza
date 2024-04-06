@@ -1,6 +1,6 @@
-# giza 🔻
+# 🔻 giza
 
-🔹 read the working paper: A Related Set of Bash Expansions of Relevance to AI: ([tex](./tex/giza.tex)), ([pdf](https://github.com/kamangir/assets/blob/main/giza/giza.pdf)).
+🔹 read the working paper: A Related Set of Bash Expansions of Relevance to AI: ([tex](./tex/giza.tex)), ([pdf](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza.pdf)).
 
 ![image](./assets/giza.png)
 
