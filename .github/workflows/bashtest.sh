@@ -19,6 +19,9 @@ function runme() {
 
     source $git_root/awesome-bash-cli/bash/abcli.sh
 
+    echo "abcli_path_home: $abcli_path_home"
+    echo "abcli_is_github_workflow: $abcli_is_github_workflow"
+
     echo "🪄"
     return
 }
