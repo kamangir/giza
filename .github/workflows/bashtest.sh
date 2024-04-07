@@ -7,7 +7,10 @@ function runme() {
     done
 
     echo "git_root: $git_root"
-    ls $git_root/giza/
+
+    pushd $git_root >/dev/null
+    git clone https://github.com/kamangir/awesome-bash-cli.git
+    popd >/dev/null
 
     echo "🪄"
     return
