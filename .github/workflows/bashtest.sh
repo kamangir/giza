@@ -7,6 +7,7 @@ function runme() {
     done
 
     echo "git_root: $git_root"
+    ls $git_root/giza/
 
     echo "🪄"
     return
