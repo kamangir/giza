@@ -12,6 +12,7 @@ function runme() {
 
     pushd $git_root >/dev/null
     git clone https://github.com/kamangir/awesome-bash-cli.git
+    pip3 install -e .
     popd >/dev/null
 
     source $git_root/awesome-bash-cli/bash/abcli.sh
