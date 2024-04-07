@@ -13,4 +13,4 @@ jobs:
           python-version: "3.10"
       - name: Run bash tests
         run: |
-          ./.abcli/test.sh
+          ./.github/workflows/bashtest.sh
