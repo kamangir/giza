@@ -10,6 +10,7 @@ function runme() {
 
     pushd $git_root >/dev/null
     git clone https://github.com/kamangir/awesome-bash-cli.git
+    ls ./awesome-bash-cli/
     popd >/dev/null
 
     echo "🪄"
