@@ -13,24 +13,4 @@ jobs:
           python-version: "3.10"
       - name: Run bash tests
         run: |
-          set -x # verbose-mode
-          mkdir -pv touch /home/runner/work/_temp/
-          touch /home/runner/work/_temp/verbose
-
-          python -m pip install --upgrade pip
-          pip3 install -e .
-          pip3 install -r requirements.txt
-
-          git_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-          echo "git_root: $git_root"
-
-          pushd $git_root >/dev/null
-          git clone https://github.com/kamangir/awesome-bash-cli.git
-          cd awesome-bash-cli
-          pip3 install -e .
-          pip3 install -r requirements.txt
-          popd >/dev/null
-
-          source $git_root/awesome-bash-cli/bash/abcli.sh ~terraform
-
-          giza test
+          ./.github/workflows/bashtest.sh
