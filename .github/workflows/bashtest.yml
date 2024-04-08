@@ -13,7 +13,7 @@ jobs:
           python-version: "3.10"
       - name: Run bash tests
         run: |
-          # set -x # verbose-mode
+          set -x # verbose-mode
 
           python -m pip install --upgrade pip
           pip3 install -e .
