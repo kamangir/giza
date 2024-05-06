@@ -36,9 +36,10 @@ function giza_build() {
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $object_name
 
-    if [[ "$do_publish" == 1 ]]; then
+    [[ "$do_publish" == 1 ]] &&
         abcli_publish \
-            ~download,extension=pdf \
+            ~download,suffix=.pdf \
             $object_name
-    fi
+
+    return 0
 }

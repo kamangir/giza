@@ -4,4 +4,4 @@ ICON = "🔻"
 
 DESCRIPTION = f"{ICON} A recipe for AI languages."
 
-VERSION = "4.46.1"
+VERSION = "4.47.1"
