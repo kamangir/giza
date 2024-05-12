@@ -25,6 +25,10 @@ function giza_build() {
     [[ "$do_download" == 1 ]] &&
         abcli_download - $object_name
 
+    abcli_eval dryrun=$do_dryrun \
+        python3 -m giza build \
+        --output_filename $abcli_path_git/giza/tex/revision.tex
+
     [[ "$do_build" == 1 ]] &&
         abcli_latex build dryrun=$do_dryrun \
             $abcli_path_git/giza/tex/giza.tex

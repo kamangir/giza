@@ -1,6 +1,7 @@
 import argparse
 from giza import NAME, VERSION, DESCRIPTION
-from giza.functions import digest
+from giza.build import build
+from giza.digest import digest
 from giza.logger import logger
 
 
@@ -8,7 +9,7 @@ parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
 parser.add_argument(
     "task",
     type=str,
-    help="digest|version",
+    help="build|digest|version",
 )
 parser.add_argument(
     "--input_filename",
@@ -32,7 +33,9 @@ parser.add_argument(
 args = parser.parse_args()
 
 success = False
-if args.task == "digest":
+if args.task == "build":
+    success = build(args.output_filename)
+elif args.task == "digest":
     success = digest(
         args.input_filename,
         args.output_filename,
