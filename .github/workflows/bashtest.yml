@@ -22,12 +22,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ca-central-1
-      - name: Install LaTeX and ps2pdf
+      - name: Install LaTeX, ps2pdf, and csquotes
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive
+          sudo apt-get install -y texlive texlive-latex-extra texlive-bibtex-extra texlive-fonts-recommended
+          sudo apt-get install -y texlive-humanities  # This package includes csquotes
           sudo apt-get install -y ghostscript
-          sudo tlmgr install csquotes
       - name: Run bash tests
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
