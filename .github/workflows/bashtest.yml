@@ -27,6 +27,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive
           sudo apt-get install -y ghostscript
+          sudo tlmgr install csquotes
       - name: Run bash tests
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
