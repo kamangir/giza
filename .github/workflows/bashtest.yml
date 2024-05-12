@@ -11,6 +11,28 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: "3.10"
-      - name: Run bash tests
+      - name: Install dependencies
         run: |
-          ./.github/workflows/bashtest.sh
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install -r requirements.txt
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ca-central-1
+      - name: Install LaTeX and ps2pdf
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive
+          sudo apt-get install -y ghostscript
+      - name: Run bash tests
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
+          echo "AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
+
+          ./.github/workflows/bashtest.sh giza
