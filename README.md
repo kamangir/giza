@@ -5,3 +5,5 @@
 ![image](./assets/giza.png)
 
 [awesome bash cli](https://github.com/kamangir/awesome-bash-cli) 🚀 (`abcli`) is an example implementation of `giza` ([svg](./assets/giza.svg)).
+
+> ℹ️ a push to this repo triggers a `giza build [publish]`.

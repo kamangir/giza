@@ -6,19 +6,12 @@ function giza() {
     if [ "$task" == "help" ]; then
         giza_build "$@"
         giza_digest "$@"
-
-        local task
-        for task in pylint pytest test; do
-            giza $task "$@"
-        done
-
         giza open_pdf "$@"
 
-        if [ "$(abcli_keyword_is $2 verbose)" == true ]; then
+        $(abcli_keyword_is $2 verbose) &&
             python3 -m giza --help
-        fi
 
-        return
+        return 0
     fi
 
     local function_name=giza_$task
