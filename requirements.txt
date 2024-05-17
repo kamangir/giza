@@ -1,4 +1,4 @@
-git+https://github.com/kamangir/awesome-bash-cli.git@current#egg=abcli
+abcli
 boto3
 numpy
 pymysql==0.10.1
