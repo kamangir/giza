@@ -1,5 +1,9 @@
 #! /usr/bin/env bash
 
+function gizai() {
+    giza "$@"
+}
+
 function giza() {
     local task=$1
 
@@ -49,6 +53,13 @@ function giza() {
     if [[ "|pylint|pytest|test|" == *"|$task|"* ]]; then
         abcli_${task} plugin=giza,$2 \
             "${@:3}"
+        return
+    fi
+
+    if [[ "|pypi|" == *"|$task|"* ]]; then
+        abcli_${task} "$2" \
+            plugin=giza,$3 \
+            "${@:4}"
         return
     fi
 

@@ -2,7 +2,7 @@ from functools import reduce
 import re
 from abcli.plugins import list_of_external
 from abcli import file
-from giza.logger import logger
+from gizai.logger import logger
 
 
 def digest(

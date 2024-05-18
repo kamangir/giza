@@ -1,4 +1,4 @@
-from giza import VERSION
+from gizai import VERSION
 
 
 def test_version():

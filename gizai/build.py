@@ -1,7 +1,6 @@
-import os
-from giza import VERSION
+from gizai import VERSION
 from abcli import file
-from giza.logger import logger
+from gizai.logger import logger
 
 
 def build(filename: str) -> bool:

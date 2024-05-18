@@ -1,8 +1,8 @@
 import argparse
-from giza import NAME, VERSION, DESCRIPTION
-from giza.build import build
-from giza.digest import digest
-from giza.logger import logger
+from gizai import NAME, VERSION, DESCRIPTION
+from gizai.build import build
+from gizai.digest import digest
+from gizai.logger import logger
 
 
 parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
