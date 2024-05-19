@@ -5,3 +5,4 @@ __pycache__
 *.log
 , .json
 revision.tex
+dist
