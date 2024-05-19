@@ -2,6 +2,6 @@ NAME = "gizai"
 
 ICON = "🔻"
 
-DESCRIPTION = f"{ICON} A recipe for AI languages."
+DESCRIPTION = f"{ICON} a recipe for AI languages."
 
-VERSION = "5.12.1"
+VERSION = "5.13.1"
