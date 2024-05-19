@@ -14,7 +14,7 @@ function giza_digest() {
 
     abcli_help >$abcli_object_path/giza.txt
 
-    python3 -m giza \
+    python3 -m gizai \
         digest \
         --list_of_applications $(abcli_clarify_input $2 all) \
         --input_filename $abcli_object_path/giza.txt \

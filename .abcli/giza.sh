@@ -13,7 +13,7 @@ function giza() {
         giza open_pdf "$@"
 
         $(abcli_keyword_is $2 verbose) &&
-            python3 -m giza --help
+            python3 -m gizai --help
 
         return 0
     fi
@@ -64,11 +64,11 @@ function giza() {
     fi
 
     if [ "$task" == "version" ]; then
-        python3 -m giza version "${@:2}"
+        python3 -m gizai version "${@:2}"
         return
     fi
 
-    python3 -m giza \
+    python3 -m gizai \
         "$task" \
         "${@:2}"
 }
