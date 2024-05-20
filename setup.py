@@ -19,6 +19,7 @@ setup(
     url="https://github.com/kamangir/giza",
     packages=[
         NAME,
+        f"{NAME}.argparse",
         f"{NAME}.digest",
         f"{NAME}.pypi",
         f"{NAME}.tex",
