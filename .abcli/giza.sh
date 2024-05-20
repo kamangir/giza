@@ -11,11 +11,7 @@ function giza() {
         giza_build "$@"
         giza_digest "$@"
         giza open_pdf "$@"
-
-        $(abcli_keyword_is $2 verbose) &&
-            python3 -m gizai --help
-
-        return 0
+        return
     fi
 
     local function_name=giza_$task
@@ -63,14 +59,7 @@ function giza() {
         return
     fi
 
-    if [ "$task" == "version" ]; then
-        python3 -m gizai version "${@:2}"
-        return
-    fi
-
-    python3 -m gizai \
-        "$task" \
-        "${@:2}"
+    python3 -m gizai "$@"
 }
 
 abcli_source_path \
