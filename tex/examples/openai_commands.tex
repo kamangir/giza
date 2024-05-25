@@ -1,15 +1,15 @@
-\subsection{\texttt{openai-cli}}
+\subsection{\texttt{openai-commands}}
 
 \texttt{@openai}~\footurl{https://github.com/kamangir/openai\_cli} is a bash cli for the OpenAI API~\footurl{https://beta.openai.com/docs/introduction}. \texttt{@openai} is a \keywordd{callable}{callables} that supports basic prompt completion through,
 %
 \begin{verbatim}
-openai_cli complete "<prompt>"
+@openai complete "<prompt>"
 \end{verbatim}
 %
 Image, \texttt{<prompt> -[<previous-image>]-> <image>.png} and \texttt{input.txt|url -DALL-E-> output.png}, and video, \texttt{<filename.txt>|url -> video.mp4}, generation are supported, as well as image transformation, \texttt{<object-1> -<prompt>-> <object-2>},
 %
 \begin{verbatim}
-openai_cli generate image [height=<576>,width=<768>] \
+@openai generate image [height=<576>,width=<768>] \
     [<image>] [<previous-image>] \
     "<prompt>"
 
@@ -18,10 +18,10 @@ DALL-E render \
     input.txt|https://allpoetry.com/16-bit-Intel-8088-chip \
     [output.png]
 
-openai_cli generate video [frame_count=16,url] \
+@openai generate video [frame_count=16,url] \
     <filename.txt|url>
 
-openai_cli transform [extension=jpg] \
+@openai transform [extension=jpg] \
     [<object-1>] [<object-2>] \
     "<prompt>" \
 \end{verbatim}
@@ -29,7 +29,7 @@ openai_cli transform [extension=jpg] \
 The Vision API~\footurl{https://platform.openai.com/docs/guides/vision} is supported,
 %
 \begin{verbatim}
-openai_cli vision "prompt" [auto|low|high,dryrun,~upload] \
+@openai vision "prompt" [auto|low|high,dryrun,~upload] \
     [Davie,~Bute,.jpg] \
     <.|object-name>
 \end{verbatim}
@@ -37,5 +37,5 @@ openai_cli vision "prompt" [auto|low|high,dryrun,~upload] \
 Tools for code generation,
 %
 \begin{verbatim}
-openai_cli completion describe <plugin-name>
+@openai completion describe <plugin-name>
 \end{verbatim}
