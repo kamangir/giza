@@ -13,4 +13,10 @@ setup(
         f"{NAME}.digest",
         f"{NAME}.tex",
     ],
+    include_package_data=True,
+    package_data={
+        NAME: [
+            ".abcli/**/*.sh",
+        ],
+    },
 )

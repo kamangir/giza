@@ -24,15 +24,15 @@ aws s3 cp $auth $s3_uri$filename $path
 Here, \texttt{\$auth} and \texttt{\$s3\_uri} are generated as,
 %
 \begin{verbatim}
-auth=$(abcli_hubble_get auth $dataset_name)
-s3_uri=$(abcli_hubble_get s3_uri $dataset_name $hubble_object_name)
+auth=$(hubble_get auth $dataset_name)
+s3_uri=$(hubble_get s3_uri $dataset_name $hubble_object_name)
 \end{verbatim}
 %
 Here, \texttt{abcli\_hubble\_get} is a Bash wrapper around a Python call.
 %
 \begin{verbatim}
-function abcli_hubble_get() {
-    python3 -m hubble get \
+function hubble_get() {
+    python3 -m hubblescope get \
         --what "$1" \
         --dataset_name "$2" \
         --object_name "$3" \
