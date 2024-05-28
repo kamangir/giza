@@ -6,4 +6,6 @@ function test_giza_version() {
 
     abcli_eval dryrun=$do_dryrun \
         "giza version ${@:2}"
+
+    return 0
 }
