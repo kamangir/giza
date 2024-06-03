@@ -6,12 +6,14 @@
 pip install gizai
 ```
 
+---
+
 🚀 [awesome bash cli](https://github.com/kamangir/awesome-bash-cli) (`abcli`) is an example implementation of `giza` ([svg](./assets/giza.svg)).
 
 ![image](./assets/giza.png)
 
 ---
 
-[![PyPI version](https://img.shields.io/pypi/v/gizai.svg)](https://pypi.org/project/gizai/)
-
 > ℹ️ a push to this repo triggers a `giza build [publish]`.
+
+[![PyPI version](https://img.shields.io/pypi/v/gizai.svg)](https://pypi.org/project/gizai/)
