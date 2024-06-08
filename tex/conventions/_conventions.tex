@@ -1,7 +1,4 @@
-\section{Conventions}
-\label{conventions}
-\label{core}
-\label{help}
+\section{Conventions}\label{conventions}\label{core}\label{help}
 
 Conventions augment and enable \keyword{expansions} or are found to be helpful.
 %
@@ -11,8 +8,7 @@ Conventions augment and enable \keyword{expansions} or are found to be helpful.
     \item \texttt{@ref} is an alias for \texttt{@cache read} that enables \texttt{\$(@ref <keyword>)} and, thus, object alias~\footnote{Refer to~\url{https://github.com/kamangir/roofAI/blob/main/roofAI/semseg/README.md} for an example.}.
 \end{itemize}  
 
-\subsection{\texttt{\$<core>\_<suffix>}}
-\label{awareness}
+\subsection{\texttt{\$<core>\_<suffix>}}\label{awareness}
 
 During initialization, the \keyword{core} and the \keyword{plugins} set a series of variables to harmonize paths and other \keyword{machine}--specific parameters to enable the same code to run on different machines simultaneously. 
 %
@@ -30,16 +26,14 @@ An alias of \texttt{env} lists these variables.
 @env [<keyword>]
 \end{verbatim}
 
-\subsection{\texttt{dryrun}}
-\label{dryrun}
+\subsection{\texttt{dryrun}}\label{dryrun}
 
 In \texttt{dryrun} mode, the low-cost and fast aspects of the command are executed, and the rest of the operation is logged instead. \texttt{@eval} is used for this operation. 
 
 \input{conventions/param_injection}
 \input{conventions/delim}
 
-\subsection{\texttt{@init}}
-\label{init}
+\subsection{\texttt{@init}}\label{init}
 
 The following expansions initialize the \keyword{core}, and therefore all \keyword{plugins}, or \texttt{<plugin-name>}.
 %
@@ -49,20 +43,17 @@ The following expansions initialize the \keyword{core}, and therefore all \keywo
 <plugin-name> init <options>
 \end{verbatim}
 
-\subsection{Plugins}
-\label{plugins}
+\subsection{Plugins}\label{plugins}
 
 A plugin generally defines one or more \keyword{callables}.
 
-\subsection{\texttt{@start}}
-\label{start}
+\subsection{\texttt{@start}}\label{start}
 
 \begin{verbatim}
 @start <options>
 \end{verbatim}
 
-\subsection{\texttt{@conda}}
-\label{conda}
+\subsection{\texttt{@conda}}\label{conda}
 
 \begin{verbatim}
 @conda create [clone=<base>,name=<environment-name>,~recreate]
@@ -74,8 +65,7 @@ A plugin generally defines one or more \keyword{callables}.
 @conda remove|rm [<environment-name>]
 \end{verbatim}
 
-\subsection{\texttt{@publish}}
-\label{publish}
+\subsection{\texttt{@publish}}\label{publish}
 
 \begin{verbatim}
 @publish [extension=<png>,filename=<filename-1+filename-2>,randomize,tar] \
