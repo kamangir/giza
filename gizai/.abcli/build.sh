@@ -33,7 +33,7 @@ function giza_build() {
         --filename $abcli_path_git/giza/tex/revision.tex
 
     [[ "$do_build" == 1 ]] &&
-        abcli_latex build dryrun=$do_dryrun,$latex_options \
+        abcli_latex build dryrun=$do_dryrun,bib=giza,$latex_options \
             $abcli_path_git/giza/tex/giza.tex
 
     mv -v \
