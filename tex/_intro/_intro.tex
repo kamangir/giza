@@ -2,14 +2,14 @@
 
 Bash is a \enquote{Unix shell and command language first released in 1989 that has been used as the default login shell for most Linux distributions}~\cite{bash}. A shell is a \enquote{macro processor that executes commands}~\cite{bash_manual}, where \enquote{macro processor means functionality where text and symbols are expanded to create larger expressions}~\cite{bash_manual}. There are seven kinds of expansions~\cite{bash_expansions} in Bash.
 
-\emph{Brace Expansion}~\footurl{https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html} is the first and the quickest to explain,
+\emph{Brace Expansion}~\cite{brace_expansion} is the first and the quickest to explain,
 %
 \begin{verbatim}
  > bash$ echo a{d,c,b}e
 ade ace abe
 \end{verbatim}
 %
-\emph{Tilde Expansion}~\footurl{https://www.gnu.org/software/bash/manual/html_node/Tilde-Expansion.html} relates to words that begin with an unquoted tilde character (\textasciitilde). \emph{Parameter and Variable Expansion}~\footurl{https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html} enable the use of variables, as \texttt{\$\{variable\}}, as well as more elaborate pattern matching forms such as \texttt{\$\{parameter/\#pattern/string\}}. \emph{Command Substitution} \enquote{allows the output of a command to replace the command itself} ~\footurl{https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html}. \emph{Arithmetic expansion}~\footurl{https://www.gnu.org/software/bash/manual/html_node/Arithmetic-Expansion.html} enables arithmetic operations using the form \texttt{\$(( expression ))
+\emph{Tilde Expansion}~\cite{tilde_expansion} relates to words that begin with an unquoted tilde character (\textasciitilde). \emph{Parameter and Variable Expansion}~\cite{shell_parameter_expansion} enable the use of variables, as \texttt{\$\{variable\}}, as well as more elaborate pattern matching forms such as \texttt{\$\{parameter/\#pattern/string\}}. \emph{Command Substitution} \enquote{allows the output of a command to replace the command itself} ~\cite{command_substitution}. \emph{Arithmetic expansion}~\footurl{https://www.gnu.org/software/bash/manual/html_node/Arithmetic-Expansion.html} enables arithmetic operations using the form \texttt{\$(( expression ))
 } and \emph{Word Splitting}\footurl{https://www.gnu.org/software/bash/manual/html_node/Word-Splitting.html} governs the splitting of the command to words. Finally, \emph{Filename Expansion}~\footurl{https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html} enables the familiar wildcard reference to filenames using `*' and `?'. In Section~\ref{expansions} we propose a set of relevant expansions to AI operations that are implemented using Python~\footurl{https://github.com/kamangir/awesome-bash-cli}.
 
 This work, first, proposes several novel Bash expansions based on command substitution~\ref{command_substitution}. Then, using typed positional arguments, we propose \keyword{options} and \keyword{objects}. Then, we discuss argument injection as a suffix~\ref{expansions_param_injection} and \emph{prefixing}~\ref{prefixing} to transform \texttt{<command>} to \texttt{<prefix> <options> <command>}
