@@ -20,7 +20,7 @@ When an object is selected, \texttt{.} expands to \texttt{<object-name>}. Simila
 @upload
 \end{verbatim}
 %
-An object may have a \emph{type}, such as model or dataset. Commands that consume objects specify a type for the argument. This enables the user to simultaneously select different types of objects and run commands on them. Here is an example from \emph{hubble}~\footurl{https://github.com/kamangir/hubble}, wherein the user selects an object, then selects a hubble dataset,  then selects an object in that dataset and downloads it.
+An object may have a \emph{type}, such as model or dataset. Commands that consume objects specify a type for the argument. This enables the user to simultaneously select different types of objects and run commands on them. Here is an example from \emph{hubble}~\cite{hubble}, wherein the user selects an object, then selects a hubble dataset,  then selects an object in that dataset and downloads it.
 %
 \begin{verbatim}
 @select
@@ -29,7 +29,7 @@ hubble select object public/u4ge/u4ge0106r
 hubble download -dryrun
 \end{verbatim}
 %
-If \texttt{<object-name>} is not provided or is given as \texttt{-}, then an object with a unique name is created and used. An object points to an S3 bucket~\footurl{https://aws.amazon.com/s3/}~\footnote{Special variables, such as \texttt{\$abcli\_object\_name}, \texttt{\$abcli\_object\_path}, \texttt{\$abcli\_hubble\_dataset\_object\_name}, \texttt{\$abcli\_object\_name\_prev2} carry the name of the selected object, its path, the name of current selected hubble dataset and the second previous selected object, respectively.}. \emph{Metadata} is information about \keyword{objects}, such as their \keyword{tag} and \keyword{relations}, and the information \keyword{cache}d about them. Objects also carry metadata as a dictionary. More generally, any path, including within the code~\footnote{for example, \url{https://github.com/kamangir/notebooks-and-scripts/blob/main/scripts/meta.yaml}.}, may carry metadata. One can \texttt{get} and \texttt{post} metadata related to a filename, an object, or a path,
+If \texttt{<object-name>} is not provided or is given as \texttt{-}, then an object with a unique name is created and used. An object points to an S3 bucket~\cite{aws_s3}~\footnote{Special variables, such as \texttt{\$abcli\_object\_name}, \texttt{\$abcli\_object\_path}, \texttt{\$abcli\_hubble\_dataset\_object\_name}, \texttt{\$abcli\_object\_name\_prev2} carry the name of the selected object, its path, the name of current selected hubble dataset and the second previous selected object, respectively.}. \emph{Metadata} is information about \keyword{objects}, such as their \keyword{tag} and \keyword{relations}, and the information \keyword{cache}d about them. Objects also carry metadata as a dictionary. More generally, any path, including within the code~\footnote{for example, \url{https://github.com/kamangir/notebooks-and-scripts/blob/main/scripts/meta.yaml}.}, may carry metadata. One can \texttt{get} and \texttt{post} metadata related to a filename, an object, or a path,
 %
 \begin{verbatim}
 @metadata get \

@@ -1,6 +1,6 @@
 \subsection{\texttt{--<keyword> <value>}}\label{expansions_param_injection}
 
-\texttt{argparse}~\footurl{https://docs.python.org/3/library/argparse.html}, \texttt{click}~\footurl{https://palletsprojects.com/p/click/}, \texttt{fire}~\footurl{https://google.github.io/python-fire/}, and many other command line parsers support the \texttt{--<keyword> <value>} convention. By ending Python calls with \texttt{"\${@:<number>}"} the rest of the arguments are captured. Here is an example,
+\texttt{argparse}~\cite{argparse}, \texttt{click}~\cite{click}, \texttt{fire}~\cite{python_fire}, and many other command line parsers support the \texttt{--<keyword> <value>} convention. By ending Python calls with \texttt{"\${@:<number>}"} the rest of the arguments are captured. Here is an example,
 %
 \begin{verbatim}
 abcli message submit \

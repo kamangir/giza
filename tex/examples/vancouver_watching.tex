@@ -1,6 +1,6 @@
 \subsection{vancouver-watching (\texttt{vanwatch})}\label{vanwatch}
 
-\texttt{vanwatch}~\footurl{https://github.com/kamangir/vancouver-watching} is a \keywordd{callable}{callables} that,
+\texttt{vanwatch}~\cite{vanwatch} is a \keywordd{callable}{callables} that,
 %
 \begin{enumerate}
     \item{terraforms the machine and the shell~\ref{conda}.}
@@ -35,7 +35,7 @@ finds the latest set of cameras discovered~\ref{vanwatch_discover} in \texttt{<a
 vanwatch process [model=<model-id>,publish] [.|<object-name>]
 \end{verbatim}
 %
-runs object detection~\footurl{https://hub.ultralytics.com/models/R6nMlK6kQjSsQ76MPqQM?tab=preview} on the images ingested~\ref{vanwatch_process} into \texttt{<object-name>} and updates \texttt{<area>.geojson}. \texttt{vanwatch process} reuses the inference in the object and completes the missing pieces. \texttt{+publish} \keywordd{tags}{tag} \texttt{object-name} for discovery by \texttt{update\_QGIS} and \keywordd{publishes}{publish} the object.
+runs object detection~\cite{ultralytics} on the images ingested~\ref{vanwatch_process} into \texttt{<object-name>} and updates \texttt{<area>.geojson}. \texttt{vanwatch process} reuses the inference in the object and completes the missing pieces. \texttt{+publish} \keywordd{tags}{tag} \texttt{object-name} for discovery by \texttt{update\_QGIS} and \keywordd{publishes}{publish} the object.
 
 \subsubsection{tags}\label{vanwatch_tags}
 
@@ -55,4 +55,4 @@ vanwatch list [area=<area>,discovery|ingest]
 vanwatch update|update_cache [area=<area>,push]
 \end{verbatim}
 %
-\texttt{update\_QGIS} uses \keywordd{@git}{git} to maintain a copy of \texttt{geojson}s in the repo~\footurl{https://github.com/kamangir/vancouver-watching/tree/main/QGIS}.
+\texttt{update\_QGIS} uses \keywordd{@git}{git} to maintain a copy of \texttt{geojson}s in the repo~\footnote{\texttt{QGIS}~\cite{vanwatch}}.
