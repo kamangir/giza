@@ -1,6 +1,6 @@
 \subsection{Commands}\label{commands}
 
-A \emph{command} is any Bash command~\footurl{https://www.gnu.org/software/bash/manual/bash.html\#Shell-Syntax} and can be represented in a Python string of characters~\footurl{https://docs.python.org/3/library/string.html}. Here is an example command,
+A \emph{command} is any Bash command~\cite{shell_sytax} and can be represented in a Python string of characters~\cite{python_string}. Here is an example command,
 %
 \begin{verbatim}
 vanwatch ingest \
@@ -30,7 +30,7 @@ Note that writing to the standard streams \emph{stdin} and \emph{stdout} are exa
 
 Commands know the machine and the shell they are running in and adjust their operation accordingly. For example, a script that submits jobs inside a docker container may download the artifacts generated through previous submissions on a user-facing machine, such as a Macbook. 
 
-The first word~\footurl{https://www.gnu.org/software/bash/manual/html_node/Shell-Syntax.html} in a command is generally the \keyword{callables}. The rest of the command is expected to follow the conventions of the callable. In this paper we propose guidelines that we later demonstrate lead to useful \keyword{expansions}.
+The first word~\cite{shell_syntax} in a command is generally the \keyword{callables}. The rest of the command is expected to follow the conventions of the callable. In this paper we propose guidelines that we later demonstrate lead to useful \keyword{expansions}.
 
 \input{concepts/commands/callables}
 \input{concepts/commands/templates}
