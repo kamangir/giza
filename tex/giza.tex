@@ -14,9 +14,11 @@
 \usepackage[english]{babel}
 \newtheorem{theorem}{Theorem}
 
-\input{consts}
 
-\title{$\nabla$ giza: A Related Set of Bash Expansions of Relevance to AI}
+\input{revision}
+\input{macros}
+
+\title{$\nabla$giza: A Related Set of Bash Expansions of Relevance to AI}
 \author{Arash Abadpour - arash@abadpour.com}
 
 \begin{document}
@@ -30,12 +32,12 @@
 \input{conventions/_conventions}
 \input{examples/_examples}
 
+% https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles
+\bibliographystyle{unsrt}
+\bibliography{giza}
+
 \appendix
 \input{concepts/_concepts}
-
-% https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles
-%\bibliographystyle{unsrt}
-%\bibliography{giza}
 
 \input{meta/background}
 

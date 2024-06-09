@@ -1,5 +1,4 @@
-\subsection{\texttt{@git}}
-\label{git}
+\subsection{\texttt{@git}}\label{git}
 
 The \keyword{core} and the \keyword{plugins} are maintained in repositories. There are also other repositories of interest.
 %
@@ -21,7 +20,7 @@ change directory to \texttt{<repo-name>}.
 @git <repo-name> <command>
 \end{verbatim}
 %
-runs \texttt{<command>} in \texttt{<repo-name>}. The following expansions show the status of a repository, create a branch in it, or push, or pull from it. In the absence of \texttt{<repo-name>}, \texttt{status} and \texttt{pull} default to all repositories~\footnote{This design is different from the implementation in~\abcli{bash/plugins/git.sh}.}.
+runs \texttt{<command>} in \texttt{<repo-name>}. The following expansions show the status of a repository, create a branch in it, or push, or pull from it. In the absence of \texttt{<repo-name>}, \texttt{status} and \texttt{pull} default to all repositories~\citeabcli{abcli/.abcli/plugins/git.sh}.
 %
 \begin{verbatim}
 @git status [all|<repo-name>]
