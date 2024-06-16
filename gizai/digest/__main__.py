@@ -2,7 +2,7 @@ import argparse
 from gizai.digest import NAME, VERSION
 from gizai.digest.functions import digest
 from gizai.logger import logger
-from blueness.argparse.generic import ending
+from blueness.argparse.generic import sys_exit
 
 
 parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
@@ -36,4 +36,4 @@ if args.task == "digest":
 else:
     success = None
 
-ending(logger, NAME, args.task, success)
+sys_exit(logger, NAME, args.task, success)

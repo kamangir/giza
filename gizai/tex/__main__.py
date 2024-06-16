@@ -2,7 +2,7 @@ import argparse
 from gizai.tex import NAME, VERSION
 from gizai.tex.functions import build
 from gizai.logger import logger
-from blueness.argparse.generic import ending
+from blueness.argparse.generic import sys_exit
 
 
 parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
@@ -23,4 +23,4 @@ if args.task == "build":
 else:
     success = None
 
-ending(logger, NAME, args.task, success)
+sys_exit(logger, NAME, args.task, success)
