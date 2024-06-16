@@ -2,6 +2,7 @@ import argparse
 from gizai.digest import NAME, VERSION
 from gizai.digest.functions import digest
 from gizai.logger import logger
+from blueness.argparse.generic import ending
 
 
 parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
@@ -33,7 +34,6 @@ if args.task == "digest":
         args.list_of_applications,
     )
 else:
-    logger.error(f"-{NAME}: {args.task}: command not found.")
+    success = None
 
-if not success:
-    logger.error(f"-{NAME}: {args.task}: failed.")
+ending(logger, NAME, args.task, success)

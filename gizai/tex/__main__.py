@@ -2,6 +2,7 @@ import argparse
 from gizai.tex import NAME, VERSION
 from gizai.tex.functions import build
 from gizai.logger import logger
+from blueness.argparse.generic import ending
 
 
 parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
@@ -20,7 +21,6 @@ success = False
 if args.task == "build":
     success = build(args.filename)
 else:
-    logger.error(f"-{NAME}: {args.task}: command not found.")
+    success = None
 
-if not success:
-    logger.error(f"-{NAME}: {args.task}: failed.")
+ending(logger, NAME, args.task, success)
