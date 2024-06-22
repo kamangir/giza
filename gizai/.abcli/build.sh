@@ -7,7 +7,7 @@ function giza_build() {
 
     if [ $(abcli_option_int "$options" help 0) == 1 ]; then
         local options="$EOP~build,~download,dryrun,~publish,~upload$EOPE"
-        local latex_options=$abcli_latex_build_options
+        local latex_options=$EOP$abcli_latex_build_options$EOPE
         abcli_show_usage "giza build$ABCUL$options$ABCUL$latex_options" \
             "build giza.pdf."
         return
