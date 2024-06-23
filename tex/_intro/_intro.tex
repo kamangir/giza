@@ -1,18 +1,5 @@
-\section{Introduction}\label{intro}
+\section{Introduction}\label{intro}\label{shell}
 
-Bash is a \enquote{Unix shell and command language first released in 1989 that has been used as the default login shell for most Linux distributions}~\cite{bash}. A shell is a \enquote{macro processor that executes commands}~\cite{bash_manual}, where \enquote{macro processor means functionality where text and symbols are expanded to create larger expressions}~\cite{bash_manual}. There are seven kinds of expansions~\cite{bash_expansions} in Bash.
-
-\emph{Brace Expansion}~\cite{brace_expansion} is the first and the quickest to explain,
-%
-\begin{verbatim}
- > bash$ echo a{d,c,b}e
-ade ace abe
-\end{verbatim}
-%
-\emph{Tilde Expansion}~\cite{tilde_expansion} relates to words that begin with an unquoted tilde character (\textasciitilde). \emph{Parameter and Variable Expansion}~\cite{shell_parameter_expansion} enable the use of variables, as \texttt{\$\{variable\}}, as well as more elaborate pattern matching forms such as \texttt{\$\{parameter/\#pattern/string\}}. \emph{Command Substitution} \enquote{allows the output of a command to replace the command itself} ~\cite{command_substitution}. \emph{Arithmetic expansion}~\cite{arithmetic_expansion} enables arithmetic operations using the form \texttt{\$(( expression ))} and \emph{Word Splitting}~\cite{word_splitting} governs the splitting of the command to words. Finally, \emph{Filename Expansion}~\cite{filename_expansion} enables the familiar wildcard reference to filenames using `*' and `?'. In Section~\ref{expansions} we propose a set of relevant expansions to AI operations that are implemented using Python.
-
-This work, first, proposes several novel Bash expansions based on command substitution~\ref{command_substitution}. Then, using typed positional arguments, we propose \keyword{options} and \keyword{objects}. Then, we discuss argument injection as a suffix~\ref{expansions_param_injection} and \emph{prefixing}~\ref{prefixing} to transform \texttt{<command>} to \texttt{<prefix> <options> <command>}
-
-Then, we discuss the \keyword{core}, which is the \kCallable that is \texttt{source}'d in a startup file~\cite{bash_startup_files}. The \texttt{core} loads the \keyword{plugins} that add branches to the syntax. We then discuss the \kSeed; the notion that code generates code that is transferred into another machine through the clipboard, a key, or a \texttt{scp}~\cite{scp}--style protocol to terraform the machine and run a command~\ref{commands}. \kStart is a necessity; the first intelligent command to start the day with. \kStart behaves according to the machine it runs on and other aspects of the state~\ref{machine}. On a MacBook, \texttt{@start} logs in and starts an \texttt{ssh} session to the default machine. On that machine, \texttt{@start} starts the docker container~\footnote{What \texttt{@start} does is decided by its immediate user; the tool is adapted to the tool user.}. We then discuss \kGit.
-
-This work also contributes a set of conventions~\ref{conventions} that enable more effective use of the proposed expansions, such as \keywordd{<command> help}{help} and \keywordd{@init}{init}.
+\input{_intro/computation_model}
+\input{_intro/bash_expansions}
+\input{_intro/contributions

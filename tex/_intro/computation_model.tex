@@ -1,0 +1,13 @@
+\section{Computational Model}\label{computation_model}
+
+A group of \keyword{operator}s create and maintain the \keyword{core} and the \keyword{plugins} as one or more repositories, using a system such as \keyword{git}. Each operator can access a set of \keyword{machine}s and create \keyword{shell}s on them to run \keyword{command}s. 
+
+% wip: great! continue!
+
+
+The operator can modify any of the repositories that they have access to following a collective peer-reviewed \texttt{pull-request}~\cite{pull_request} process.
+
+The operators act asynchronously while communicating with each other. Multiple operators may simultaneously use the same machine, and the same operator may simultaneously use multiple machines. Only one operator uses a shell at one time. 
+
+Some machines are exogenous to this model, yet the operators can access their states in read or write mode. Cloud storage~\cite{aws_s3} and compute resources~\cite{aws_batch} are examples of these machines.
+
