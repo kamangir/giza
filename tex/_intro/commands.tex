@@ -1,0 +1,36 @@
+\subsection{Commands}\label{command}\label{commands}
+
+A \emph{command} is any Bash command~\cite{shell_syntax} and can be represented in a Python string of characters~\cite{python_string}. Here is an example command,
+%
+\begin{verbatim}
+vanwatch ingest \
+    vancouver \
+    dryrun \
+    . \
+    --count 12
+\end{verbatim}
+%
+The above command and the one below are \emph{identical}.
+%
+\begin{verbatim}
+vanwatch ingest vancouver dryrun . --count 12
+\end{verbatim}
+%
+Two commands are identical if running them on two \keyword{machines} in identical states yields the same states. In theory, the state of any machine depends on the state of any other machine, and it is almost impossible to run two commands in identical states, including the time of execution. Therefore, when we refer to two identical commands, we either use a derivation-based proof of identity or consider a validation in a limited ``relevant'' subset of the state representation.
+
+For any \keyword{shell} on any machine, at known states, there is a mapping between the set of all commands and $\{True,False\}$ that we address as ``whether the command is found''. In Bash, for example, the following message is printed when a command ``is not found''.
+%
+\begin{verbatim}
+-bash: void: command not found
+\end{verbatim}
+%
+For convenience, we address a command ``that is found'' as a \emph{valid} command and \emph{invalid} otherwise.
+
+Every command starts with a \keyword{callable}, continues with a prescribed sequence of identifiers, and ends with \kArguments. The type of each identifier is known based on the syntax of the command until that identifier, and is one of the following,
+
+\begin{itemize}
+    \item a string picked from a known list~\cite{python_eunum}, generally identifiying a \emph{task}.
+    \item a numerical \emph{value} or a filename.
+    \item an \keyword{options}.
+    \item an \keyword{object}.
+\end{itemize}
