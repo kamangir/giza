@@ -1,7 +1,0 @@
-\subsection{Machines and Shells}\label{machine}\label{machines}
-
-A \emph{machine} is a state machine that is connected to many other machines and shares some of its state with them for read and write. A \emph{shell} is a stateful access mechanism to a machine that an \keyword{operator} uses to run \keyword{commands}. Running a command in a shell can modify the state of the shell, the machine on which the shell is running, and potentially the states of all other machines. 
-
-Machines and shells may be restarted by an operator or by code. After a restart, machines and shells maintain some of their state. 
-
-Two examples of machines are a Raspberry Pi that runs Linux and is connected to the AWS infrastructure~\cite{aws} and a docker container running in AWS Batch~\cite{aws_batch}. GNU Bash~\cite{gnu_bash} is an example of a shell.
