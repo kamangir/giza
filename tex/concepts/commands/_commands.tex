@@ -1,4 +1,4 @@
-\subsection{Commands}\label{commands}
+\subsection{Commands}\label{command}\label{commands}
 
 A \emph{command} is any Bash command~\cite{shell_syntax} and can be represented in a Python string of characters~\cite{python_string}. Here is an example command,
 %
@@ -26,11 +26,10 @@ For any shell on any machine, at known states, there is a mapping between the se
 %
 Note that writing to the standard streams \emph{stdin} and \emph{stdout} are examples of state changes in the shell and the machine. 
 
-\emph{Terraforming} is the process of running commands that modify the state of the shell and the machine in ways that make additional commands found. Terraforming is also intended to modify the state change caused by a set of commands favourable to the interests of an operator. For convenience, we address a command ``that is found'' as a \emph{valid} command and \emph{invalid} otherwise. Terraforming may also ensure the states of the machine and the shell after a restart. Terraforming generally includes a modification of \emph{bashrc}, \emph{bash\_profile}, \emph{screenrc}, and \emph{desktop} files.
-
 Commands know the machine and the shell they are running in and adjust their operation accordingly. For example, a script that submits jobs inside a docker container may download the artifacts generated through previous submissions on a user-facing machine, such as a Macbook. 
 
 The first word~\cite{shell_syntax} in a command is generally the \keyword{callables}. The rest of the command is expected to follow the conventions of the callable. In this paper we propose guidelines that we later demonstrate lead to useful \keyword{expansions}.
 
 \input{concepts/commands/callables}
+\input{concepts/commands/terraforming}
 \input{concepts/commands/templates}
