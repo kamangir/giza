@@ -1,6 +1,18 @@
 \subsection{Command Substitution}\label{command_substitution}
 
-During the execution of the command \texttt{<part-1>\$(<sub-command>)<part-2>}, \texttt{<sub-command>} is executed and its outcome, \texttt{<outcome>}, is used to generate the updated command as \texttt{<part-1><outcome><part-2>}, which is then executed~\cite{command_substitution}. Here is an example from \keyword{roofAI},
+During the execution of the command,
+%
+\begin{verbatim}
+<part-1> $(<sub-command>) <part-2>
+\end{verbatim}
+%
+\texttt{<sub-command>} is executed and its outcome, \texttt{<outcome>}, is used to generate the updated command as,
+%
+\begin{verbatim}
+<part-1> <outcome> <part-2>
+\end{verbatim}
+%
+which is then executed~\cite{command_substitution}. Here is an example from \keyword{roofAI},
 %
 \begin{verbatim}
 roofAI semseg predict \
@@ -17,17 +29,13 @@ Command substitution is useful for generating the command components through Pyt
 For example, here is the command to access \texttt{ibrma2f2q\_drc.jpg} in object \texttt{public/ibrm/ibrma2f2q} in the dataset \texttt{hst},
 %
 \begin{verbatim}
-aws s3 cp $auth $s3_uri$filename $path
+aws s3 cp \
+    $(hubble_get auth $dataset_name) \
+    $(hubble_get s3_uri $dataset_name $hubble_object_name)$filename \
+    $path
 \end{verbatim}
 %
-Here, \texttt{\$auth} and \texttt{\$s3\_uri} are generated as,
-%
-\begin{verbatim}
-auth=$(hubble_get auth $dataset_name)
-s3_uri=$(hubble_get s3_uri $dataset_name $hubble_object_name)
-\end{verbatim}
-%
-Here, \texttt{abcli\_hubble\_get} is a Bash wrapper around a Python call.
+where, \texttt{hubble\_get} is a Bash wrapper around a Python call.
 %
 \begin{verbatim}
 function hubble_get() {
