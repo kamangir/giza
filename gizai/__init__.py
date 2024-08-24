@@ -4,7 +4,7 @@ ICON = "🔻"
 
 DESCRIPTION = f"{ICON} a recipe for AI languages."
 
-VERSION = "5.98.1"
+VERSION = "5.99.1"
 
 REPO_NAME = "giza"
 
