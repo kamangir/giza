@@ -2,7 +2,7 @@ blueness
 abcli
 boto3
 numpy
-pymysql==0.10.1
+pymysql
 pyyaml
 pylint
 pytest
