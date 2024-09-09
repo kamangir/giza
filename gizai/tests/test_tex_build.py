@@ -1,5 +1,6 @@
+from blue_objects import objects
+
 from gizai.tex.functions import build
-from abcli.modules import objects
 
 
 def test_build():
