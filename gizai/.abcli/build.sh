@@ -22,7 +22,7 @@ function giza_build() {
     local do_upload=$(abcli_option_int "$options" upload $(abcli_not $do_dryrun))
 
     local object_name=$GIZA_PUBLISHED_OBJECT
-    local object_path=$abcli_object_root/$object_name
+    local object_path=$ABCLI_OBJECT_ROOT/$object_name
     mkdir -pv $object_path
 
     [[ "$do_download" == 1 ]] &&
