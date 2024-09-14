@@ -18,5 +18,5 @@ function giza_open_pdf() {
         abcli_download - $object_name
 
     abcli_eval ,$options \
-        open $abcli_object_root/$object_name/$pdf.pdf
+        open $ABCLI_OBJECT_ROOT/$object_name/$pdf.pdf
 }

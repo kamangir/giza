@@ -1,5 +1,5 @@
+from blue_objects import file
 from gizai import VERSION
-from abcli import file
 
 
 def build(filename: str) -> bool:
