@@ -2,7 +2,7 @@ from functools import reduce
 import re
 
 from blue_objects import file
-from abcli.plugins import list_of_external
+from abcli.plugins.functions import list_of_external
 
 from gizai.logger import logger
 

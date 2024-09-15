@@ -1,8 +1,13 @@
 import argparse
-from gizai.digest import NAME, VERSION
+
+from blueness import module
+from blueness.argparse.generic import sys_exit
+
+from gizai import NAME, VERSION
 from gizai.digest.functions import digest
 from gizai.logger import logger
-from blueness.argparse.generic import sys_exit
+
+NAME = module.name(__file__, NAME)
 
 
 parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
