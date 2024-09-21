@@ -3,14 +3,14 @@ import argparse
 from blueness import module
 from blueness.argparse.generic import sys_exit
 
-from gizai import NAME, VERSION
+from gizai import NAME
 from gizai.tex.functions import build
 from gizai.logger import logger
 
 NAME = module.name(__file__, NAME)
 
 
-parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
+parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
