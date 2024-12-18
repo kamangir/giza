@@ -10,7 +10,7 @@ setup(
     description=DESCRIPTION,
     packages=[
         NAME,
-        f"{NAME}.digest",
+        f"{NAME}.help",
         f"{NAME}.tex",
     ],
     include_package_data=True,
