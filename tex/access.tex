@@ -1,11 +1,9 @@
 \section{Access}
 
-\marginpar{Computational Model}
-A group of operators create and maintain one or more repositories, using a system such as \keyword{git} and following a collective peer-reviewed \emph{pull-request}~\cite{pull_request} process. Each operator can access a set of \keyword{machines} and create \keyword{shells} on them to run \keyword{commands} to produce high value \keyword{objects}. Each \emph{operator} attempts to maximize an objective function that depends on the state of multiple machines.
+\marginpar{Operators}
+A group of operators maintain a growing space of \keyword{command}s in a set of repositories, using a system such as \keyword{git} and following a collective peer-reviewed \emph{pull-request}~\cite{pull_request} process. Each operator can access a set of \keyword{machines} and create \keyword{shells} on them to run \keyword{commands} to produce \keyword{objects} which have an implicit or explicit value. The objective of every operator is to increase the value of the objects that they generate.
 
-The operators act asynchronously while communicating with each other. Multiple operators may simultaneously use the same machine, and the same operator may simultaneously use multiple machines. Only one operator uses a shell at one time. 
-
-Some machines are exogenous to this model, yet the operators can access their states in read or write modes. Cloud storage~\cite{aws_s3} and compute resources~\cite{aws_batch} are examples of these machines.
+The operators act asynchronously while communicating with each other. Multiple operators may simultaneously use the same machine, and the same operator may simultaneously use multiple machines. Only one operator uses a shell at one time. Some machines are exogenous to this model, yet the operators can access their states in read or write modes. Cloud storage~\cite{aws_s3} and compute resources~\cite{aws_batch} are examples of these machines.
 
 \marginpar{Machines}
 A \emph{machine} is a state machine that is connected to many other machines and shares some of its state with them for read and write. A \emph{shell} is a stateful access mechanism to a machine that an \keyword{operator} uses to run \keyword{commands}. Running a command in a shell can potentially modify the state of all other machines. Machines and shells may be restarted through running commands. After a restart, machines and shells maintain some of their state. Two examples of machines are a Raspberry Pi~\cite{rpi} that runs Linux and is connected to the AWS infrastructure~\cite{aws} and a docker container~\cite{docker} running in AWS Batch~\cite{aws_batch}. GNU Bash~\cite{gnu_bash} is an example of a shell.
@@ -14,20 +12,10 @@ A \emph{machine} is a state machine that is connected to many other machines and
 Data within the system is accessed as \emph{objects}. An object is a uniquely named collection of files and folders and can be downloaded or uploaded, in part or as a whole. Some objects already exist in the environment. For example, an item in a STAC collection (a datacube) or a dataset in kaggle are objects. The aim of the system is to produce high value objects, potentially using other objects. A curated dataset, a model trained on it, and the model's predictions on a datacube, are all objects.
 
 \marginpar{Commands}
-Objects are produced through running \emph{commands}. A command is a string of characters that is meaningful to Bash~\cite{gnu_bash}. 
-
-\marginpar{Bash}
-Bash is a \enquote{Unix shell and command language first released in 1989 that has been used as the default login shell for most Linux distributions}~\cite{bash}. A shell is a \enquote{macro processor that executes commands}~\cite{bash_manual}, where \enquote{macro processor means functionality where text and symbols are expanded to create larger expressions}~\cite{bash_manual}. There are seven kinds of expansions~\cite{bash_expansions_ref} in Bash.
+Objects are produced through running \emph{commands}. A command is a string of characters that is meaningful to Bash~\cite{gnu_bash}. Bash is a \enquote{Unix shell and command language first released in 1989 that has been used as the default login shell for most Linux distributions}~\cite{bash}. A shell is a \enquote{macro processor that executes commands}~\cite{bash_manual}, where \enquote{macro processor means functionality where text and symbols are expanded to create larger expressions}~\cite{bash_manual}. There are seven kinds of expansions~\cite{bash_expansions_ref} in Bash.
 
 \marginpar{Expansions}
-\emph{Brace Expansion}~\cite{brace_expansion} is the first and the quickest to explain,
-%
-\begin{verbatim}
- > bash$ echo a{d,c,b}e
-ade ace abe
-\end{verbatim}
-%
-\emph{Tilde Expansion}~\cite{tilde_expansion} relates to words that begin with an unquoted tilde character (\textasciitilde). \emph{Parameter and Variable Expansion}~\cite{shell_parameter_expansion} enable the use of variables, as \texttt{\$\{variable\}}, as well as more elaborate pattern matching forms such as \texttt{\$\{parameter/\#pattern/string\}}. \emph{Command Substitution} \enquote{allows the output of a command to replace the command itself} ~\cite{command_substitution}. \emph{Arithmetic expansion}~\cite{arithmetic_expansion} enables arithmetic operations using the form \texttt{\$(( expression ))} and \emph{Word Splitting}~\cite{word_splitting} governs the splitting of the command to words. Finally, \emph{Filename Expansion}~\cite{filename_expansion} enables the familiar wildcard reference to filenames using `*' and `?'.
+\emph{Brace Expansion}~\cite{brace_expansion} expands `a{d,c,b}e' to `ade ace abe'. \emph{Tilde Expansion}~\cite{tilde_expansion} relates to words that begin with an unquoted tilde character (\textasciitilde). \emph{Parameter and Variable Expansion}~\cite{shell_parameter_expansion} enable the use of variables, as \texttt{\$\{variable\}}, as well as more elaborate pattern matching forms such as \texttt{\$\{parameter/\#pattern/string\}}. \emph{Command Substitution} \enquote{allows the output of a command to replace the command itself} ~\cite{command_substitution}. \emph{Arithmetic expansion}~\cite{arithmetic_expansion} enables arithmetic operations using the form \texttt{\$(( expression ))} and \emph{Word Splitting}~\cite{word_splitting} governs the splitting of the command to words. Finally, \emph{Filename Expansion}~\cite{filename_expansion} enables the familiar wildcard reference to filenames using `*' and `?'.
 
 \marginpar{Callables}
 A \emph{callable} is a valid command with no space and control operators~\cite{control_operators}. Some of the well-known callables are \emph{git}~\cite{git}, \emph{docker}~\cite{docker}, \emph{pushd}~\cite{pushd}, and \emph{nano}~\cite{nano}. 
