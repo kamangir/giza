@@ -2,10 +2,12 @@ NAME = "gizai"
 
 ICON = "🔻"
 
-DESCRIPTION = f"{ICON} a recipe for AI languages."
+DESCRIPTION = f"{ICON} A Mathematical model for AI languages."
 
-VERSION = "5.115.1"
+VERSION = "7.18.1"
 
 REPO_NAME = "giza"
 
 MARQUEE = "https://github.com/kamangir/giza/raw/main/assets/giza.png"
+
+ALIAS = "giza"
