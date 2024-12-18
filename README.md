@@ -1,6 +1,8 @@
 # 🔻 giza (gizai)
 
-📜 read the working paper: "Access, Automation, Analytics, AI" - ([tex](./tex/giza.tex)), ([pdf](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza.pdf)).
+📜 read the working paper: "[Access, Automation, Analytics, AI](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza.pdf)" - ([tex](./tex/giza.tex)).
+
+legacy version (`5-115-1`): "[A Related Set of Bash Expansions of Relevance to AI](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza-5-115-1.pdf)".
 
 ---
 
@@ -11,9 +13,6 @@
 ---
 
 > ℹ️ a push to this repo triggers a `giza build [publish]`.
-
-legacy version: "[A Related Set of Bash Expansions of Relevance to AI](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza-5-115-1.pdf)".
-
 
 ```bash
 pip install gizai
