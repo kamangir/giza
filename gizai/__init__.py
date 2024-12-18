@@ -2,9 +2,9 @@ NAME = "gizai"
 
 ICON = "🔻"
 
-DESCRIPTION = f"{ICON} a recipe for AI languages."
+DESCRIPTION = f"{ICON} A Mathematical model for AI languages."
 
-VERSION = "7.5.1"
+VERSION = "7.6.1"
 
 REPO_NAME = "giza"
 
