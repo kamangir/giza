@@ -4,7 +4,7 @@ ICON = "🔻"
 
 DESCRIPTION = f"{ICON} A Mathematical model for AI languages."
 
-VERSION = "7.16.1"
+VERSION = "7.17.1"
 
 REPO_NAME = "giza"
 
