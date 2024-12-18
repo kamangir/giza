@@ -1,0 +1,12 @@
+\subsection{Bash Expansions}\label{bash_expansions}
+
+Bash is a \enquote{Unix shell and command language first released in 1989 that has been used as the default login shell for most Linux distributions}~\cite{bash}. A shell is a \enquote{macro processor that executes commands}~\cite{bash_manual}, where \enquote{macro processor means functionality where text and symbols are expanded to create larger expressions}~\cite{bash_manual}. There are seven kinds of expansions~\cite{bash_expansions_ref} in Bash.
+
+\emph{Brace Expansion}~\cite{brace_expansion} is the first and the quickest to explain,
+%
+\begin{verbatim}
+ > bash$ echo a{d,c,b}e
+ade ace abe
+\end{verbatim}
+%
+\emph{Tilde Expansion}~\cite{tilde_expansion} relates to words that begin with an unquoted tilde character (\textasciitilde). \emph{Parameter and Variable Expansion}~\cite{shell_parameter_expansion} enable the use of variables, as \texttt{\$\{variable\}}, as well as more elaborate pattern matching forms such as \texttt{\$\{parameter/\#pattern/string\}}. \emph{Command Substitution} \enquote{allows the output of a command to replace the command itself} ~\cite{command_substitution}. \emph{Arithmetic expansion}~\cite{arithmetic_expansion} enables arithmetic operations using the form \texttt{\$(( expression ))} and \emph{Word Splitting}~\cite{word_splitting} governs the splitting of the command to words. Finally, \emph{Filename Expansion}~\cite{filename_expansion} enables the familiar wildcard reference to filenames using `*' and `?'.
