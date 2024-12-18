@@ -1,10 +1,6 @@
 # 🔻 giza (gizai)
 
-📜 read the working paper: "A Related Set of Bash Expansions of Relevance to AI" - ([tex](./tex/giza.tex)), ([pdf](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza.pdf)).
-
-```bash
-pip install gizai
-```
+📜 read the working paper: "Access, Automation, Analytics, AI" - ([tex](./tex/giza.tex)), ([pdf](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza.pdf)).
 
 ---
 
@@ -16,4 +12,11 @@ pip install gizai
 
 > ℹ️ a push to this repo triggers a `giza build [publish]`.
 
-[![PyPI version](https://img.shields.io/pypi/v/gizai.svg)](https://pypi.org/project/gizai/)
+legacy version: "[A Related Set of Bash Expansions of Relevance to AI](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza-5-115-1.pdf)".
+
+
+```bash
+pip install gizai
+```
+
+[![pylint](https://github.com/kamangir/giza/actions/workflows/pylint.yml/badge.svg)](https://github.com/kamangir/giza/actions/workflows/pylint.yml) [![pytest](https://github.com/kamangir/giza/actions/workflows/pytest.yml/badge.svg)](https://github.com/kamangir/giza/actions/workflows/pytest.yml) [![bashtest](https://github.com/kamangir/giza/actions/workflows/bashtest.yml/badge.svg)](https://github.com/kamangir/giza/actions/workflows/bashtest.yml) [![PyPI version](https://img.shields.io/pypi/v/gizai.svg)](https://pypi.org/project/gizai/) [![PyPI - Downloads](https://img.shields.io/pypi/dd/gizai)](https://pypistats.org/packages/gizai)
