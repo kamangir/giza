@@ -3,24 +3,12 @@ Command substitution~\ref{command_substitution} is useful in \keyword{for} loops
 %
 \begin{verbatim}
     local object_name
-    for object_name in $(<command-1> --delim space); do
+    for object_name in $(<command-1> \
+        --count 2 \
+        --offset 1 \
+        --delim space); do
         <command-2> $object_name <args>
     done
 \end{verbatim}
 %
-Here is one way to compose the \keyword{.py} cli,
-%
-\begin{verbatim}
-...
-parser.add_argument("--count", type=int, default=-1)
-parser.add_argument("--delim", type=str, default=",")
-...
-delim = " " if args.delim == "space" else args.delim
-...
-elif args.task == "foo":
-    output = foo()
-    if count != -1:
-        output = output[:count]
-    print(delim.join(count))
-...
-\end{verbatim}
+We recommend using the three arguments \keyword{--count}, \keyword{--delim}, and \keyword{--offset}.

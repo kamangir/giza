@@ -1,20 +1,10 @@
 \marginpar{\keyword{--<keyword> <value>}}
-\keyword{argparse}~\cite{argparse}, \keyword{click}~\cite{click}, \keyword{fire}~\cite{python_fire}, and many other command line parsers support the \keyword{--<keyword> <value>} convention. By ending calls to Python with \keyword{"\${@:<number>}"} the rest of the arguments are captured. Here is an example,
+\keyword{argparse}~\cite{argparse}, \keyword{click}~\cite{click}, \keyword{fire}~\cite{python_fire}, and many other command line parsers support the \keyword{--<keyword> <value>} convention. By ending calls to Python with \keyword{"\${@:<number>}"} these arguments are captured. Here is an example,
 %
 \begin{verbatim}
-abcli message submit \
+@message submit \
     [--data <data>] \
     [--filename <filename>] \
     [--recipient <host_1,host_2>] \
     [--subject <subject>]
-\end{verbatim}
-%
-This is achieved through~\citeabcli{bash/plugins/message.sh},
-%
-\begin{verbatim}
-python3 -m abcli.plugins.message \
-    submit_object \
-    --object_name "$object_name" \
-    --recipient "$recipient" \
-    "${@:5}"
 \end{verbatim}
