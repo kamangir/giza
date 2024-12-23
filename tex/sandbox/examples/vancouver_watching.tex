@@ -1,6 +1,6 @@
 \subsection{vancouver-watching (\texttt{vanwatch})}\label{vanwatch}
 
-\cVanwatch is a \kCallable that,
+\keyword{vanwatch}~\cite{vanwatch} is a callable that,
 %
 \begin{enumerate}
     \item{\keyword{terraforms} the machine and the shell~\ref{conda}.}
@@ -17,7 +17,7 @@ Cameras are represented in different formats in different areas.
 vanwatch discover [area=<area>] [-|<object-name>] [<args>]
 \end{verbatim}
 %
-discovers the cameras in \texttt{<area>} and stores them in \texttt{<area>.geojson} in the \keywordd{object}{objects} \texttt{<object-name>} and \keywordd{tags}{tag} the object for discovery by \texttt{ingest}~\ref{vanwatch_ingest} and \texttt{list}~\ref{vanwatch_tags}. 
+discovers the cameras in \texttt{<area>} and stores them in \texttt{<area>.geojson} in the object \texttt{<object-name>} and tags the object for discovery by \texttt{ingest}~\ref{vanwatch_ingest} and \texttt{list}~\ref{vanwatch_tags}. 
 
 \subsubsection{\texttt{vanwatch ingest}}\label{vanwatch_ingest}
 
@@ -35,7 +35,7 @@ finds the latest set of cameras discovered~\ref{vanwatch_discover} in \texttt{<a
 vanwatch process [model=<model-id>,publish] [.|<object-name>]
 \end{verbatim}
 %
-runs object detection~\cite{ultralytics} on the images ingested~\ref{vanwatch_process} into \texttt{<object-name>} and updates \texttt{<area>.geojson}. \texttt{vanwatch process} reuses the inference in the object and completes the missing pieces. \texttt{+publish} \keywordd{tags}{tag} \texttt{object-name} for discovery by \texttt{update\_QGIS} and \keywordd{publishes}{publish} the object.
+runs object detection~\cite{ultralytics} on the images ingested~\ref{vanwatch_process} into \texttt{<object-name>} and updates \texttt{<area>.geojson}. \texttt{vanwatch process} reuses the inference in the object and completes the missing pieces. \texttt{+publish} tags \texttt{object-name} for discovery by \texttt{update\_QGIS} and publishes the object.
 
 \subsubsection{tags}\label{vanwatch_tags}
 
@@ -55,4 +55,4 @@ vanwatch list [area=<area>,discovery|ingest]
 vanwatch update|update_cache [area=<area>,push]
 \end{verbatim}
 %
-\texttt{update\_QGIS} uses \keywordd{@git}{git} to maintain a copy of \texttt{geojson}s in the repo~\footnote{\texttt{QGIS}~\cite{vanwatch}}.
+\texttt{update\_QGIS} uses \keyword{@git} to maintain a copy of \texttt{geojson}s in the repo~\footnote{\texttt{QGIS}~\cite{vanwatch}}.
