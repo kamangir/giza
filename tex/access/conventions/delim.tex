@@ -1,5 +1,5 @@
 \marginpar{\keyword{--delim space}}
-Command substitution~\cite{command_substitution} is useful in \keyword{for} loops and other usages where a delimited list of keywords is consumed.
+Command substitution~\cite{command_substitution} is useful in \keyword{for} loops and other usages where a delimited list of keywords is generated and consumed. We recommend controlling these list using the three arguments \keyword{--count}, \keyword{--delim}, and \keyword{--offset}.
 %
 \begin{verbatim}
     local object_name
@@ -8,7 +8,6 @@ Command substitution~\cite{command_substitution} is useful in \keyword{for} loop
         --offset 1 \
         --delim space); do
         <command-2> $object_name <args>
+        [[ $? -ne 0 ]] && return 1
     done
 \end{verbatim}
-%
-We recommend using the three arguments \keyword{--count}, \keyword{--delim}, and \keyword{--offset}.

@@ -11,7 +11,7 @@ Options is implemented using basic Python~\citeabcli{abcli/options} and, therefo
 \begin{verbatim}
 value=$(@option "$options" <keyword> [<default>])
 
-value=$(@option::bool "$options" <keyword> [0|1])
+value=$(@option::bool "$options" <keyword> 0 | 1)
 
 value=$(@option::choice "$options" <comma,separated,list> <default>)
 \end{verbatim}
