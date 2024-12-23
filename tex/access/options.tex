@@ -6,7 +6,7 @@ An options is a string representation of a dictionary, such as,
 <keyword-1>=<value-1>,<keyword-2>=<value-2>,...,<keyword-3>,-<keyword-4>},...
 \end{verbatim}
 %
-Options is implemented using basic Python~\citeabcli{abcli/options} and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\ref{command_substitution}. In practice, the two additional expansions \keyword{@option::bool} and \keyword{@option::choice} cast the output to booleans and select it from a list, respectively.
+Options is implemented using basic Python~\citeabcli{abcli/options} and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\cite{command_substitution}. In practice, the two additional expansions \keyword{@option::bool} and \keyword{@option::choice} cast the output to boolean and select it from a list, respectively.
 %
 \begin{verbatim}
 value=$(@option "$options" <keyword> [<default>])
