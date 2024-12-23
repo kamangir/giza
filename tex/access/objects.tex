@@ -1,2 +1,90 @@
 \marginpar{Objects}
 Data within the system is accessed as objects. An object is a uniquely named collection of files and folders and can be downloaded or uploaded, in part or as a whole. Some objects already exist in the environment. For example, an item in a STAC collection~\cite{stac_intro_tutorial} (a datacube) or a dataset in kaggle~\cite{chen2019-AIRD-dataset} are objects. A curated dataset, a model trained on it, and the model's predictions on a datacube, are examples of other objects. Some objects are are the outputs of the system, some are used in generating such objects.
+
+\marginpar{Object Pointers}
+An object may be \keyword{selected},
+%
+\begin{verbatim}
+@select <object-name>
+
+@select <type> <typed-object-name>
+\end{verbatim}
+%
+When \keyword{<object-name>} is selected, \keyword{.} expands to \keyword{<object-name>}. Similarly, \keyword{..}, \keyword{...}, and so on, as deep as needed, expand to the names of the previously selected object and the one before that. Commands default the objects they consume and modify to \keyword{.}, \keyword{..}, and so on. Therefore, because the commands in a script generally use the same objects, selecting the objects enables their names to be omitted in a script.
+%
+\begin{verbatim}
+@select <object-1>
+@select <object-2>
+@download
+<command-1> # ., .. omitted for convenience
+<command-2>
+<command-3>
+@upload
+\end{verbatim}
+
+\marginpar{Object Types}
+An object may have a \emph{type}, such as model or dataset. Commands that consume objects specify a type for the argument. This enables the user to simultaneously select different types of objects and run commands on them. Here is an example from \emph{hubble}~\cite{hubble}, wherein the user selects an object, then selects a hubble dataset, then selects an object in that dataset and downloads it.
+%
+\begin{verbatim}
+@select
+hubble select dataset hst
+hubble select object public/u4ge/u4ge0106r
+hubble download -dryrun
+\end{verbatim}
+
+If \keyword{<object-name>} is not provided or is given as \keyword{-}, then an object with a unique name is created and used. 
+
+Object are persisted on AWS S3~\cite{aws_s3}.
+
+\marginpar{Object Metadata}
+\emph{Metadata} is information about objects, such as their tags. Objects also carry metadata as a dictionary. One can \keyword{get} and \keyword{post} metadata related to a filename, an object, or a path,
+%
+\begin{verbatim}
+@metadata get \
+    delim=+,dict.keys,dict.values,key=<key>,filename \
+    <filename.yaml>
+    
+@metadata get \
+    delim=+,dict.keys,dict.values,key=<key>,filename=<metadata.yaml>,object \
+    .|<object-name>
+    
+@metadata get \
+    delim=+,dict.keys,dict.values,key=<key>,filename=<metadata.yaml>,path \
+    <path>
+    
+@metadata post \
+    <key> <value> \
+    filename \
+    <filename.yaml>
+    
+@metadata post \
+    <key> <value> \
+    object,filename=<metadata.yaml> \
+    .|<object-name>
+    
+@metadata post \
+    <key> <value> \
+    path,filename=<metadata.yaml> \
+    <path>
+\end{verbatim}
+
+Objects can be downloaded, uploaded, and listed,
+%
+\begin{verbatim}
+@download \
+    [filename=<filename>,open] \
+    [.|<object-name>]
+
+@upload \
+    [filename=<filename>,~open,solid,~warn_if_exists] \
+    [.|<object-name>]
+    
+@list cloud|local <object-name>
+\end{verbatim}
+%
+It is recommended that additional \keyword{download} and \keyword{list} expansions are defined for typed objects. See \keyword{hubble} for examples. Objects can be cloned,
+%
+\begin{verbatim}
+@clone [..|<object-1>] [.|<object-2>] \
+    [~cache,~download,~meta,~relations,~tags,upload]
+\end{verbatim}
