@@ -1,5 +1,5 @@
-\marginpar{Syntax}
-We are interested in a special category of valid bash commands~\cite{shell_syntax} that start with a callable, continues with a prescribed sequence of identifiers, and end with \emph{arguments}. In this convention, the type of each identifier is known based on the command until that identifier, and is one of the following.
+\marginpar{Command Syntax}
+We are interested in a special category of valid bash commands~\cite{shell_syntax} that start with a specially--crafted callable, continue with a prescribed sequence of identifiers, and end with arguments. In this convention, the type of each identifier is known based on the command until that identifier, and is one of the following.
 %
 \begin{itemize}
     \item A \keyword{value}, either numerical or a filename, for example.
@@ -10,9 +10,7 @@ We are interested in a special category of valid bash commands~\cite{shell_synta
 This is an example command,
 %
 \begin{verbatim}
-vanwatch ingest \
-    area=vancouver,~batch,count=5,gif . \
-    --count 12
+vanwatch ingest area=vancouver,~batch,count=5,gif . --count 12
 \end{verbatim}
 %
 wherein, ``\keyword{vanwatch}'' is a callable, ``\keyword{ingest}'' is the task, ``\texttt{area=vancouver,~batch,count=5,gif}'' is an options, ``\texttt{.}'' is an object pointer, and ``\texttt{--count 12}'' are the arguments.
