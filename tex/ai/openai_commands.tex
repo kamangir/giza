@@ -1,0 +1,41 @@
+\subsection{OpenAI Commands~(\keyword{@openai})}\label{openai_commands}
+
+\keyword{@openai}~\cite{openai_commands} is a command interface for the OpenAI API~\cite{openai_api}. \keyword{@openai} is a callable that supports basic prompt completion through,
+%
+\begin{verbatim}
+@openai complete "<prompt>"
+\end{verbatim}
+%
+Image, \keyword{<prompt> -[<previous-image>]-> <image>.png} and \keyword{input.txt|url -DALL-E-> output.png}, and video, \keyword{<filename.txt>|url -> video.mp4}, generation are supported, as well as image transformation, \keyword{<object-1> -<prompt>-> <object-2>},
+%
+\begin{verbatim}
+@openai generate image [height=<576>,width=<768>] \
+    [<image>] [<previous-image>] \
+    "<prompt>"
+
+DALL-E render \
+    [brush=tiling|randomwalk,brush_size=256|512|1024,lines=<5>,publish] \
+    input.txt|https://allpoetry.com/16-bit-Intel-8088-chip \
+    [output.png]
+
+@openai generate video [frame_count=16,url] \
+    <filename.txt|url>
+
+@openai transform [extension=jpg] \
+    [<object-1>] [<object-2>] \
+    "<prompt>" \
+\end{verbatim}
+%
+The Vision API~\cite{openai_vision} is also supported,
+%
+\begin{verbatim}
+@openai vision "prompt" [auto|low|high,dryrun,~upload] \
+    [Davie,~Bute,.jpg] \
+    <.|object-name>
+\end{verbatim}
+%
+\keyword{@openai} supports code generation through the \keyword{@help} backend,
+%
+\begin{verbatim}
+@openai completion describe <plugin-name>
+\end{verbatim}

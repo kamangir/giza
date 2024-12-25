@@ -1,0 +1,28 @@
+\subsection{Vancouver Watching~(\keyword{vanwatch})}\label{vanwatch}
+
+\keyword{vanwatch} is a callable that discovers the cameras in an area, ingests images from them, and runs detection algo on the image to generate time series analytics.
+
+\marginpar{\keyword{discover}}
+Cameras are represented in different formats in different areas.
+%
+\begin{verbatim}
+vanwatch discover [area=<area>] [-|<object-name>] [<args>]
+\end{verbatim}
+%
+discovers the cameras in \keyword{<area>} and stores them in \keyword{<area>.geojson} in the object \keyword{<object-name>} and tags the object for discovery by \keyword{ingest} and \keyword{list}. 
+
+\marginpar{\keyword{ingest}}
+\begin{verbatim}
+vanwatch ingest \
+    [area=<area>,count=<-1>,model=<model-id>,~process,publish] \
+    [-|<object-name>]
+\end{verbatim}
+%
+finds the latest set of cameras discovered in \keyword{<area>} through \keyword{tag} search and ingests \keyword{count} images into \keyword{<object-name>} and then runs \keyword{vanwatch process} unless \keyword{-process}. \keyword{object-name} is tagged for discovery by \keyword{list}. 
+
+\marginpar{\keyword{process}}
+\begin{verbatim}
+vanwatch process [model=<model-id>,publish] [.|<object-name>]
+\end{verbatim}
+%
+runs object detection algo~\cite{ultralytics} on the images ingested into \keyword{<object-name>} and updates \keyword{<area>.geojson}.
