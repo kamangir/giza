@@ -2,7 +2,9 @@ NAME = "gizai"
 
 ICON = "🔻"
 
-DESCRIPTION = f"{ICON} Access, Automation, Analytics, AI"
+DESCRIPTION = (
+    f"{ICON} Access, Automation, Analytics, AI - A Mathematical model for AI languages."
+)
 
 VERSION = "7.146.1"
 
