@@ -1,0 +1,46 @@
+\marginpar{Callable Expansion}
+
+When the callable \keyword{<func>} receives a command that starts with the task \keyword{<task>}, it calls the function \keyword{<func>\_<task>} with the rest of the command, if such function exists. For example, here, the callable \keyword{abcli_conda}, which is aliased to \keyword{@conda}, is defined.
+
+\begin{verbatim}
+#! /usr/bin/env bash
+
+function abcli_conda() {
+    local task=$(abcli_unpack_keyword $1)
+
+    local function_name="abcli_conda_$task"
+    if [[ $(type -t $function_name) == "function" ]]; then
+        $function_name "${@:2}"
+        return
+    fi
+
+    conda "$@"
+}
+
+abcli_source_caller_suffix_path /conda
+\end{verbatim}
+%
+This mechanism works with the function \keyword{abcli_conda_exists}, which resides in \keyword{/conda/exists.sh}, listed below,
+%
+\begin{verbatim}
+#! /usr/bin/env bash
+
+function abcli_conda_exists() {
+    local options=$1
+    local environment_name=$(abcli_option "$options" name abcli)
+
+    if conda info --envs | grep -q "^$environment_name "; then
+        echo 1
+    else
+        echo 0
+    fi
+}    
+\end{verbatim}
+%
+The result is the \emph{super-command} \keyword{@conda} which behaves as \keyword{conda}, except when the function \keyword{abcli_conda_<task>} is defined. Here is an example of the outcome assembled together,
+%
+\begin{verbatim}
+[[ $(@conda exists name=<env-name>) == 1 ]] && echo "found."
+\end{verbatim}
+%
+We use this \emph{namespacing}~\cite{namespaces} mechanism for organization as well as orchestration. In practice, this expansion leads to callables with multiple prefixes. We generate \keyword{@<keyword>} aliases~\cite{aliases} to facilitate user access, as stated above. 
