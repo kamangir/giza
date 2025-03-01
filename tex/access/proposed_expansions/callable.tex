@@ -1,5 +1,4 @@
 \marginpar{Callable Expansion}
-
 When the callable \keyword{<func>} receives a command that starts with the task \keyword{<task>}, it calls the function \keyword{<func>\_<task>} with the rest of the command, if such function exists. For example, here, the callable \keyword{abcli\_conda}, which is aliased to \keyword{@conda}, is defined.
 
 \begin{verbatim}
@@ -43,4 +42,4 @@ The result is the \emph{super-command} \keyword{@conda} which behaves as \keywor
 [[ $(@conda exists name=<env-name>) == 1 ]] && echo "found."
 \end{verbatim}
 %
-We use this \emph{namespacing}~\cite{namespaces} mechanism for organization as well as orchestration. In practice, this expansion leads to callables with multiple prefixes. We generate \keyword{@<keyword>} aliases~\cite{aliases} to facilitate user access, as stated above. 
+We use this \emph{namespacing}~\cite{namespaces} mechanism for organization as well as orchestration. In practice, this expansion yields callables with multiple prefixes. We generate \keyword{@<keyword>} aliases~\cite{aliases} to facilitate user access, as stated above. 
