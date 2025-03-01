@@ -20,7 +20,7 @@ function abcli_conda() {
 abcli_source_caller_suffix_path /conda
 \end{verbatim}
 %
-This mechanism works with the function \keyword{abcli_conda_exists}, which resides in \keyword{/conda/exists.sh}, listed below,
+This mechanism works with the function \keyword{abcli\_conda\_exists}, which resides in \keyword{/conda/exists.sh}, listed below,
 %
 \begin{verbatim}
 #! /usr/bin/env bash
@@ -37,7 +37,7 @@ function abcli_conda_exists() {
 }    
 \end{verbatim}
 %
-The result is the \emph{super-command} \keyword{@conda} which behaves as \keyword{conda}, except when the function \keyword{abcli_conda_<task>} is defined. Here is an example of the outcome assembled together,
+The result is the \emph{super-command} \keyword{@conda} which behaves as \keyword{conda}, except when the function \keyword{abcli\_conda\_<task>} is defined. Here is an example of the outcome assembled together,
 %
 \begin{verbatim}
 [[ $(@conda exists name=<env-name>) == 1 ]] && echo "found."
