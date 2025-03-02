@@ -1,12 +1,15 @@
 \marginpar{Prefixing}
 A \keyword{<prefix>} can run a \keyword{<command>} with certain \keyword{<options>} through the \emph{prefixing expansion},
 %
+\begin{graybox}
 \begin{verbatim}
 <prefix> <options> <command>
 \end{verbatim}
+\end{graybox}
 %
 This expansion enables submitting a command to another machine, including a \emph{docker}~\cite{docker} container, and compute resources, such as \emph{AWS Batch}~\cite{aws_batch} and Argo Workflows~\cite{argoflow}.
 %
+\begin{graybox}
 \begin{verbatim}
 @eval [dryrun,path=<path>] <command>
 
@@ -14,3 +17,4 @@ This expansion enables submitting a command to another machine, including a \emp
 
 @batch eval [dryrun,name=<job-name>] <command>
 \end{verbatim}
+\end{graybox}

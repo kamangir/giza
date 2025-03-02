@@ -2,12 +2,15 @@
 
 An options is a string representation of a dictionary, such as,
 %
+\begin{graybox}
 \begin{verbatim}
 <keyword-1>=<value-1>,<keyword-2>=<value-2>,...,<keyword-3>,-<keyword-4>},...
 \end{verbatim}
+\end{graybox}
 %
 Options is implemented using basic Python and, therefore, the \emph{options expansion} is available to Bash commands through command substitution~\cite{command_substitution}. In practice, the two additional expansions \keyword{@option::bool} and \keyword{@option::choice} cast the output to boolean and select it from a list (equivalent to an Enum~\cite{python_eunum}), respectively.
 %
+\begin{graybox}
 \begin{verbatim}
 value=$(@option "$options" <keyword> [<default>])
 
@@ -15,3 +18,4 @@ value=$(@option::bool "$options" <keyword> 0 | 1)
 
 value=$(@option::choice "$options" <comma,separated,list> <default>)
 \end{verbatim}
+\end{graybox}

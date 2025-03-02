@@ -1,6 +1,7 @@
 \marginpar{Callable Expansion}
 When the callable \keyword{<func>} receives a command that starts with the task \keyword{<task>}, it calls the function \keyword{<func>\_<task>} with the rest of the command, if such function exists. For example, here, the callable \keyword{abcli\_conda}, which is aliased to \keyword{@conda}, is defined.
 
+\begin{graybox}
 \begin{verbatim}
 #! /usr/bin/env bash
 
@@ -18,9 +19,11 @@ function abcli_conda() {
 
 abcli_source_caller_suffix_path /conda
 \end{verbatim}
+\end{graybox}
 %
 This mechanism works with the function \keyword{abcli\_conda\_exists}, which resides in \keyword{/conda/exists.sh}, listed below,
 %
+\begin{graybox}
 \begin{verbatim}
 #! /usr/bin/env bash
 
@@ -35,11 +38,14 @@ function abcli_conda_exists() {
     fi
 }    
 \end{verbatim}
+\end{graybox}
 %
 The result is the \emph{super-command} \keyword{@conda} which behaves as \keyword{conda}, except when the function \keyword{abcli\_conda\_<task>} is defined. Here is an example of the outcome assembled together,
 %
+\begin{graybox}
 \begin{verbatim}
 [[ $(@conda exists name=<env-name>) == 1 ]] && echo "found."
 \end{verbatim}
+\end{graybox}
 %
 We use this \emph{namespacing}~\cite{namespaces} mechanism for organization as well as orchestration. In practice, this expansion yields callables with multiple prefixes. We generate \keyword{@<keyword>} aliases~\cite{aliases} to facilitate user access, as stated above. In practice, the use of this expansion is comparable to fitting the spanning tree of an Application Programming Interface (API)~\cite{fielding2000rest} to a dataset of use of digital tools by operators recorded as sequences of keystrokes and mouse clicks.

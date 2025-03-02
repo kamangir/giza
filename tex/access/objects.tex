@@ -4,24 +4,29 @@ Commands manipulate data as objects. An object is a uniquely named collection of
 \marginpar{Object Pointers}
 An object may be \emph{selected},
 %
+\begin{graybox}
 \begin{verbatim}
 @select <object-name>
 \end{verbatim}
+\end{graybox}
 %
 When \keyword{<object-name>} is selected,  `\keyword{.}' expands to \keyword{<object-name>}. Similarly, `\keyword{..}', `\keyword{...}', and so on, as deep as needed, expand to the names of the previously selected object and the one before that. Commands default the objects they consume and modify to `\keyword{.}', `\keyword{..}', and so on. Therefore, because the commands in a script generally use the same objects, selecting the objects enables their names to be replaced with pointers. Often the defaults of the commands are designed to enable the omission of the pointers as well.
 
 \marginpar{Object Metadata}
 Every object carries a \keyword{metadata.yaml} file that can be \keyword{get} and \keyword{post} as a dictionary.
 %
+\begin{graybox}
 \begin{verbatim}
 @metadata get key=<key> [.|<object-name>]
 
 @metadata post <key> <value> - [.|<object-name>]
 \end{verbatim}
+\end{graybox}
 
 \marginpar{Object Tags}
 An object can have many tags. A tag is key-value pair that is maintained in a system such as \emph{MLflow}~\cite{mlflow} and is \keyword{set} and \keyword{get}, and can be \keyword{search}ed,
 %
+\begin{graybox}
 \begin{verbatim}
 @mlflow tags get [.|<object-name>] [--tag <tag>]
 
@@ -29,10 +34,12 @@ An object can have many tags. A tag is key-value pair that is maintained in a sy
 
 @mlflow tags set [.|<object-name>] [<keyword-1>=<value>,<keyword-2>,~<keyword-3>]
 \end{verbatim}
+\end{graybox}
 
 \marginpar{Object Persistence}
 Object are persisted on AWS S3~\cite{aws_s3}. Objects can be downloaded, uploaded, and listed,
 %
+\begin{graybox}
 \begin{verbatim}
 @download [filename=<filename>] [.|<object-name>]
 
@@ -40,3 +47,4 @@ Object are persisted on AWS S3~\cite{aws_s3}. Objects can be downloaded, uploade
     
 @list cloud|local [.|<object-name>]
 \end{verbatim}
+\end{graybox}
