@@ -3,24 +3,24 @@ In practice, there is often a series of commands that generate a cascade of obje
 %
 \begin{verbatim}
 vanwatch \
-	ingest \
-	target=<target>,count=<count> \
-	$object_name
+    ingest \
+    target=<target>,count=<count> \
+    $object_name
 
 vanwatch \
-	detect \
-	count=<count>,gif,model=<model-id>,publish \
-	$object_name \
-	--overwrite 1
+    detect \
+    count=<count>,gif,model=<model-id>,publish \
+    $object_name \
+    --overwrite 1
 \end{verbatim}
 %
 The \emph{options cascade expansion} compresses this cascade of commands as follows,
 %
 \begin{verbatim}
 vanwatch \
-	ingest \
-	target=<target>,count=<count> \
-	$object_name \
-	detect,count=<count>,gif,model=<model-id>,publish \
-	--overwrite 1
+    ingest \
+    target=<target>,count=<count> \
+    $object_name \
+    detect,count=<count>,gif,model=<model-id>,publish \
+    --overwrite 1
 \end{verbatim}
