@@ -6,7 +6,7 @@ DESCRIPTION = (
     f"{ICON} Access, Automation, Analytics, AI - A Mathematical model for AI languages."
 )
 
-VERSION = "7.293.1"
+VERSION = "7.294.1"
 
 REPO_NAME = "giza"
 
