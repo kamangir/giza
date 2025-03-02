@@ -1,5 +1,4 @@
-\subsection{State Machines}
-
+\marginpar{State Machines}
 A machine is a state machine that is connected to many other machines and shares some of its state with them for read and write. A shell is a stateful access mechanism to a machine that an operator uses to run commands. In a 2022 survey of developers, 89\% responded that they have a terminal open at least half of the day~\cite{textualize_founded}. Running a command in a shell can potentially modify the state of all other machines. Two examples of machines are a Raspberry Pi~\cite{rpi} that runs Linux and is connected to the AWS infrastructure~\cite{aws} and a docker container~\cite{docker} running in AWS Batch. GNU Bash~\cite{gnu_bash} is an example of a shell.
 
 The operators act asynchronously while communicating with each other. Multiple operators may simultaneously use the same machine, and the same operator may simultaneously use multiple machines. Only one operator uses a shell at one time. Some machines are exogenous to this model, yet the operators can access their states in read or write modes through running commands. Cloud storage~\cite{aws_s3} and compute resources~\cite{aws_batch} are examples of these machines.
