@@ -6,10 +6,10 @@ function giza_build() {
     local options=$1
     local do_dryrun=$(abcli_option_int "$options" dryrun 0)
     local do_build=$(abcli_option_int "$options" build $(abcli_not $do_dryrun))
-    local do_download=$(abcli_option_int "$options" download $(abcli_not $do_dryrun))
-    local do_increment_version=$(abcli_option_int "$options" increment_version 0)
-    local do_publish=$(abcli_option_int "$options" publish $(abcli_not $do_dryrun))
     local do_upload=$(abcli_option_int "$options" upload $(abcli_not $do_dryrun))
+    local do_download=$(abcli_option_int "$options" download $do_upload)
+    local do_increment_version=$(abcli_option_int "$options" increment_version 0)
+    local do_publish=$(abcli_option_int "$options" publish $do_upload)
 
     local latex_options=$2
 

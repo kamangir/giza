@@ -8,3 +8,5 @@ function giza() {
         plugin=giza,task=$task \
         "${@:2}"
 }
+
+abcli_log $(giza version --show_icon 1)

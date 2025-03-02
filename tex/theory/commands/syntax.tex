@@ -1,0 +1,21 @@
+\marginpar{Command Syntax}
+We are interested in a special category of valid bash commands~\cite{shell_syntax} that start with a specially--crafted callable, continue with a prescribed sequence of identifiers, and end with arguments. \marginpar{Callables}
+A \emph{callable} is a valid command with no space and control operators~\cite{control_operators}. Some of the well-known callables are \emph{git}~\cite{git}, \emph{docker}~\cite{docker}, \emph{pushd}~\cite{pushd}, and \emph{nano}~\cite{nano}. 
+
+In this convention, the type of each identifier is known based on the command until that identifier, and is one of the following.
+%
+\begin{itemize}
+    \item A \keyword{value}, either numerical or a filename, for example.
+    \item An \emph{options}.
+    \item An object name or pointer.
+\end{itemize}
+%
+This is an example command,
+%
+\begin{verbatim}
+vanwatch ingest \
+    area=vancouver,~batch,count=5,gif . \
+    --count 12
+\end{verbatim}
+%
+Here, ``\keyword{vanwatch}'' is the callable and ``\keyword{ingest}'' is the task, effectively an Enum, which is an \keyword{Options}. The command continues with ``\texttt{area=vancouver,~batch,count=5,gif}'', which is an \keyword{Options}, ``\texttt{.}'', which is an object pointer, and ``\texttt{--count 12}'', which are the arguments.
