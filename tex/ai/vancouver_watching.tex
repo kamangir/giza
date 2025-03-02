@@ -5,124 +5,141 @@
 \marginpar{\keyword{discover}}
 Cameras are discovered through public websites and, therefore, they are represented in different formats in different targets. \keyword{vanwatch discover} discovers the cameras in \keyword{<target>} and stores them in \keyword{<target>.geojson} in the object \keyword{<object-name>} and tags the object for discovery by \keyword{ingest}.
 %
+\begin{graybox}
 \begin{verbatim}
 vanwatch \
-	discover \
-	[target=<target>,count=<-1>,dryrun,~tag,~upload] \
-	[-|<object-name>]
+    discover \
+    [target=<target>,count=<-1>,dryrun,~tag,~upload] \
+    [-|<object-name>]
 \end{verbatim}
+\end{graybox}
 %
 Here, \keyword{target=<target>,count=<-1>,dryrun,~tag,~upload} is an options. If the object pointer \keyword{-} is selected, a timestamped object prefixed \keyword{<target>-discover} is generated. This options input also enables \keyword{dryrun}, a limited count, and the ability to disable tagging and uploading the object. These features are handy for testing and special runs.
 
 \keyword{vanwatch discover} points to the function \keyword{vancouver\_watching\_discover}\footnote{\url{https://github.com/kamangir/vancouver-watching/blob/main/vancouver_watching/.abcli/discover.sh}} through callable expansion and the alias \keyword{vanwatch}.
 %
+\begin{graybox}
 \begin{verbatim}
 #! /usr/bin/env bash
 
 function vancouver_watching_discover() {
-	local options=$1
-	local target=$(abcli_option "$options" target vancouver)
-	local do_dryrun=$(abcli_option_int "$options" dryrun 0)
-	local do_tag=$(abcli_option_int "$options" tag $(abcli_not $do_dryrun))
-	local do_upload=$(abcli_option_int "$options" upload $(abcli_not $do_dryrun))
+    local options=$1
+    local target=$(abcli_option "$options" target vancouver)
+    local do_dryrun=$(abcli_option_int "$options" dryrun 0)
+    local do_tag=$(abcli_option_int "$options" tag $(abcli_not $do_dryrun))
+    local do_upload=$(abcli_option_int "$options" upload $(abcli_not $do_dryrun))
 \end{verbatim}
+\end{graybox}
 %
 \keyword{options} uses options expansion.
 %
+\begin{graybox}
 \begin{verbatim}
-	local object_name=$(abcli_clarify_object $2 $target-discover-$(abcli_string_timestamp_short))
+    local object_name=$(abcli_clarify_object $2 \
+        $target-discover-$(abcli_string_timestamp_short))
 \end{verbatim}
+\end{graybox}
 %
 \keyword{object\_name} uses object expansion.
 %
+\begin{graybox}
 \begin{verbatim}
-	local function_name=vancouver_watching_discover_$target
-	if [[ $(type -t $function_name) != "function" ]]; then
-		abcli_log_error "vancouver_watching: discover: $target: target not found."
-		return 1
-	fi
+    local function_name=vancouver_watching_discover_$target
+    if [[ $(type -t $function_name) != "function" ]]; then
+        abcli_log_error "vancouver_watching: discover: $target: target not found."
+        return 1
+    fi
 \end{verbatim}
+\end{graybox}
 %
 A callable expansion.
 %
+\begin{graybox}
 \begin{verbatim}
-	abcli_clone \
-		~relate,~tags \
-		$VANWATCH_QGIS_TEMPLATE \
-		$object_name
+    abcli_clone \
+        ~relate,~tags \
+        $VANWATCH_QGIS_TEMPLATE \
+        $object_name
 
-	abcli_log "discovering $target -> $object_name"
-	abcli_eval ,$options \
-		$function_name \
-		,$options \
-		$ABCLI_OBJECT_ROOT/$object_name \
-		"${@:3}"
-	local status="$?"
+    abcli_log "discovering $target -> $object_name"
+    abcli_eval ,$options \
+        $function_name \
+        ,$options \
+        $ABCLI_OBJECT_ROOT/$object_name \
+        "${@:3}"
+    local status="$?"
 
-	[[ "$do_upload" == 1 ]] &&
-		abcli_upload - $object_name
+    [[ "$do_upload" == 1 ]] &&
+        abcli_upload - $object_name
 
-	[[ "$status" -ne 0 ]] && return $status
+    [[ "$status" -ne 0 ]] && return $status
 
-	[[ "$do_tag" == 1 ]] &&
-		abcli_mlflow_tags set \
-			$object_name \
-			app=vancouver_watching,target=$target,stage=discovery
+    [[ "$do_tag" == 1 ]] &&
+        abcli_mlflow_tags set \
+            $object_name \
+            app=vancouver_watching,target=$target,stage=discovery
 
-	return $status
+    return $status
 }
 
 abcli_source_caller_suffix_path /discovery
 \end{verbatim}
+\end{graybox}
 %
 The callable expansion above points to the function \keyword{vancouver\_watching\_discover\_vancouver}\footnote{\url{https://github.com/kamangir/vancouver-watching/blob/main/vancouver_watching/.abcli/discovery/vancouver.sh}}.
 %
+\begin{graybox}
 \begin{verbatim}
 #! /usr/bin/env bash
 
 function vancouver_watching_discover_vancouver() {
-	local options=$1
-	local object_path=$2
+    local options=$1
+    local object_path=$2
 
-	curl \
-		https://opendata.vancouver.ca/explore/dataset/web-cam-url-links/download/?format=geojson \
-		>$object_path/detections.geojson
+    curl \
+        https://opendata.vancouver.ca/explore/dataset/web-cam-url-links/download/?format=geojson \
+        >$object_path/detections.geojson
 
-	local count=$(abcli_option_int "$options" count -1)
+    local count=$(abcli_option_int "$options" count -1)
 
-	abcli_eval ,$options \
-		python3 -m vancouver_watching.discover \
-		discover_cameras_vancouver_style \
-		--filename $object_path/detections.geojson \
-		--prefix https://trafficcams.vancouver.ca/ \
-		--count $count \
-		"${@:3}"
+    abcli_eval ,$options \
+        python3 -m vancouver_watching.discover \
+        discover_cameras_vancouver_style \
+        --filename $object_path/detections.geojson \
+        --prefix https://trafficcams.vancouver.ca/ \
+        --count $count \
+        "${@:3}"
 }
 \end{verbatim}
+\end{graybox}
 
 \marginpar{\keyword{ingest}}
 \keyword{vanwatch ingest} finds the latest set of cameras discovered in \keyword{<target>} through tag search and ingests \keyword{count} images into \keyword{<object-name>} and then runs \keyword{vanwatch detect} unless \keyword{~detect} is present. \keyword{object-name} is then tagged for future discovery. 
 %
+\begin{graybox}
 \begin{verbatim}
 vanwatch \
-	ingest \
-	[target=<target>,count=<-1>,~download,dryrun,~upload] \
-	[-|<object-name>] \
-	[detect,count=<-1>,~download,dryrun,gif,model=<model-id>,publish,~upload] \
-	[--overwrite 1] \
-	[--verbose 1]
+    ingest \
+    [target=<target>,count=<-1>,~download,dryrun,~upload] \
+    [-|<object-name>] \
+    [detect,count=<-1>,~download,dryrun,gif,model=<model-id>,publish,~upload] \
+    [--overwrite 1] \
+    [--verbose 1]
 \end{verbatim}
+\end{graybox}
 %
 \keyword{vanwatch ingest} generates an object from another that it finds through tag search. Note that this command uses arguments as well as two cascading options. The first controls the ingest of the images and the second is passed to \keyword{detect}.
 
 \marginpar{\keyword{detect}}
 \keyword{vanwatch detect} runs object detection algo~\cite{ultralytics} on the images ingested into \keyword{<object-name>} and updates \keyword{<target>.geojson}.
 %
+\begin{graybox}
 \begin{verbatim}
 vanwatch \
-	detect \
-	[count=<-1>,~download,dryrun,gif,model=<model-id>,publish,~upload] \
-	[.|<object-name>] \
-	[--overwrite 1] \
-	[--verbose 1]
+    detect \
+    [count=<-1>,~download,dryrun,gif,model=<model-id>,publish,~upload] \
+    [.|<object-name>] \
+    [--overwrite 1] \
+    [--verbose 1]
 \end{verbatim}
+\end{graybox}

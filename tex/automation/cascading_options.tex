@@ -1,26 +1,30 @@
 \marginpar{Cascading Options}
 In practice, there is often a series of commands that generate a cascade of objects that contains the final products. Each command in this series has one or more options and takes in and produces zero or more objects. Here is a representative case,
 %
+\begin{graybox}
 \begin{verbatim}
 vanwatch \
-	ingest \
-	target=<target>,count=<count> \
-	$object_name
+    ingest \
+    target=<target>,count=<count> \
+    $object_name
 
 vanwatch \
-	detect \
-	count=<count>,gif,model=<model-id>,publish \
-	$object_name \
-	--overwrite 1
+    detect \
+    count=<count>,gif,model=<model-id>,publish \
+    $object_name \
+    --overwrite 1
 \end{verbatim}
+\end{graybox}
 %
 The \emph{options cascade expansion} compresses this cascade of commands as follows,
 %
+\begin{graybox}
 \begin{verbatim}
 vanwatch \
-	ingest \
-	target=<target>,count=<count> \
-	$object_name \
-	detect,count=<count>,gif,model=<model-id>,publish \
-	--overwrite 1
+    ingest \
+    target=<target>,count=<count> \
+    $object_name \
+    detect,count=<count>,gif,model=<model-id>,publish \
+    --overwrite 1
 \end{verbatim}
+\end{graybox}
