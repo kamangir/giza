@@ -1,28 +1,128 @@
 \subsection{Vancouver Watching~(\keyword{vanwatch})}\label{vanwatch}
 
-\keyword{vanwatch} is a callable that discovers the cameras in an area, ingests images from them, and runs detection algo on the image to generate time series analytics.
+\keyword{vanwatch}~\cite{vanwatch} discovers traffic cameras in a target, ingests images from them, and runs detection algo on the images to generate time series analytics.
 
 \marginpar{\keyword{discover}}
-Cameras are represented in different formats in different areas.
+Cameras are discovered through public websites and, therefore, they are represented in different formats in different targets. \keyword{vanwatch discover} discovers the cameras in \keyword{<target>} and stores them in \keyword{<target>.geojson} in the object \keyword{<object-name>} and tags the object for discovery by \keyword{ingest}.
 %
 \begin{verbatim}
-vanwatch discover [area=<area>] [-|<object-name>] [<args>]
+vanwatch \
+	discover \
+	[target=<target>,count=<-1>,dryrun,~tag,~upload] \
+	[-|<object-name>]
 \end{verbatim}
 %
-discovers the cameras in \keyword{<area>} and stores them in \keyword{<area>.geojson} in the object \keyword{<object-name>} and tags the object for discovery by \keyword{ingest} and \keyword{list}. 
+Here, \keyword{target=<target>,count=<-1>,dryrun,~tag,~upload} is an options. If the object pointer \keyword{-} is selected, a timestamped object prefixed \keyword{<target>-discover} is generated. This options input also enables \keyword{dryrun}, a limited count, and the ability to disable tagging and uploading the object. These features are handy for testing and special runs.
+
+\keyword{vanwatch discover} points to the function \keyword{vancouver\_watching\_discover}\footnote{\url{https://github.com/kamangir/vancouver-watching/blob/main/vancouver_watching/.abcli/discover.sh}} through callable expansion and the alias \keyword{vanwatch}.
+%
+\begin{verbatim}
+#! /usr/bin/env bash
+
+function vancouver_watching_discover() {
+	local options=$1
+	local target=$(abcli_option "$options" target vancouver)
+	local do_dryrun=$(abcli_option_int "$options" dryrun 0)
+	local do_tag=$(abcli_option_int "$options" tag $(abcli_not $do_dryrun))
+	local do_upload=$(abcli_option_int "$options" upload $(abcli_not $do_dryrun))
+\end{verbatim}
+%
+\keyword{options} uses options expansion.
+%
+\begin{verbatim}
+	local object_name=$(abcli_clarify_object $2 $target-discover-$(abcli_string_timestamp_short))
+\end{verbatim}
+%
+\keyword{object\_name} uses object expansion.
+%
+\begin{verbatim}
+	local function_name=vancouver_watching_discover_$target
+	if [[ $(type -t $function_name) != "function" ]]; then
+		abcli_log_error "vancouver_watching: discover: $target: target not found."
+		return 1
+	fi
+\end{verbatim}
+%
+A callable expansion.
+%
+\begin{verbatim}
+	abcli_clone \
+		~relate,~tags \
+		$VANWATCH_QGIS_TEMPLATE \
+		$object_name
+
+	abcli_log "discovering $target -> $object_name"
+	abcli_eval ,$options \
+		$function_name \
+		,$options \
+		$ABCLI_OBJECT_ROOT/$object_name \
+		"${@:3}"
+	local status="$?"
+
+	[[ "$do_upload" == 1 ]] &&
+		abcli_upload - $object_name
+
+	[[ "$status" -ne 0 ]] && return $status
+
+	[[ "$do_tag" == 1 ]] &&
+		abcli_mlflow_tags set \
+			$object_name \
+			app=vancouver_watching,target=$target,stage=discovery
+
+	return $status
+}
+
+abcli_source_caller_suffix_path /discovery
+\end{verbatim}
+%
+The callable expansion above points to the function \keyword{vancouver\_watching\_discover\_vancouver}\footnote{\url{https://github.com/kamangir/vancouver-watching/blob/main/vancouver_watching/.abcli/discovery/vancouver.sh}}.
+%
+\begin{verbatim}
+#! /usr/bin/env bash
+
+function vancouver_watching_discover_vancouver() {
+	local options=$1
+	local object_path=$2
+
+	curl \
+		https://opendata.vancouver.ca/explore/dataset/web-cam-url-links/download/?format=geojson \
+		>$object_path/detections.geojson
+
+	local count=$(abcli_option_int "$options" count -1)
+
+	abcli_eval ,$options \
+		python3 -m vancouver_watching.discover \
+		discover_cameras_vancouver_style \
+		--filename $object_path/detections.geojson \
+		--prefix https://trafficcams.vancouver.ca/ \
+		--count $count \
+		"${@:3}"
+}
+\end{verbatim}
 
 \marginpar{\keyword{ingest}}
+\keyword{vanwatch ingest} finds the latest set of cameras discovered in \keyword{<target>} through tag search and ingests \keyword{count} images into \keyword{<object-name>} and then runs \keyword{vanwatch detect} unless \keyword{~detect} is present. \keyword{object-name} is then tagged for future discovery. 
+%
 \begin{verbatim}
-vanwatch ingest \
-    [area=<area>,count=<-1>,model=<model-id>,~process,publish] \
-    [-|<object-name>]
+vanwatch \
+	ingest \
+	[target=<target>,count=<-1>,~download,dryrun,~upload] \
+	[-|<object-name>] \
+	[detect,count=<-1>,~download,dryrun,gif,model=<model-id>,publish,~upload] \
+	[--overwrite 1] \
+	[--verbose 1]
 \end{verbatim}
 %
-finds the latest set of cameras discovered in \keyword{<area>} through \keyword{tag} search and ingests \keyword{count} images into \keyword{<object-name>} and then runs \keyword{vanwatch process} unless \keyword{-process}. \keyword{object-name} is tagged for discovery by \keyword{list}. 
+\keyword{vanwatch ingest} generates an object from another that it finds through tag search. Note that this command uses arguments as well as two cascading options. The first controls the ingest of the images and the second is passed to \keyword{detect}.
 
-\marginpar{\keyword{process}}
-\begin{verbatim}
-vanwatch process [model=<model-id>,publish] [.|<object-name>]
-\end{verbatim}
+\marginpar{\keyword{detect}}
+\keyword{vanwatch detect} runs object detection algo~\cite{ultralytics} on the images ingested into \keyword{<object-name>} and updates \keyword{<target>.geojson}.
 %
-runs object detection algo~\cite{ultralytics} on the images ingested into \keyword{<object-name>} and updates \keyword{<area>.geojson}.
+\begin{verbatim}
+vanwatch \
+	detect \
+	[count=<-1>,~download,dryrun,gif,model=<model-id>,publish,~upload] \
+	[.|<object-name>] \
+	[--overwrite 1] \
+	[--verbose 1]
+\end{verbatim}
