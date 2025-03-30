@@ -1,8 +1,8 @@
 from typing import List
 
-from blue_options.terminal import show_usage, xtra
-from abcli.help.generic import help_functions as generic_help_functions
-from abcli.help.latex import build_options as latex_build_options
+from bluer_options.terminal import show_usage, xtra
+from blue_ai.help.generic import help_functions as generic_help_functions
+from blue_ai.help.latex import build_options as latex_build_options
 
 from gizai import ALIAS
 
