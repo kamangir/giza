@@ -9,7 +9,7 @@ function test_giza_help() {
         "giza build" \
         "giza open_pdf"; do
         abcli_eval ,$options \
-            abcli_help $module
+            bluer_ai_help $module
         [[ $? -ne 0 ]] && return 1
 
         abcli_hr

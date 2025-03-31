@@ -21,7 +21,7 @@ function giza_build() {
         abcli_download - $object_name
 
     if [[ "$do_increment_version" == 1 ]]; then
-        abcli_git_increment_version
+        bluer_ai_git_increment_version
         [[ $? -ne 0 ]] && return 1
     fi
 
@@ -31,7 +31,7 @@ function giza_build() {
     [[ $? -ne 0 ]] && return 1
 
     if [[ "$do_build" == 1 ]]; then
-        abcli_latex build dryrun=$do_dryrun,bib=giza,$latex_options \
+        bluer_ai_latex build dryrun=$do_dryrun,bib=giza,$latex_options \
             $abcli_path_git/giza/tex/giza.tex
         [[ $? -ne 0 ]] && return 1
     fi
@@ -48,7 +48,7 @@ function giza_build() {
         abcli_upload - $object_name
 
     [[ "$do_publish" == 1 ]] &&
-        abcli_publish \
+        bluer_ai_publish \
             ~download,suffix=.pdf \
             $object_name
 
