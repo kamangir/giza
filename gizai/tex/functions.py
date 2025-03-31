@@ -1,4 +1,4 @@
-from blue_objects import file
+from bluer_objects import file
 from gizai import VERSION
 
 

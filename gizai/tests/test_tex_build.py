@@ -1,4 +1,4 @@
-from blue_objects import objects
+from bluer_objects import objects
 
 from gizai.tex.functions import build
 
