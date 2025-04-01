@@ -8,7 +8,7 @@ function giza_open_pdf() {
     local object_name=$GIZA_PUBLISHED_OBJECT
 
     [[ "$do_download" == 1 ]] &&
-        abcli_download - $object_name
+        bluer_objects_download - $object_name
 
     abcli_eval ,$options \
         open $ABCLI_OBJECT_ROOT/$object_name/$pdf.pdf
