@@ -1,6 +1,6 @@
 # 🔻 giza
 
-🔻 `giza` is a Mathematical model for AI languages such as [`abcli`](https://github.com/kamangir/awesome-bash-cli) and [its ecosystem](https://github.com/kamangir). This model is described in the working paper "[Access, Automation, Analytics, AI](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza.pdf)" [[tex](./tex/giza.tex)].
+🔻 `giza` is a Mathematical model for AI languages such as [`bluer-ai`](https://github.com/kamangir/bluer-ai) and [its ecosystem](https://github.com/kamangir/bluer-south). This model is described in the working paper "[Access, Automation, Analytics, AI](https://kamangir-public.s3.ca-central-1.amazonaws.com/giza-v1/giza.pdf)" [[tex](./tex/giza.tex)].
 
 ---
 
