@@ -40,7 +40,7 @@ function giza_build() {
         $abcli_path_git/giza/tex/*.pdf \
         $object_path
 
-    abcli_mlflow_tags_set \
+    bluer_objects_mlflow_tags_set \
         $object_name \
         contains=latest-giza
 
