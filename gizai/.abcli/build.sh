@@ -18,7 +18,7 @@ function giza_build() {
     mkdir -pv $object_path
 
     [[ "$do_download" == 1 ]] &&
-        abcli_download - $object_name
+        bluer_objects_download - $object_name
 
     if [[ "$do_increment_version" == 1 ]]; then
         bluer_ai_git_increment_version
@@ -45,7 +45,7 @@ function giza_build() {
         contains=latest-giza
 
     [[ "$do_upload" == 1 ]] &&
-        abcli_upload - $object_name
+        bluer_objects_upload - $object_name
 
     [[ "$do_publish" == 1 ]] &&
         bluer_ai_publish \
