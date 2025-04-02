@@ -10,6 +10,7 @@ function giza_build() {
     local do_download=$(abcli_option_int "$options" download $do_upload)
     local do_increment_version=$(abcli_option_int "$options" increment_version 0)
     local do_publish=$(abcli_option_int "$options" publish $do_upload)
+    local do_push=$(abcli_option_int "$options" push 0)
 
     local latex_options=$2
 
@@ -51,6 +52,14 @@ function giza_build() {
         bluer_ai_publish \
             ~download,suffix=.pdf \
             $object_name
+
+    cp -v \
+        $object_path/*.pdf \
+        $abcli_path_git/giza/pdf/
+
+    [[ "$do_push" == 1 ]] &&
+        bluer_ai_git giza push \
+            "$(python3 -m gizai version) build"
 
     return 0
 }

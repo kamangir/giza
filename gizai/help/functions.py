@@ -12,7 +12,7 @@ def help_build(
     mono: bool,
 ) -> str:
     options = xtra(
-        "~build,~download,dryrun,increment_version,~publish,~upload", mono=mono
+        "~build,~download,dryrun,increment_version,~publish,push,~upload", mono=mono
     )
 
     return show_usage(
