@@ -11,9 +11,7 @@ def help_build(
     tokens: List[str],
     mono: bool,
 ) -> str:
-    options = xtra(
-        "~build,~download,dryrun,increment_version,~publish,push,~upload", mono=mono
-    )
+    options = xtra("~build,~download,dryrun,push,~upload", mono=mono)
 
     return show_usage(
         [

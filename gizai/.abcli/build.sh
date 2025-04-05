@@ -8,8 +8,6 @@ function giza_build() {
     local do_build=$(abcli_option_int "$options" build $(abcli_not $do_dryrun))
     local do_upload=$(abcli_option_int "$options" upload $(abcli_not $do_dryrun))
     local do_download=$(abcli_option_int "$options" download $do_upload)
-    local do_increment_version=$(abcli_option_int "$options" increment_version 0)
-    local do_publish=$(abcli_option_int "$options" publish $do_upload)
     local do_push=$(abcli_option_int "$options" push 0)
 
     local latex_options=$2
@@ -20,11 +18,6 @@ function giza_build() {
 
     [[ "$do_download" == 1 ]] &&
         bluer_objects_download - $object_name
-
-    if [[ "$do_increment_version" == 1 ]]; then
-        bluer_ai_git_increment_version
-        [[ $? -ne 0 ]] && return 1
-    fi
 
     abcli_eval dryrun=$do_dryrun \
         python3 -m gizai.tex build \
@@ -47,11 +40,6 @@ function giza_build() {
 
     [[ "$do_upload" == 1 ]] &&
         bluer_objects_upload - $object_name
-
-    [[ "$do_publish" == 1 ]] &&
-        bluer_ai_publish \
-            ~download,suffix=.pdf \
-            $object_name
 
     cp -v \
         $object_path/*.pdf \
