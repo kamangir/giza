@@ -10,6 +10,6 @@ function giza_open_pdf() {
     [[ "$do_download" == 1 ]] &&
         bluer_objects_download - $object_name
 
-    abcli_eval ,$options \
+    bluer_ai_eval ,$options \
         open $ABCLI_OBJECT_ROOT/$object_name/$pdf.pdf
 }

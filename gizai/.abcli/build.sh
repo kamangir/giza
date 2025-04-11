@@ -19,7 +19,7 @@ function giza_build() {
     [[ "$do_download" == 1 ]] &&
         bluer_objects_download - $object_name
 
-    abcli_eval dryrun=$do_dryrun \
+    bluer_ai_eval dryrun=$do_dryrun \
         python3 -m gizai.tex build \
         --filename $abcli_path_git/giza/tex/revision.tex
     [[ $? -ne 0 ]] && return 1

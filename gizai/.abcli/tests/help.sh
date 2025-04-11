@@ -8,11 +8,11 @@ function test_giza_help() {
         "giza" \
         "giza build" \
         "giza open_pdf"; do
-        abcli_eval ,$options \
+        bluer_ai_eval ,$options \
             bluer_ai_help $module
         [[ $? -ne 0 ]] && return 1
 
-        abcli_hr
+        bluer_ai_hr
     done
 
     return 0
