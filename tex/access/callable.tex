@@ -1,14 +1,14 @@
 \marginpar{Callable Expansion}
-When the callable \keyword{<func>} receives a command that starts with the task \keyword{<task>}, it calls the function \keyword{<func>\_<task>} with the rest of the command, if such function exists. For example, here, the callable \keyword{abcli\_conda}, which is aliased to \keyword{@conda}, is defined.
+When the callable \keyword{<func>} receives a command that starts with the task \keyword{<task>}, it calls the function \keyword{<func>\_<task>} with the rest of the command, if such function exists. For example, here, the callable \keyword{bluer\_ai\_conda}, which is aliased to \keyword{@conda}, is defined.
 
 \begin{graybox}
 \begin{verbatim}
 #! /usr/bin/env bash
 
-function abcli_conda() {
-    local task=$(abcli_unpack_keyword $1)
+function bluer_ai_conda() {
+    local task=$1
 
-    local function_name="abcli_conda_$task"
+    local function_name=bluer_ai_conda_$task
     if [[ $(type -t $function_name) == "function" ]]; then
         $function_name "${@:2}"
         return
@@ -17,19 +17,19 @@ function abcli_conda() {
     conda "$@"
 }
 
-abcli_source_caller_suffix_path /conda
+bluer_ai_source_caller_suffix_path /conda
 \end{verbatim}
 \end{graybox}
 %
-This mechanism works with the function \keyword{abcli\_conda\_exists}, which resides in \keyword{/conda/exists.sh}, listed below,
+This mechanism works with the function \keyword{bluer\_ai\_conda\_exists}, which resides in \keyword{/conda/exists.sh}, listed below,
 %
 \begin{graybox}
 \begin{verbatim}
 #! /usr/bin/env bash
 
-function abcli_conda_exists() {
+function bluer_ai_conda_exists() {
     local options=$1
-    local environment_name=$(abcli_option "$options" name abcli)
+    local environment_name=$(bluer_ai_option "$options" name bluer_ai)
 
     if conda info --envs | grep -q "^$environment_name "; then
         echo 1
@@ -40,7 +40,7 @@ function abcli_conda_exists() {
 \end{verbatim}
 \end{graybox}
 %
-The result is the \emph{super-command} \keyword{@conda} which behaves as \keyword{conda}, except when the function \keyword{abcli\_conda\_<task>} is defined. Here is an example of the outcome assembled together,
+The result is the \emph{super-command} \keyword{@conda} which behaves as \keyword{conda}, except when the function \keyword{bluer\_ai\_conda\_<task>} is defined. Here is an example of the outcome assembled together,
 %
 \begin{graybox}
 \begin{verbatim}
