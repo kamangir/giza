@@ -2,8 +2,8 @@
 
 function giza_open_pdf() {
     local options=$1
-    local do_download=$(abcli_option_int "$options" download 1)
-    local pdf=$(abcli_option "$options" pdf giza)
+    local do_download=$(bluer_ai_option_int "$options" download 1)
+    local pdf=$(bluer_ai_option "$options" pdf giza)
 
     local object_name=$GIZA_PUBLISHED_OBJECT
 
