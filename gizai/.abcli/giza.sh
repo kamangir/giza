@@ -9,4 +9,4 @@ function giza() {
         "${@:2}"
 }
 
-abcli_log $(giza version --show_icon 1)
+bluer_ai_log $(giza version --show_icon 1)
