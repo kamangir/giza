@@ -4,11 +4,11 @@ export GIZA_PUBLISHED_OBJECT=giza-v1
 
 function giza_build() {
     local options=$1
-    local do_dryrun=$(abcli_option_int "$options" dryrun 0)
-    local do_build=$(abcli_option_int "$options" build $(bluer_ai_not $do_dryrun))
-    local do_upload=$(abcli_option_int "$options" upload $(bluer_ai_not $do_dryrun))
-    local do_download=$(abcli_option_int "$options" download $do_upload)
-    local do_push=$(abcli_option_int "$options" push 0)
+    local do_dryrun=$(bluer_ai_option_int "$options" dryrun 0)
+    local do_build=$(bluer_ai_option_int "$options" build $(bluer_ai_not $do_dryrun))
+    local do_upload=$(bluer_ai_option_int "$options" upload $(bluer_ai_not $do_dryrun))
+    local do_download=$(bluer_ai_option_int "$options" download $do_upload)
+    local do_push=$(bluer_ai_option_int "$options" push 0)
 
     local latex_options=$2
 
