@@ -1,0 +1,57 @@
+\section{Abstraction}\label{math}
+
+\newcommand{\angled}[1]{\langle \text{#1} \rangle}
+
+\begin{Rule}
+actions are executed on machines through commands.
+\end{Rule}
+
+\begin{Rule}
+objects contain arbitrary collections of files and folders. 
+\end{Rule}
+
+\begin{Rule}
+objects persist and can be downloaded/uploaded, in full or selectively.
+\end{Rule}
+
+\begin{Rule}
+many actions produce new objects or modify existing ones possibly using one or more existing objects. 
+\end{Rule}
+
+\begin{Rule}
+objects can have properties, as in $\angled{object-name}.\angled{keyword}=\angled{value}$. while all properties can be set and get, there are two general groups of properties: tags can be searched whereas metadata cannot. value is a single string in tags whereas metadata values can be arbitrarily large and of more sophisticated types.
+\end{Rule}
+
+
+\begin{Rule}
+some commands generate a string that can be used as $\$(\angled{command})\$$ in other commands. 
+\end{Rule}
+
+\begin{Rule}
+commands follow this syntax:
+\end{Rule}
+%
+\begin{eqnarray}
+\angled{command}=@\angled{callable}~
+\begin{bmatrix}
+    \angled{options}\\
+    \angled{value}\\
+    \angled{object-reference}
+\end{bmatrix}^N~
+\begin{bmatrix}
+    --\angled{keyword}~\angled{value}
+\end{bmatrix}^*,
+\end{eqnarray}
+%
+where $\angled{options}$ follows this syntax:
+%
+\begin{eqnarray}
+\angled{options}=
+\left[\angled{keyword}=\angled{value}\right]^*,\left[\angled{keyword}\right]^*,\left[\sim\angled{keyword}\right]^*,
+\end{eqnarray}
+%
+and $\angled{object-reference}$ is either an object name or one of $.$, $..$, $...$, and so on, which refer to objects that are $@select$ed.
+
+\begin{Rule}
+$@help\angled{command}$ shows the syntax of a $\angled{command}$ and describes what it does.
+\end{Rule}
